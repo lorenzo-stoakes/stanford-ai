@@ -604,7 +604,10 @@ method.
 Two extensions:-
 
 1. Extension 1:-
-    In min J(theta_0, theta_1) can solve for theta_0, theta_1 exactly without needing iterative algorithm (gradient descent).
+
+    In min J(theta_0, theta_1) can solve for theta_0, theta_1 exactly without needing iterative
+    algorithm (gradient descent).
+    
 2. Learn with larger number of features.
 
     +--------------------+--------------------+--------------------+--------------------+--------------------+
