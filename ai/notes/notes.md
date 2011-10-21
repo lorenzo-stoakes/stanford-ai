@@ -24,15 +24,15 @@ an AI program is called an 'intelligent agent'.
 
 ## Intelligent Agents ##
 
-Agent
-+----------------+   <- Sensors      Environment
-|                |                   Environment
-|                |                   Environment
-|                |                   Environment
-|                |                   Environment
-|                |                   Environment
-|                |   Actuators ->    Environment
-+----------------+                   Environment
+    Agent
+    +----------------+   <- Sensors      Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |   Actuators ->    Environment
+    +----------------+                   Environment
 
 Happens in many iterations over the perception/action cycle.
 
@@ -40,26 +40,26 @@ Happens in many iterations over the perception/action cycle.
 
 ### AI in Finance ###
 
-Trading Agent
-+----------------+   <- Rates/News   Environment  E.g. stock market
-|                |                   Environment
-|                |                   Environment
-|                |                   Environment  Bonds
-|                |                   Environment
-|                |                   Environment  Commodities
-|                |   Trades ->       Environment
-+----------------+                   Environment
+    Trading Agent
+    +----------------+   <- Rates/News   Environment  E.g. stock market
+    |                |                   Environment
+    |                |                   Environment
+    |                |                   Environment  Bonds
+    |                |                   Environment
+    |                |                   Environment  Commodities
+    |                |   Trades ->       Environment
+    +----------------+                   Environment
 
 ### AI in Robotics ###
 
-+----------------+   <- Cameras      Environment
-|                |      Microophone  Environment
-|                |      Touch        Environment
-|                |                   Environment
-|                |                   Environment
-|                |                   Environment
-|                |     Motors  ->    Environment
-+----------------+     Voice         Environment
+    +----------------+   <- Cameras      Environment
+    |                |      Microophone  Environment
+    |                |      Touch        Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |     Motors  ->    Environment
+    +----------------+     Voice         Environment
 
 Initial web crawlers were called 'robot's, e.g. robots.txt.
 
@@ -67,45 +67,45 @@ We're going to focus to a large degree on robotics in the course.
 
 ### AI in Games ###
 
-Game Agent
-+----------------+   <- Your moves -  Environment
-|                |                    Environment
-|             |  |                    Environment
-|             |  |                    Environment E.g. you
-|             |  |                    Environment
-|             v  |                    Environment
-|                | - Its own moves -> Environment
-+----------------+                    Environment
+    Game Agent
+    +----------------+   <- Your moves -  Environment
+    |                |                    Environment
+    |             |  |                    Environment
+    |             |  |                    Environment E.g. you
+    |             |  |                    Environment
+    |             v  |                    Environment
+    |                | - Its own moves -> Environment
+    +----------------+                    Environment
 
 ### AI in Medicine ###
 
-Diagnostic Agent
-+----------------+    vital
-|                | <------------ you
-|                |   signals
-|                |
-|                |
-|                | diagnostics
-|                | ------------> doctor
-+----------------+
+    Diagnostic Agent
+    +----------------+    vital
+    |                | <------------ you
+    |                |   signals
+    |                |
+    |                |
+    |                | diagnostics
+    |                | ------------> doctor
+    +----------------+
 
 ### AI and the Web ###
 
 I.e. searching for 'great AI class'
 
-Crawler
-+----------------+   <- Web Pages
-|                |
-| DB             |                   World-wide-web
-|                |
-|                |
-|                |
-|                |
-+----------------+
-   ^        |
-   | Query  v Results
+    Crawler
+    +----------------+   <- Web Pages
+    |                |
+    | DB             |                   World-wide-web
+    |                |
+    |                |
+    |                |
+    |                |
+    +----------------+
+       ^        |
+       | Query  v Results
 
-<<<<----You---->>>>
+    <<<<----You---->>>>
 
 ## Terminology ##
 
@@ -117,15 +117,15 @@ to make decisions.
 
 Partially = Have to maintain a memory, e.g. poker. So not entirely sufficient.
 
-Agent
-+----------------+   <- Sensors      Environment  ---> state
-|                |                   Environment         |
-|                |                   Environment <--------
-|                |                   Environment
-|                |                   Environment
-|                |                   Environment
-|                |   Actuators ->    Environment
-+----------------+                   Environment
+    Agent
+    +----------------+   <- Sensors      Environment  ---> state
+    |                |                   Environment         |
+    |                |                   Environment <--------
+    |                |                   Environment
+    |                |                   Environment
+    |                |                   Environment
+    |                |   Actuators ->    Environment
+    +----------------+                   Environment
 
 Happens in many iterations over the perception/action cycle.
 
