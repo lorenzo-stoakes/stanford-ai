@@ -603,12 +603,12 @@ method.
 
 Two extensions:-
 
-1. Extension 1:-
+1 Extension 1:-
 
     In min J(theta_0, theta_1) can solve for theta_0, theta_1 exactly without needing iterative
     algorithm (gradient descent).
     
-2. Learn with larger number of features.
+2 Learn with larger number of features.
 
     +--------------------+--------------------+--------------------+--------------------+--------------------+
     |   Size (feet^2)    |  No. of bedrooms   |   No. of floors    | Age of home (yrs)  |   Price ($1000)    |
