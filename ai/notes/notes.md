@@ -1,6 +1,9 @@
 AI Notes
 ========
 
+N.B. - I had to give up on attempting ascii art for everything. Turned out not to be all that
+practical! I have started scanning notes for stuff I have to write. Other than that, 
+
 Unit 1 - Introduction
 ---------------------
 
@@ -243,15 +246,24 @@ Can't drive to a location not shown on the map. But once the location is shown, 
 
 * Initial state
 * Actions (s is state)
+
     (s) -> { a_1, a_2, a_3, ... }
+    
 * Result
+
     (s, a) -> s'
+    
 * GoalTest
+
     (s) -> T|F
+    
 * PathCost (s-a->s... <- state-action transitions to number, n = cost of path) - most of the time
   the cost will be additive, i.e. the overall cost will be the individual steps' costs summed.
+  
     (s-a->s-a->s)->n
+    
 * StepCost - components of the path cost.
+
     (s, a, s')->n
 
 ## Example: Route Finding ##
@@ -434,9 +446,9 @@ Now consider the following additional factors:-
 
 How many states?
 
-    possible positions * dirty or not in each *
+    possible positions * dirty or not in each * power switch states * dust camera states * brush height states
 
-    10 * (2^10) * 3 * 2 * 5 = 307,200
+    = 10 * (2^10) * 3 * 2 * 5 = 307,200
 
 Things can get big fast. This is why we need to use efficient algorithms.
 
@@ -770,7 +782,7 @@ Bayes turns this upside down to 'causal reasoning':-
 To correct for this inversion, we have to multiply by the prior of the cause to be the case in the
 first place, and divide it by the probability of the evidence, which is often expanded to:-
 
-    [;P(A|B) = \frac{P(B|A)P(A)}{\sum_a P(B|A=a)P(A=a)};]
+    [; P(A|B) = \frac{P(B|A)P(A)}{\sum_a P(B|A=a)P(A=a)} ;]
 
 Using total probability.
 
@@ -799,13 +811,31 @@ Looking at more complex networks.
 
 Examining Bayes Rule again:-
 
-    P(A|B) = (P(B|A) * P(A))/P(B)
+    [; P(A|B) = \frac{P(B|A)P(A)}{P(B)} ;]
 
 P(B|A) and P(A) are relatively easy to determine. P(B) not so much.
 
 However, we can take a look at the negation of P(A|B), and cancel this term out:-
 
-    P(notA|B) = (P(B|notA)*P(notA))
+    [; P(\lnot A|B) = \frac{P(B|\lnot A)P(\lnot A)}{P(B)} ;]
+
+We know already:-
+
+    [; P(A|B)+P(\lnot A|B) = 1 ;]
+
+We can simply ignore the 'normaliser' P(B), to give us P' 'psuedo-probability' terms:-
+
+    [; P'(A|B) = P(B|A)P(A) ;]
+    [; P'(\lnot A|B) = P(B|\lnot A)P(\lnot A) ;]
+
+If we define a normaliser, eta, then we can get back to the actual probabilities thus:-
+
+    [; P(A|B) = \eta P'(A|B) ;]
+    [; P(\lnot A|B) = \eta P'(\lnot A|B) ;]
+
+Where:-
+
+    [; \eta = (P'(A|B) + P'(\lnot A|B))^{-1} ;]
 
 ## Two Test Cancer + 2 ##
 
