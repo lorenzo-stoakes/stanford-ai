@@ -579,7 +579,7 @@ networks. The material is hard.
 
 E.g. Bayes Network - car won't start, causes?
 
-<img src="images/bayes1.png" />
+<img src="http://codegrunt.co.uk/images/ai/bayes1.png" />
 
 This is a Bayes network - composed of nodes which correspond to events that you might/might not know
 typically called 'random variables', linked by arcs where an arc indicates that the child is
@@ -665,7 +665,7 @@ Independence:-
 
 ## Dependence ##
 
-<img src="images/dependence.png" />
+<img src="http://codegrunt.co.uk/images/ai/dependence.png" />
 
 ## What We Learned ##
 
@@ -725,7 +725,7 @@ We're after:-
 
 But, first let's get some joint probabilities:-
 
-<img src="images/cancer.png" />
+<img src="http://codegrunt.co.uk/images/ai/cancer.png" />
 
 Due to the rule of total probability:-
 
@@ -759,7 +759,8 @@ Where:-
 
 Let's say that B is the evidence, and A is what we're interested in, e.g. test result vs cancer.
 
-This is 'diagnostic reasoning' - from evidence to its causes.
+This is 'diagnostic reasoning' - given evidence, looking at the cause, i.e. - given something
+observable, what is the probability of the non-observable thing?
 
 Bayes turns this upside down to 'causal reasoning':-
 
@@ -780,6 +781,12 @@ Using total probability.
 Which is the same as above :)
 
 ## Bayes Network ##
+
+We can represent the kind of reasoning we performed in the above example graphically:-
+
+<img src="http://codegrunt.co.uk/images/ai/bayes2.png" />
+
+The information on the right-hand column is what we have, 
 
 ## Computing Bayes Rule ##
 
