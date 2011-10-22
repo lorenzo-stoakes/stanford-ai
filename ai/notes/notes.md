@@ -568,3 +568,240 @@ We also need a membership test - is a new item in the priority queue? Which impl
 set. So implemented as both in efficient programs.
 
 Explored set can simply be represented as a set (e.g. hashtable or a tree) (funnily enough! :)
+
+Unit 3 - Probability in AI
+--------------------------
+
+## Introduction ##
+
+We're going to be looking at probabilities, especially structured probabilities, using Bayes
+networks. The material is hard.
+
+E.g. Bayes Network - car won't start, causes?
+
+<img src="images/bayes1.png" />
+
+This is a Bayes network - composed of nodes which correspond to events that you might/might not know
+typically called 'random variables', linked by arcs where an arc indicates that the child is
+influenced by its parent. Perhaps not in a deterministic way, can be linked in a probabilistic way,
+e.g. battery age has a high chance of causing a dead battery, however it's not entirely necessary
+(not all old batteries are dead).
+
+There are 16 variables here. What the graph structure + associated probabilities imply is a huge
+probability distribution. If we assume they are binary (as we will during this unit), then that's
+2^16 possible values.
+
+Once the network is set up, we can observe things like whether the lights are on, or whether the oil
+light is on, and compute probabilities for the hypothesis, e.g. alternator broken, etc.
+
+Going to look at how to construct these networks
+
+* Binary events
+* Probability
+* Simple Bayes Networks
+* Conditional Independence
+* Bayes Networks
+* D-Separation
+* Parameter Counts
+* Later: Inference in Bayes Networks
+
+Very important.
+
+Bayes used in almost all fields of smart computing, e.g. diagnostics, prediction, machine learning,
+finance, google, robotics, particle filters HMM, MDP + POMDPs, Kalman Filters, etc. (we'll find out
+about these odd-sounding applications later :-)
+
+## Probability/Coin Flip + 2-5 ##
+
+Cornerstone of AI. Used to express uncertainty, and the management of uncertainty is key in AI.
+
+E.g. flipping a coin:-
+
+    P(H) = 0.5, P(T) = 1 - 0.5 = 0.5
+
+    P(H) = 0.25, P(T) = 1 - 0.25 = 0.75
+
+    P(H, H, H) = 1/8 given P(H) = 0.5
+
+Given:-
+
+    x_i = result of i-th coin flip, where x_i = { H, T }
+
+Then:-
+
+    P(X_1 = X_2 = X_3 = X_4) = 1/(2^4) + 1/(2^4) = 1/8
+
+Probability of 3 or more heads in 4 flips:-
+
+    P({X_1, X_2, X_3, X_4} contains >=3 H) = 5/16 = 0.3125
+
+Examined all the possibile outcomes shows that there are 5 possibilities:-
+
+HHHH *
+HHHT *
+HHTH *
+HHTT
+HTHH *
+HTHT
+HTTH
+HTTT
+THHH *
+THHT
+THTH
+THTT
+TTHH
+TTHT
+TTTH
+TTTT
+
+## Probability Summary ##
+
+    P(A) = p => P(notA) = 1 - p
+
+Independence:-
+
+    X|_Y: P(X)P(Y)   = P(X, Y)
+          marginals    joint probability
+
+## Dependence ##
+
+<img src="images/dependence.png" />
+
+## What We Learned ##
+
+### Lessons ###
+
+    P(Y) = Sigma{i}( P(Y|X=i) * P(X=i) )
+
+    P(notX | Y) = 1 - P(X | Y)
+
+    P(X | notY) = 1 - P(X | Y) <- NOT TRUE!
+
+## Weather + 2-3 ##
+
+    P(D_1 = sunny) = 0.9
+    P(D_2 = sunny | D_1 = sunny) = 0.8
+    P(D_2 = sunny | D_1 = rainy) = 0.6
+
+    Since P(notX | Y) = 1 - P(X | Y):-
+    P(D_2 = rainy | D_1 = sunny) = 1 - P(D_2 = sunny | D_1 = sunny) = 0.2
+
+    Similarly:-
+    P(D_2 = rainy | D_1 = rainy) = 1 - 0.6 = 0.4
+
+By the Theory of Total Probability:-
+
+    P(D_2 = sunny) = P(D_2 = sunny | D_1 = sunny) * P(D_1 = sunny) + P(D_2 = sunny | D_1 = rainy) * P(D_1 = rainy)
+
+And:-
+
+    P(D_3 = sunny) = P(D_3 = sunny | D_2 = sunny) * P(D_2 = sunny) + P(D_3 = sunny | D_2 = rainy) * P(D_2 = rainy)
+
+Note that we assume the conditional probabilities are the same for D2->D3 as they are for D1->D2.
+
+So:-
+
+    P(D_2 = sunny) = 0.8 * 0.9 + 0.6 * (1 - 0.9) = 0.8 * 0.9 + 0.6 * 0.1 = 0.78
+    P(D_3 = sunny) = 0.8 * 0.78 + 0.6 * (1 - 0.78) = 0.8 * 0.78 + 0.6 * 0.22 = 0.756
+
+## Cancer + 2-4 ##
+
+We can express the probability of cancer/not cancer thus;-
+
+    P(C)    = 0.01
+    P(notC) = 1 - 0.01 = 0.99
+
+Let's say there's a test which comes out positive (+) or negative (-):-
+
+    P(+|C) = 0.9
+    P(-|C) = 1 - 0.9 = 0.1 since P(notA|B) = 1 - P(A|B).
+
+    P(+|notC) = 0.2
+    P(-|notC) = 0.8
+
+We're after:-
+
+    P(C|+)
+
+But, first let's get some joint probabilities:-
+
+<img src="images/cancer.png" />
+
+Due to the rule of total probability:-
+
+    P(+) = P(+|C)P(C) + P(+|notC)P(notC) = 0.9*0.01 + 0.2*0.99 = 0.207
+
+We applied a sort of ad-hoc method to obtain the joint probabilities which, more formally, results
+in:-
+
+    P(A, B) = P(A) * P(B|A) = P(B) * P(A|B)
+
+So:-
+
+    P(B|A) = P(A, B)/P(A)
+    P(A|B) = P(A, B)/P(B)
+
+So
+    P(C|+) = P(C, +)/P(+) = 0.009/0.207 =~ 0.0435
+
+## Bayes Rule ##
+
+Invented by Rev. Thomas Bayes, mathematician.
+
+    P(A|B) = P(B|A)*P(A)/P(B)
+
+Where:-
+
+    P(A|B) = Posterior
+    P(B|A) = Likelihood
+    P(A)   = Prior
+    P(B)   = Marginal Likelihood
+
+Let's say that B is the evidence, and A is what we're interested in, e.g. test result vs cancer.
+
+This is 'diagnostic reasoning' - from evidence to its causes.
+
+Bayes turns this upside down to 'causal reasoning':-
+
+>'Given, hypothetically, we knew the cause, what would be the probability of the evidence we just
+> observed?'
+
+To correct for this inversion, we have to multiply by the prior of the cause to be the case in the
+first place, and divide it by the probability of the evidence, which is often expanded to:-
+
+    P(A|B) = P(B|A)*P(A)/Sigma{a}(P(B|A=a)P(A=a))
+
+Using total probability.
+
+    P(C|+) = P(+|C) * P(C) / P(+) = P(+|C) * P(C) / (P(+|C)*P(C) + P(+|C)*P(notC))
+           = 0.9 * 0.01 / (0.9 * 0.01 + 0.2 * 0.99)
+           =~ 0.435
+
+Which is the same as above :)
+
+## Bayes Network ##
+
+## Computing Bayes Rule ##
+
+## Two Test Cancer + 2 ##
+
+## Conditional Independence + 2 ##
+
+## Absolute and Conditional ##
+
+## Confounding Cause ##
+
+## Explaining Away + 2-3 ##
+
+## Conditional Dependence ##
+
+## General Bayes Net + 2-3 ##
+
+## Value of a Network ##
+
+## D-Separation + 2-3 ##
+
+## Congratulations! ##
+
+Unit 4 - Probabilistic Inference
+--------------------------------
