@@ -770,7 +770,7 @@ Bayes turns this upside down to 'causal reasoning':-
 To correct for this inversion, we have to multiply by the prior of the cause to be the case in the
 first place, and divide it by the probability of the evidence, which is often expanded to:-
 
-    P(A|B) = P(B|A)*P(A)/Sigma{a}(P(B|A=a)P(A=a))
+    [;P(A|B) = \frac{P(B|A)P(A)}{\sum_a P(B|A=a)P(A=a)};]
 
 Using total probability.
 
@@ -786,9 +786,26 @@ We can represent the kind of reasoning we performed in the above example graphic
 
 <img src="http://codegrunt.co.uk/images/ai/bayes2.png" />
 
-The information on the right-hand column is what we have, 
+The information on the right-hand column is what we have, and we want to perform diagnostic
+reasoning, i.e. determining P(A|B) and P(A|notB).
+
+Quiz - how many parameters:-
+
+<img src="http://codegrunt.co.uk/images/ai/bayes2-quiz.png" />
 
 ## Computing Bayes Rule ##
+
+Looking at more complex networks.
+
+Examining Bayes Rule again:-
+
+    P(A|B) = (P(B|A) * P(A))/P(B)
+
+P(B|A) and P(A) are relatively easy to determine. P(B) not so much.
+
+However, we can take a look at the negation of P(A|B), and cancel this term out:-
+
+    P(notA|B) = (P(B|notA)*P(notA))
 
 ## Two Test Cancer + 2 ##
 
