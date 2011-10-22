@@ -637,22 +637,22 @@ Probability of 3 or more heads in 4 flips:-
 
 Examined all the possibile outcomes shows that there are 5 possibilities:-
 
-HHHH *
-HHHT *
-HHTH *
-HHTT
-HTHH *
-HTHT
-HTTH
-HTTT
-THHH *
-THHT
-THTH
-THTT
-TTHH
-TTHT
-TTTH
-TTTT
+    HHHH *
+    HHHT *
+    HHTH *
+    HHTT
+    HTHH *
+    HTHT
+    HTTH
+    HTTT
+    THHH *
+    THHT
+    THTH
+    THTT
+    TTHH
+    TTHT
+    TTTH
+    TTTT
 
 ## Probability Summary ##
 
