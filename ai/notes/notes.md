@@ -927,7 +927,7 @@ Let's use some short-hand once again:-
 
 We can use total probability to answer this:-
 
-    [; P(+_2|+_1) = P(+_2|+_1, C)P(C|+_1) + P(+_2|+_1, \lnot C)P(\lnot C|+_2) ;]
+    [; P(+_2|+_1) = P(+_2|+_1, C)P(C|+_1) + P(+_2|+_1, \lnot C)P(\lnot C|+_1) ;]
 
 Given conditional independence, this is equivalent to:-
 
@@ -951,6 +951,16 @@ As we've seen just now, conditional independence does not imply absolute indepen
 something which affects one conditionally independent event can also affect the other.
 
 ## Confounding Cause ##
+
+<img src="http://codegrunt.co.uk/images/ai/3-confounding-cause-1.png" />
+
+    [; P(S)=0.7 ;]
+    [; P(R)=0.01 ;]
+
+    [; P(H|S, R) = 1 ;]
+    [; P(H|\lnot S, R) = 0.9 ;]
+    [; P(H|S, \lnot R) = 0.7 ;]
+    [; P(H|\lnot S, \lnot R) = 0.1 ;]
 
 
 
