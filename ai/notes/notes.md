@@ -1224,11 +1224,11 @@ D-separation is best studied by 'active tripets' and 'inactive triplets'.
 
 E.g.:-
 
-<img src="http://www.codegrunt.co.uk/3-d-separation-3.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-d-separation-3.png" />
 
 Final Quiz :-) :-
 
-<img src="http://www.codegrunt.co.uk/3-d-separation-4.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-d-separation-4.png" />
 
 Considering independence:-
 
