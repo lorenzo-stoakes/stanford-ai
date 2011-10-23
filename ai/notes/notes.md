@@ -591,7 +591,7 @@ networks. The material is hard.
 
 E.g. Bayes Network - car won't start, causes?
 
-<img src="http://codegrunt.co.uk/images/ai/bayes1.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-introduction-1.png" />
 
 This is a Bayes network - composed of nodes which correspond to events that you might/might not know
 typically called 'random variables', linked by arcs where an arc indicates that the child is
@@ -677,7 +677,7 @@ Independence:-
 
 ## Dependence ##
 
-<img src="http://codegrunt.co.uk/images/ai/dependence.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-dependence-1.png" />
 
 ## What We Learned ##
 
@@ -796,14 +796,14 @@ Which is the same as above :)
 
 We can represent the kind of reasoning we performed in the above example graphically:-
 
-<img src="http://codegrunt.co.uk/images/ai/bayes2.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-bayes-network-1.png" />
 
 The information on the right-hand column is what we have, and we want to perform diagnostic
 reasoning, i.e. determining P(A|B) and P(A|notB).
 
 Quiz - how many parameters:-
 
-<img src="http://codegrunt.co.uk/images/ai/params.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-bayes-network-2.png" />
 
 ## Computing Bayes Rule ##
 
@@ -839,7 +839,7 @@ We normalise the pseudo probabilities such that total probability holds:-
 
 ## Two Test Cancer + 2 ##
 
-<img src="http://codegrunt.co.uk/images/ai/2TestCancer.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-two-test-cancer-1.png" />
 
 We declare a short-form:-
 
@@ -853,8 +853,10 @@ And:-
 
     [; P'(C|+) = P(+|C)P(C) ;]
 
-Getting a bit hand-wavey, and working backwards from the answer... - assuming each test is
-independent, then we simply multiply by another P(+|C):-
+Assuming each test is independent of one another (conditionally independent, see below), then we
+simply multiply by another P(+|C):-
+
+Note: This seems extremely hand-wavy to me.
 
     [; P'(C|++) = P(+|C)P(+|C)P(C) = 0.9 \times 0.9 \times 0.01 = 0.0081 ;]
     [; P'(\lnot C|++) = P(+|\lnot C)P(+|\lnot C)P(\lnot C) = 0.2 \times 0.2 \times 0.99 = 0.0396 ;]
@@ -904,11 +906,11 @@ Conditional independence is really important.
 
 Looking at the following more general diagram:-
 
-<img src="http://codegrunt.co.uk/images/ai/abc-net.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-conditional-independence-1.png" />
 
 Then we write:-
 
-    Given A, [; B \perp C ;]
+    [; Given A, B \perp C ;]
 
     [; B \perp C | A ;]
 
@@ -919,11 +921,38 @@ have cancer, and thus another test result will be influenced by that too.
 
 To drive the point home - let's calculate the probability of one test given the result of another:-
 
-    [; P(T_2=+|T_1=+) = 
+Let's use some short-hand once again:-
+
+    [; P(T_1=+) = P(+_1), P(T_2=+) = P(+_2) ;]
+
+We can use total probability to answer this:-
+
+    [; P(+_2|+_1) = P(+_2|+_1, C)P(C|+_1) + P(+_2|+_1, \lnot C)P(\lnot C|+_2) ;]
+
+Given conditional independence, this is equivalent to:-
+
+    [; P(+_2|+_1) = P(+_2|C)P(C|+_1) + P(+_2|\lnot C)P(\lnot C|+_2) ;]
+
+    [; P(+_2|+_1) = 0.9 \times 0.0435 + 0.2 \times 0.9565 \simeq 0.2305 ;]
 
 ## Absolute and Conditional ##
 
+Let's look at the different forms of independence we've encountered:-
+
+<img src="http://codegrunt.co.uk/images/ai/3-absolute-and-conditional-1.png" />
+
+    [; A \perp B \not\Rightarrow A \perp B | C ;]
+
+We will discuss why this is the case next :-)
+
+    [; A \perp B | C \not\Rightarrow A \perp B ;]
+
+As we've seen just now, conditional independence does not imply absolute independence since
+something which affects one conditionally independent event can also affect the other.
+
 ## Confounding Cause ##
+
+
 
 ## Explaining Away + 2-3 ##
 
