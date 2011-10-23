@@ -788,7 +788,7 @@ Using total probability.
 
     P(C|+) = P(+|C) * P(C) / P(+) = P(+|C) * P(C) / (P(+|C)*P(C) + P(+|C)*P(notC))
            = 0.9 * 0.01 / (0.9 * 0.01 + 0.2 * 0.99)
-           =~ 0.435
+           =~ 0.0435
 
 Which is the same as above :)
 
@@ -803,7 +803,7 @@ reasoning, i.e. determining P(A|B) and P(A|notB).
 
 Quiz - how many parameters:-
 
-<img src="http://codegrunt.co.uk/images/ai/bayes2-quiz.png" />
+<img src="http://codegrunt.co.uk/images/ai/params.png" />
 
 ## Computing Bayes Rule ##
 
@@ -813,15 +813,11 @@ Examining Bayes Rule again:-
 
     [; P(A|B) = \frac{P(B|A)P(A)}{P(B)} ;]
 
-P(B|A) and P(A) are relatively easy to determine. P(B) not so much.
+P(B|A) and P(A) are relatively easy to determine. P(B), not so much.
 
 However, we can take a look at the negation of P(A|B), and cancel this term out:-
 
     [; P(\lnot A|B) = \frac{P(B|\lnot A)P(\lnot A)}{P(B)} ;]
-
-We know already:-
-
-    [; P(A|B)+P(\lnot A|B) = 1 ;]
 
 We can simply ignore the 'normaliser' P(B), to give us P' 'psuedo-probability' terms:-
 
@@ -837,9 +833,93 @@ Where:-
 
     [; \eta = (P'(A|B) + P'(\lnot A|B))^{-1} ;]
 
+We normalise the pseudo probabilities such that total probability holds:-
+
+    [; P(A|B) + P(\lnot A|B) = 1 ;]
+
 ## Two Test Cancer + 2 ##
 
+<img src="http://codegrunt.co.uk/images/ai/2TestCancer.png" />
+
+We declare a short-form:-
+
+    [; P(C|T_1 = + T_2 = +) = P(C|++) ;]
+
+So:-
+
+    [; P(C|++) = \eta P'(C|++) ;]
+
+And:-
+
+    [; P'(C|+) = P(+|C)P(C) ;]
+
+Getting a bit hand-wavey, and working backwards from the answer... - assuming each test is
+independent, then we simply multiply by another P(+|C):-
+
+    [; P'(C|++) = P(+|C)P(+|C)P(C) = 0.9 \times 0.9 \times 0.01 = 0.0081 ;]
+    [; P'(\lnot C|++) = P(+|\lnot C)P(+|\lnot C)P(\lnot C) = 0.2 \times 0.2 \times 0.99 = 0.0396 ;]
+
+And to normalise:-
+
+    [; \eta = (P'(C|++) + P'(\lnot C|++))^{-1} = 0.0081 \times 0.0396 \simeq 20.96 ;]
+    
+Thus:-
+
+    [; P(C|++) = 20.96 \times 0.081 \simeq 0.1698 ;]
+    [; P(\lnot C|++) = 20.96 \times 0.0396 \simeq 0.8302 ;]
+
+Again, to determine P(C|+-), we follow a similar procedure:-
+
+    [; P(C|+-) = \eta P'(C|+-) ;]
+    [; P'(C|+-) = P(+|C)P(-|C)P(C) = 0.9 \times 0.1 \times 0.01 = 0.0009 ;]
+    [; P'(\lnot C|+-) = P(+|\lnot C)P(-|\lnot C)P(\lnot C) = 0.2 \times 0.8 \times 0.99 = 0.1584 ;]
+    [; \eta = (P'(C|+-) + P'(\lnot C|=-))^{-1} = (0.0009 + 0.1584)^{-1} \simeq 6.277 ;]
+    
+Thus:-
+
+    [; P(C|+-) = 6.277 \times 0.0009 \simeq 0.00565 ;]
+    [; P(\lnot C|+-) = 6.277 \times 0.1584 \simeq 0.994 ;]
+
 ## Conditional Independence + 2 ##
+
+Introducing some terminology.
+
+The 'hidden variable' C causes the stochastic test outcomes T1 and T2.
+
+We didn't just assume that T1 and T2 are identically distributed, we also assumed that they were
+*conditionally independent*.
+
+If we knew with absolute certainty the value of C, it would tell us nothing to relate T1 to T2.
+
+More formally:-
+
+    [; P(T_2|C, T_1) = P(T_2|C) ;]
+
+I.e. knowledge of T1 has absolutely no impact on T2.
+
+This follows from the Bayes diagram - if we removed C from it, then T1 and T2 are essentially cut
+off from one another.
+
+Conditional independence is really important.
+
+Looking at the following more general diagram:-
+
+<img src="http://codegrunt.co.uk/images/ai/abc-net.png" />
+
+Then we write:-
+
+    Given A, [; B \perp C ;]
+
+    [; B \perp C | A ;]
+
+If we *don't* know the prior condition, i.e. A, then we *can't* say that B and C are
+independent. This is because the result of B indicates something about the hidden A which will in
+turn influence C. In our cancer case, one positive test result gives an indication as to whether we
+have cancer, and thus another test result will be influenced by that too.
+
+To drive the point home - let's calculate the probability of one test given the result of another:-
+
+    [; P(T_2=+|T_1=+) = 
 
 ## Absolute and Conditional ##
 
