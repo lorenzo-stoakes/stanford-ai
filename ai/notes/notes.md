@@ -931,7 +931,7 @@ We can use total probability to answer this:-
 
 Given conditional independence, this is equivalent to:-
 
-    [; P(+_2|+_1) = P(+_2|C)P(C|+_1) + P(+_2|\lnot C)P(\lnot C|+_2) ;]
+    [; P(+_2|+_1) = P(+_2|C)P(C|+_1) + P(+_2|\lnot C)P(\lnot C|+_1) ;]
 
     [; P(+_2|+_1) = 0.9 \times 0.0435 + 0.2 \times 0.9565 \simeq 0.2305 ;]
 
