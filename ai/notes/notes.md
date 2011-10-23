@@ -2,7 +2,7 @@ AI Notes
 ========
 
 N.B. - I had to give up on attempting ascii art for everything. Turned out not to be all that
-practical! I have started scanning notes for stuff I have to write. Other than that, 
+practical! I have started scanning notes for stuff I have to write. Other than that, am using [tex the world](http://thewe.net/tex/) for equations (not all, yet, am working on it).
 
 Unit 1 - Introduction
 ---------------------
@@ -23,7 +23,7 @@ Assignments = quizzes without the answers :-) - graded.
 
 Also, exams.
 
-an AI program is called an 'intelligent agent'.
+An AI program is called an 'intelligent agent'.
 
 ## Intelligent Agents ##
 
@@ -248,20 +248,20 @@ Can't drive to a location not shown on the map. But once the location is shown, 
 * Actions (s is state)
 
     (s) -> { a_1, a_2, a_3, ... }
-    
+
 * Result
 
     (s, a) -> s'
-    
+
 * GoalTest
 
     (s) -> T|F
-    
+
 * PathCost (s-a->s... <- state-action transitions to number, n = cost of path) - most of the time
   the cost will be additive, i.e. the overall cost will be the individual steps' costs summed.
-  
+
     (s-a->s-a->s)->n
-    
+
 * StepCost - components of the path cost.
 
     (s, a, s')->n
@@ -864,7 +864,7 @@ Note: This seems extremely hand-wavy to me.
 And to normalise:-
 
     [; \eta = (P'(C|++) + P'(\lnot C|++))^{-1} = 0.0081 \times 0.0396 \simeq 20.96 ;]
-    
+
 Thus:-
 
     [; P(C|++) = 20.96 \times 0.081 \simeq 0.1698 ;]
@@ -875,8 +875,8 @@ Again, to determine P(C|+-), we follow a similar procedure:-
     [; P(C|+-) = \eta P'(C|+-) ;]
     [; P'(C|+-) = P(+|C)P(-|C)P(C) = 0.9 \times 0.1 \times 0.01 = 0.0009 ;]
     [; P'(\lnot C|+-) = P(+|\lnot C)P(-|\lnot C)P(\lnot C) = 0.2 \times 0.8 \times 0.99 = 0.1584 ;]
-    [; \eta = (P'(C|+-) + P'(\lnot C|=-))^{-1} = (0.0009 + 0.1584)^{-1} \simeq 6.277 ;]
-    
+    [; \eta = (P'(C|+-) + P'(\lnot C|+-))^{-1} = (0.0009 + 0.1584)^{-1} \simeq 6.277 ;]
+
 Thus:-
 
     [; P(C|+-) = 6.277 \times 0.0009 \simeq 0.00565 ;]
@@ -962,19 +962,305 @@ something which affects one conditionally independent event can also affect the 
     [; P(H|S, \lnot R) = 0.7 ;]
     [; P(H|\lnot S, \lnot R) = 0.1 ;]
 
-
+This is a trick question. Since P(R) and P(S) are independent, P(R|S) = P(R) = 0.01!
 
 ## Explaining Away + 2-3 ##
 
+(Again, working with the example given above)
+
+Explaining away means - if we know that we are happy, then sunny weather can 'explain away' the
+cause of happiness. If it's sunny, then it makes it less likely that there has been a raise.
+
+If it's rainy, then it makes it more likely to be a raise since the happiness cannot be explained by
+the weather.
+
+If we see a certain effect which can be caused by multiple causes, then seeing one of those causes
+can 'explain away' any other cause.
+
+E.g., we want to determine:-
+
+    [; P(R|H, S) ;]
+
+We can use a sneaky trick here, by using a twist on Bayes:-
+
+    [; P(A|B,C) = \frac{P(B|A,C)P(A|C)}{P(B|C)} ;]
+
+I.e. - we still do the switch between A and B, only we take into account the fact that everything is
+still predicated on C.
+
+So:-
+
+    [; P(R|H, S) = \frac{P(H|R, S)P(R|S)}{P(H|S)} = \frac{0.01}{P(H|S)};]
+
+Since
+
+    [; P(H|R, S) = 1 ;]
+    [; P(R|S) = P(R) = 0.01 ;]
+
+Carrying on:-
+
+    [; P(H|S) = P(H|R, S)P(R|S) + P(H|\lnot R, S)P(\lnot R|S) ;]
+    [; P(H|S) = 0.01 + 0.7 \times 0.99 = 0.703;]
+
+Hence:-
+
+    [; P(R|H, S) = \frac{0.01}{0.703} \simeq 0.0142 ;]
+
+Let's determine P(R|H):-
+
+    [; P(R|H) = \eta P'(R|H) ;]
+    [; P'(R|H) = P(H|R)P(R) ;]
+    [; P'(\lnot R|H) = P(H|\lnot R)P(\lnot R) ;]
+
+    [; P(H|R) = P(H|R,S)P(S|R) + P(H|R,\lnot S)P(\lnot S|R) ;]
+
+Again, since S and R are fully independent:-
+
+    [; P(H|R) = P(H|R,S)P(S) + P(H|R,\lnot S)P(\lnot S) ;]
+    [; P(H|R) = 1 \times 0.7 + 0.9 \times 0.3 = 0.97 ;]
+
+Going through the same process for [; P(H|\lnot R) ;]:-
+
+    [; P(H|\lnot R) = P(H|\lnot R, S)P(S|\lnot R) + P(H|\lnot R, \lnot S)P(\lnot S|\lnot R) ;]
+    [; P(H|\lnot R) = 0.7 \times 0.7 + 0.1 \times 0.3 = 0.52 ;]
+
+So now we can calculate the pseudo probabilities:-
+
+    [; P'(R|H) = 0.97 \times 0.01 = 0.0097 ;]
+    [; P'(\lnot R|H) = 0.52 \times 0.99 = 0.5148 ;]
+
+And the normalisation factor:-
+
+    [; \eta = (P'(R|H) + P'(\lnot R|H))^{-1} ;]
+    [; \eta = (0.0097 + 0.5148)^{-1} \simeq 1.9066 ;]
+
+Hence:-
+
+    [; P(R|H) = 1.9066 \times 0.0097 \simeq 0.0185 ;]
+
+The point here is that if he's happy but doesn't know about the weather, then the probability of a
+raise is higher. The knowledge of the weather reduces the probability of the raise.
+
+To calculate [; P(R|H, \lnot S) ;], we can (ab)use Bayes again:-
+
+    [; P(R|H, \lnot S) = \frac{P(H|R, \lnot S)P(R|\lnot S)}{P(H|\lnot S)};]
+
+And using the theorem of total probability one more:-
+
+    [; P(H|\lnot S) = P(H| \lnot S, R)P(R|\lnot S) + P(H|\lnot S, \lnot R)P(\lnot R|\lnot S) ;]
+
+Again, S and R are totally independent so:-
+
+    [; P(H|\lnot S) = P(H| lnot S, R)P(R) + P(H|\lnot S, \lnot R)P(\lnot R) ;]
+    [; P(H|\lnot S) = 0.9 \times 0.01 + 0.1 \times 0.99 = 0.108;]
+
+Also, let's take this into account for our original equation:-
+
+    [; P(R|H, \lnot S) = \frac{P(H|R, \lnot S)P(R)}{P(H|\lnot S)} ;]
+
+So, finally:-
+
+    [; P(R|H, \lnot S) = \frac{0.9 \times 0.01}{0.108} \simeq 0.0833 ;]
+
 ## Conditional Dependence ##
+
+It's interesting to compare all the outcomes regarding the raise:-
+
+    [; P(R|S) = 0.01 ;]
+    [; P(R|H, S) = 0.0142 ;]
+    [; P(R|H, \lnot S) = 0.0833 ;]
+
+H adds a dependence between S and R, despite them being independent.
+
+<img src="http://codegrunt.co.uk/images/ai/3-conditional-dependence-1.png" />
+
+Without information about H, the probability of R is completely unaffected by the knowledge of H.
+
+    [; R \perp S ;]
+
+However, when we know something about H, then things begin to get affected, i.e.:-
+
+    [; P(R|H, S) = 0.0142 \not= P(R|H) ;]
+    [; P(R|S) = 0.01 = P(R) ;]
+    [; P(R|H, \lnot S) = 0.0833 \not= P(R|H) ;]
+
+The probability of a raise, R, is affected by the probability of sunny weather.
+
+This leads to the previously mentioned fact that full independence does not mean conditional
+independence, i.e.:-
+
+    [; R \perp S ;]
+    [; R \not\perp S | H ;]
+
+So, two variables that are independent might not be conditionally independent.
+
+INDEPENDENCE DOES __NOT__ IMPLY CONDITIONAL INDEPENDENCE!
 
 ## General Bayes Net + 2-3 ##
 
+We can now define Bayes networks in a more general way. Bayes networks define probability
+distributions over a graph of random variables, e.g.:-
+
+<img src="http://codegrunt.co.uk/images/ai/3-general-bayes-net-1.png" />
+
+Instead of enumerating all possibilities of all combinations of these 5 random variables, the Bayes
+network is defined by probability distributions which is inherent to each individual node.
+
+The probability at each node is only conditioned on the incoming arcs.
+
+* A has no incoming arcs, so its probability is P(A).
+* B has no incoming arcs, so its probability is P(B).
+* C has incoming arcs from A and B, so its probability is P(C|A, B).
+* D has an incoming arc from C, so its probability is P(D|C).
+* E has an incoming artc from C, so its probability is P(E|C).
+
+Thus:-
+
+    [; P(A, B, C, D, E) = P(A).P(B).P(C|A, B).P(D|C).P(E|C) ;]
+
+This has a big advantage in that the joint distribution of any five variables requires 2^5-1 = 31
+probability values, whereas the Bayes network requires only 10, e.g.:-
+
+2 From P(A), P(B):-
+
+    [; P(A), P(B) =2 ;]
+
+4 from P(C|A, B):-
+
+    [; P(C|A, B), P(C|A, \lnot B), P(C|\lnot A, B), P(C|\lnot A, \lnot B) ;]
+
+2 from P(D|C):-
+
+    [; P(D|C), P(D|\lnot C) ;]
+
+2 from P(E|C):-
+
+    [; P(E|C), P(E|\lnot C) ;]
+
+Scales a lot better to large networks than the combinatorial approach.
+
+Some quizzes:-
+
+<img src="http://codegrunt.co.uk/images/ai/3-general-bayes-net-2.png" />
+
+<img src="http://codegrunt.co.uk/images/ai/3-general-bayes-net-3.png" />
+
 ## Value of a Network ##
+
+And our original network:-
+
+<img src="http://codegrunt.co.uk/images/ai/3-introduction-1.png" />
+
+Which is:-
+
+* Row 1: 1, 1, 1 = 3
+* Row 2: 2, 2^2 = 6
+* Row 3: 2, 2^2, 1, 1, 1, 1 = 10
+* Row 4: 2, 2^2, 2^2, 2^4, 2 = 28
+
+So sum = 3 + 6 + 10 + 28 = 47
+
+Which is quite an improvement on 65,535 using the combinatorial approach!
 
 ## D-Separation + 2-3 ##
 
+<img src="http://codegrunt.co.uk/images/ai/3-d-separation-1.png" />
+
+So:-
+
+    [; C \perp A ;]
+
+No, since A has an effect on C.
+
+    [; C \perp A|B ;]
+
+Yes, since once we assume B, we've taken into account A's effect.
+
+    [; C \perp D ;]
+
+No, since A effects C, which also effects D.
+
+    [; C \perp D|A ;]
+
+Yes, since A is the 'common ancestor' between C and D.
+
+    [; E \perp C|D ;]
+
+Yes, since D takes into account A's effect which is the common ancestor between C and E.
+
+Put simply:-
+
+Any two nodes are independent if they're not linked by just unknown variables. E.g., if we know B,
+then anything downstream of B is independent of everything upstream of B.
+
+<img src="http://codegrunt.co.uk/images/ai/3-d-separation-2.png" />
+
+    [; A \perp E ;]
+
+No, since A influences C which influences E.
+
+    [; A \perp E | B ;]
+
+No, since B doesn't exclude A's influence from affecting E.
+
+    [; A \perp E | C ;]
+
+Yes, since C does exclude A's influence on E.
+
+    [; A \perp B ;]
+
+Yup.
+
+    [; A \perp B | C ;]
+
+No, since C can explain things away.
+
+This leads to the general study of conditional independence in Bayes networks, often calle D-separation or reachability.
+
+D-separation is best studied by 'active tripets' and 'inactive triplets'.
+
+* Active triplets render variables dependent.
+* Inactive triplets render variables independent.
+
+E.g.:-
+
+<img src="http://www.codegrunt.co.uk/3-d-separation-3.png" />
+
+Final Quiz :-) :-
+
+<img src="http://www.codegrunt.co.uk/3-d-separation-4.png" />
+
+Considering independence:-
+
+    [; F \perp A ;]
+
+Yes.
+
+    [; F \perp A | D ;]
+
+No, as D helps 'explain away' B and E, which then percolates up to A and F, hence they are *not*
+independent.
+
+    [; F \perp A | G ;]
+
+Again, knowledge of G percolates up to do, which then 'explains away' B and E, which go back to A
+and F, hence A and F are *not* independent.
+
+    [; F \perp A | H ;]
+
+H might tell us something about G, but it won't tell us anything about D, so A and F are not independent.
+    
 ## Congratulations! ##
+
+Learnt a lot:-
+
+* Graph structure
+* Compact Representation
+* Conditional Independence
+
+This was a largely theoretical unit. Will talk more about applications.
+
+It's very useful for many applications.
 
 Unit 4 - Probabilistic Inference
 --------------------------------
