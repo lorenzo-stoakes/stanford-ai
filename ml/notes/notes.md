@@ -181,25 +181,25 @@ Housing Prices (Portland, OR)
 
             ^        /
             |      x/ x x
-    Price   |    x / x x
+    price   |    x / x x
      $k     |   x /--x x
             |  x /x
             |   /xx
             *-------------------->
-                Size (feet^2)
+                size (feet^2)
 
-This is an example of supervised learning - we're given the "right answer" for each example in the
+this is an example of supervised learning - we're given the "right answer" for each example in the
 data.
 
-This is a regression problem, as we are looking at a continuous output.
+this is a regression problem, as we are looking at a continuous output.
 
-This is a training set - the "correct" answers.
+this is a training set - the "correct" answers.
 
-### Training set of housing prices (Portland, OR) ###
+### training set of housing prices (portland, or) ###
 
 
     +--------------------+--------------------+
-    | Size in feet^2(x)  |Px ($) in 1000's (y)|
+    | size in feet^2(x)  |px ($) in 1000's (y)|
     +--------------------+--------------------+
     |        2104        |        460         |
     +--------------------+--------------------+
@@ -212,37 +212,37 @@ This is a training set - the "correct" answers.
     |        ...         |        ...         |
     +--------------------+--------------------+
 
-Notation:-
+notation:-
 
-  m            = Number of training examples
+  m            = number of training examples
 x's            = "input" variable / features
 y's            = "output" variable / "target" variable
 (x, y)         - one training example
 (x^(i), y^(i)) - ith training example
 
-Here we say m = 47.
+here we say m = 47.
 
-E.g.
+e.g.
 x^(1) = 2104
 x^(2) = 1416
 y^(1) = 460
 
-The process is as follows:-
+the process is as follows:-
 
-Training Set -> Learning Algorithm -> h (hypothesis)
+training set -> learning algorithm -> h (hypothesis)
 
-The hypothesis takes the input, x, size of house and outputs an output, y, estimated price.
+the hypothesis takes the input, x, size of house and outputs an output, y, estimated price.
 
 h maps from x's to y's.
 
-Perhaps 'hypothesis' is not the best term to use for this, however it has stuck around from the
+perhaps 'hypothesis' is not the best term to use for this, however it has stuck around from the
 early days of machine learning.
 
-### How do we represent h? ###
+### how do we represent h? ###
 
     h_theta(x) = theta_0 + theta_1 * x
 
-    Shorthand: h(x)
+    shorthand: h(x)
 
     ^      /x h(x) = theta_0 + theta_1 x
     |    x/ x
@@ -251,86 +251,86 @@ early days of machine learning.
     |  /
     *-/----------->
 
-This is Linear regression with one variable / univariate linear regression.
+this is linear regression with one variable / univariate linear regression.
 
-## Video: Cost Function ##
+## video: cost function ##
 
-Enables us to fit the best possible line to our data.
+enables us to fit the best possible line to our data.
 
-    Hypothesis: h_theta(x) = theta_0 + theta_1 * x
+    hypothesis: h_theta(x) = theta_0 + theta_1 * x
 
-    Theta_i's: parameters
+    theta_i's: parameters
 
-How to choose the 2 thetas?
+how to choose the 2 thetas?
 
-Different values give us different plots, clearly.
+different values give us different plots, clearly.
 
-    Idea: choose theta_0, theta_1 so that h_theta(x) is close to y for our training examples (x, y).
+    idea: choose theta_0, theta_1 so that h_theta(x) is close to y for our training examples (x, y).
 
-More formally:-
+more formally:-
 
     minimise theta_0 theta_1 <- i.e. minimise theta_0 and theta_1 (?)
 
-    Minimise (1/2m) * Sigma[i=1->m](h_theta(x^(i)) - y^(i))^2
+    minimise (1/2m) * sigma[i=1->m](h_theta(x^(i)) - y^(i))^2
 
-    Where h_theta(x^(i)) = theta_0 + theta_1 x^(i)
+    where h_theta(x^(i)) = theta_0 + theta_1 x^(i)
 
-Note that m is the # of training examples.
+note that m is the # of training examples.
 
-We choose 1/2m for mathematical convenience.
+we choose 1/2m for mathematical convenience.
 
-We define a cost function:-
+we define a cost function:-
 
-    J(theta_0, theta_1) = (1/2m) * Sigma[i=1->m](h_theta(x^(i)) - y^(i))^2
+    j(theta_0, theta_1) = (1/2m) * sigma[i=1->m](h_theta(x^(i)) - y^(i))^2
 
-Thus our task is to:-
+thus our task is to:-
 
-    Minimise J(theta_0, theta_1)
+    minimise j(theta_0, theta_1)
 
-This cost function is referred to as the 'squared error function'.
+this cost function is referred to as the 'squared error function'.
 
-Squared error function is often the best choice for linear regression problems.
+squared error function is often the best choice for linear regression problems.
 
-## Video: Cost Function - Intuition 1 ##
+## video: cost function - intuition 1 ##
 
-Hypothesis:-
+hypothesis:-
 
     h_theta(x) = theta_0 + theta_1 * x
 
-Parameters:-
+parameters:-
 
     theta_0, theta_1
 
-Cost Function:-
+cost function:-
 
-    J(theta_0, theta_1) = 1/(2m) sigma{i=1->m}(h_theta(x^(i))-y^(i))^2
+    j(theta_0, theta_1) = 1/(2m) sigma{i=1->m}(h_theta(x^(i))-y^(i))^2
 
-Goal:-
+goal:-
 
-    Minimise J(theta_0, theta_1)
+    minimise j(theta_0, theta_1)
 
-Let's look at a simplified hypothesis:-
+let's look at a simplified hypothesis:-
 
     h_theta(x) = theta_1 * x (e.g. theta_0 = 0)
 
-Here:-
+here:-
 
-    J(theta_1) = 1/(2m) * Sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2 = 1/(2m) * Sigma{i=1->m}(theta_1 * x^(i) - y^(i))^2
+    j(theta_1) = 1/(2m) * sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2 = 1/(2m) * sigma{i=1->m}(theta_1 * x^(i) - y^(i))^2
 
-    Minimise J(theta_1)
+    minimise j(theta_1)
 
-I.e. passes through the origin.
+i.e. passes through the origin.
 
-Compare the two functions, i.e. the hypothesis function, h, and the cost function, J:-
+compare the two functions, i.e. the hypothesis function, h, and the cost function, j:-
 
-     h_theta(x)                                  | J(theta_1)
+     h_theta(x)                                  | j(theta_1)
      (for fixed theta_1 this is a function of x) | (function of the parameter theta_1)
                                                  |
        ^                                         |            ^
        |               / theta_1=1               |            |
     3  |             x                           |          3 |
        |           / |                           |            x
-    2  |         x   |                           |   J(t_1) 2 |
+    2  |         x   |                           |   j(t_1) 2 |
        |       / |   /- theta_1=0.5              |            |
     1  |     x   /---                            |          1 |
        |   / /---                                |            |
@@ -338,80 +338,80 @@ Compare the two functions, i.e. the hypothesis function, h, and the cost functio
     0  *------------------->                     |          0 *-----x------------->
        0     1   2   3                           |            0     1   2   3 theta_1
 
-    J(theta_1) = 1/(2m) * Sigma{i=1->m}((h_theta(x^(i)) - y^(i))^2)
-               = 1/(2m) * Sigma{i=1->m}((theta_1 * x^(i) - y^(i))^2) = 0
+    j(theta_1) = 1/(2m) * sigma{i=1->m}((h_theta(x^(i)) - y^(i))^2)
+               = 1/(2m) * sigma{i=1->m}((theta_1 * x^(i) - y^(i))^2) = 0
 
     h_theta(x^(i)) = y^(i)
 
-    So J(1) = 0.
+    so j(1) = 0.
 
-Since the training set is literally on the hypothesis line.
+since the training set is literally on the hypothesis line.
 
-    J(0.5) = 1/(2*3) * ((0.5 * 1  - 1)^2 + (0.5 * 2 - 2)^2 + (0.5 * 3 - 3)^2)
+    j(0.5) = 1/(2*3) * ((0.5 * 1  - 1)^2 + (0.5 * 2 - 2)^2 + (0.5 * 3 - 3)^2)
            = 1/6     * ((-0.5)^2 + (-1)^2 + (-1.5)^2)
            = 1/6     * (0.25 + 1 + 2.25)
            = 1/6 * 3.5
            = 7/12 =~ 0.583 =~~ 0.6
 
-    J(0)   = 1/(2*3) * ((0 * 1 - 1)^2 + (0 * 2 - 2)^2 + (0 * 3 - 3)^2)
+    j(0)   = 1/(2*3) * ((0 * 1 - 1)^2 + (0 * 2 - 2)^2 + (0 * 3 - 3)^2)
            = 1/6     * (1 + 4 + 9)
            = 14/6 = 7/3 =~ 2.333 =~~ 2.3
 
-    J(-0.5) =~~ 5.15
+    j(-0.5) =~~ 5.15
 
-    J(1.5) = 1/6 * ((1.5 * 1 - 1)^2 + (1.5 * 2 - 2)^2 + (1.5 * 3 - 3)^2)
+    j(1.5) = 1/6 * ((1.5 * 1 - 1)^2 + (1.5 * 2 - 2)^2 + (1.5 * 3 - 3)^2)
            = 1/6 * (0.5^2 + 1^2 + 1.5^2) = 1/6 * (0.25 + 1 + 2.25) = 1/6 * 3.5
            =~ 0.583 =~~ 0.6
 
-If we keep on mapping out values, we end up with a parabola (well, at least parabola-like) curve.
+if we keep on mapping out values, we end up with a parabola (well, at least parabola-like) curve.
 
-For each point on the J(theta_1) curve, there is a corresponding hypothesis curve.
+for each point on the j(theta_1) curve, there is a corresponding hypothesis curve.
 
-Since the objective is to minimise:-
+since the objective is to minimise:-
 
-    J(theta_1)
+    j(theta_1)
 
-Clearly the best choice is:-
+clearly the best choice is:-
 
     theta_1 = 1
 
-## Video: Cost Function - Intuition 2 ##
+## video: cost function - intuition 2 ##
 
-Look at our problem statement again:-
+look at our problem statement again:-
 
-Hypothesis:-
+hypothesis:-
 
     h_theta(x) = theta_0 + theta_1 * x
 
-Parameters:-
+parameters:-
 
     theta_0, theta_1
 
-Cost Function:-
+cost function:-
 
-    J(theta_0, theta_1) = 1/(2m) sigma{i=1->m}(h_theta(x^(i))-y^(i))^2
+    j(theta_0, theta_1) = 1/(2m) sigma{i=1->m}(h_theta(x^(i))-y^(i))^2
 
-Goal:-
+goal:-
 
-    Minimise J(theta_0, theta_1)
+    minimise j(theta_0, theta_1)
 
-We are going to use contour plots to gain understanding.
+we are going to use contour plots to gain understanding.
 
-                 h_theta (fixed theta_0, theta_1)     |   J(theta_0, theta_1)
+                 h_theta (fixed theta_0, theta_1)     |   j(theta_0, theta_1)
                                                       |
              ^                                        |  ^
              |         x  x x x                       |  |
              |            x                           |  |     /
-        Px   |          x x x             h_theta(x)  |  |    / Plotting 3 values - J, theta_0, theta_1
-        $000 |        x   x          /----            |  |   /  Could be in 3d!
+        px   |          x x x             h_theta(x)  |  |    / plotting 3 values - j, theta_0, theta_1
+        $000 |        x   x          /----            |  |   /  could be in 3d!
              |     x x  x    /-------                 |  |  /
              |   x  x/-------    theta_0 = 50         |  | /
              /------- x          theta_1 = 0.66       |  |/
          ----|                                        |  *-------------------->
              *------------------->                    |
-                   Size/feet^2 (x)                    |  We can, instead, use the aforementioned contour plot,
+                   size/feet^2 (x)                    |  we can, instead, use the aforementioned contour plot,
                                                       |  where we plot a contour plot:-
-    Shown line -> h_theta(x) = 50 + 0.66x             |
+    shown line -> h_theta(x) = 50 + 0.66x             |
                                                       |     ^
                                                       |     |\
                                                       |     | \
@@ -423,195 +423,195 @@ We are going to use contour plots to gain understanding.
                                                       |     *-------------------->
                                                       |               t_0
                                                       |
-                                                      | Each point represents values of theta_0 and theta_1
-                                                      | where J remains the same.
+                                                      | each point represents values of theta_0 and theta_1
+                                                      | where j remains the same.
                                                       |
-                                                      | J is increasing from inside ellipse -> outwards.
+                                                      | j is increasing from inside ellipse -> outwards.
                                                       |
 
-## Video: Gradient Descent ##
+## video: gradient descent ##
 
-'Gradient descent' is an algorithm for minimising cost J. It is used throughout machine learning,
+'gradient descent' is an algorithm for minimising cost j. it is used throughout machine learning,
 also for minimising other functions not just a cost function.
 
-Setup:-
+setup:-
 
-    Have some function J(theta_0, theta_1)
+    have some function j(theta_0, theta_1)
 
-    Want min{theta_0, theta_1}( J(theta_0, theta_1))
+    want min{theta_0, theta_1}( j(theta_0, theta_1))
 
-    Outline:-
+    outline:-
 
-    * Start with some theta_0, theta_1 - e.g. theta_0 = 0, theta_1 = 0
-    * Keep on changing theta_0, theta_1 to reduce J(theta_0, theta_1) until we hopefully end up at a
+    * start with some theta_0, theta_1 - e.g. theta_0 = 0, theta_1 = 0
+    * keep on changing theta_0, theta_1 to reduce j(theta_0, theta_1) until we hopefully end up at a
       minimum.
 
-As mentioned, can apply to a more general function, e.g.:-
+as mentioned, can apply to a more general function, e.g.:-
 
-    J(theta_0, theta_1, theta_2, ..., theta_n)
-    min J(theta_0, ..., theta_n)
+    j(theta_0, theta_1, theta_2, ..., theta_n)
+    min j(theta_0, ..., theta_n)
 
-See vid at 2:15 for bumpy 3d plot :-)
+see vid at 2:15 for bumpy 3d plot :-)
 
-'If I was to take a baby-step in some direction, which direction has the steepest downwards slope?'
+'if i was to take a baby-step in some direction, which direction has the steepest downwards slope?'
 
-End up at a *local* minimum. These can be different minima.
+end up at a *local* minimum. these can be different minima.
 
-### Gradient Descent Algorithm ###
+### gradient descent algorithm ###
 
-    Repeat until convergence {
-        theta_j := theta_j - alpha * d/d(theta_j) J(theta_0, theta_1) for j=0 and j=1
+    repeat until convergence {
+        theta_j := theta_j - alpha * d/d(theta_j) j(theta_0, theta_1) for j=0 and j=1
     }
 
-    Where d/d(theta_j) is a partial differential.
+    where d/d(theta_j) is a partial differential.
 
     ----
 
-    We want to simultaneously update theta_0 and theta_1.
+    we want to simultaneously update theta_0 and theta_1.
 
-    Correct: Simultaneous update
+    correct: simultaneous update
 
-    temp0 := theta_0 - alpha * (d/dtheta_0) J(theta_0, theta_1)
-    temp1 := theta_1 - alpha * (d/dtheta_1) J(theta_0, theta_1)
+    temp0 := theta_0 - alpha * (d/dtheta_0) j(theta_0, theta_1)
+    temp1 := theta_1 - alpha * (d/dtheta_1) j(theta_0, theta_1)
     theta_0 := temp0
     theta_1 := temp1
 
-    Incorrect: Non-simultaneous update
+    incorrect: non-simultaneous update
 
-    temp0 := theta_0 - alpha * (d/dtheta_0) J(theta_0, theta_1)
+    temp0 := theta_0 - alpha * (d/dtheta_0) j(theta_0, theta_1)
     theta_0 := temp0
-    temp1 := theta_1 - alpha * (d/dtheta_1) J(theta_0, theta_1)
+    temp1 := theta_1 - alpha * (d/dtheta_1) j(theta_0, theta_1)
     theta_1 := temp1
 
-In addition:-
+in addition:-
 
-    Note that := denotes assignment.
+    note that := denotes assignment.
 
-    E.g. a := b means set a to the value of b.
+    e.g. a := b means set a to the value of b.
 
-    Contrariwise, a = b is a truth assertion.
+    contrariwise, a = b is a truth assertion.
 
-    Alpha = learning rate, i.e. the size of the 'steps' we're taking.
+    alpha = learning rate, i.e. the size of the 'steps' we're taking.
 
-## Video: Gradient Descent Intuition ##
+## video: gradient descent intuition ##
 
-    Gradient descent algorithm
+    gradient descent algorithm
 
     repeat until convergence {
-        theta_j := theta_j - alpha * (d/d theta_j) J(theta_0, theta_1)
+        theta_j := theta_j - alpha * (d/d theta_j) j(theta_0, theta_1)
     }
 
 * alpha is the 'learning rate' and controls how big a step we take when updating theta_j.
 
-* The partial-derivative portion of the function is called the 'derivative'.
+* the partial-derivative portion of the function is called the 'derivative'.
 
-Let's examine the following problem:-
+let's examine the following problem:-
 
-    Attempt to minimise J(theta_1) where theta_1 is a real number.
+    attempt to minimise j(theta_1) where theta_1 is a real number.
 
-See video for graph :)
+see video for graph :)
 
-    theta_1 = theta_1 - alpha * (d/d theta_1) J(theta_1)
+    theta_1 = theta_1 - alpha * (d/d theta_1) j(theta_1)
 
-We look at the *tangent* at a point on the curve.
+we look at the *tangent* at a point on the curve.
 
-We can increment *or* decrement the parameter depending on whether the tangent slope is positive or
+we can increment *or* decrement the parameter depending on whether the tangent slope is positive or
 negative.
 
-If alpha is too small, gradient descent can be slow.
+if alpha is too small, gradient descent can be slow.
 
-If alpha is too large, gradient descent can overshoot the minimum. It may fail to converge, or even
+if alpha is too large, gradient descent can overshoot the minimum. it may fail to converge, or even
 diverge.
 
-If we are already at the local minimum, then taking another step will not move us away, as the gradient will be 0.
+if we are already at the local minimum, then taking another step will not move us away, as the gradient will be 0.
 
-Gradient descent can converge to a local minimum, even with the learning rate, alpha, fixed.
+gradient descent can converge to a local minimum, even with the learning rate, alpha, fixed.
 
-As we approach a local minimum, gradient descent will automatically take smaller steps. So, no need
-to decrease alpha over time. The gradient varies.
+as we approach a local minimum, gradient descent will automatically take smaller steps. so, no need
+to decrease alpha over time. the gradient varies.
 
-## Video: Gradient Descent For Linear Regression ##
+## video: gradient descent for linear regression ##
 
-Let's compare our gradient descent algorithm with our linear regression model:-
+let's compare our gradient descent algorithm with our linear regression model:-
 
-    Gradient Descent Algorithm
+    gradient descent algorithm
 
     repeat until convergence {
-        theta_j = theta_j - alpha * (d/d theta_j) J(theta_0, theta_1)
+        theta_j = theta_j - alpha * (d/d theta_j) j(theta_0, theta_1)
 
         (for j=1, j=0)
 
     ----
 
-    Linear Regression Model
+    linear regression model
 
     h_theta(x) = theta_0 + theta_1 * x
 
-    J(theta_0, theta_1) = 1/(2m) * sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2
+    j(theta_0, theta_1) = 1/(2m) * sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2
 
-    Minimise J(theta_0, theta_1).
+    minimise j(theta_0, theta_1).
 
-Let's apply gradient descent to minimise our cost function.
+let's apply gradient descent to minimise our cost function.
 
-We must determine what the partial derivative term evaluates to.
+we must determine what the partial derivative term evaluates to.
 
-    d/dtheta_j J(theta_0, theta_1) = d/dtheta_j ( 1/(2m) Sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2 )
+    d/dtheta_j j(theta_0, theta_1) = d/dtheta_j ( 1/(2m) sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2 )
 
-    = d/dtheta_j 1/(2m) Sigma{i=1->m}(theta_0 + theta_1 x^(i) - y^(i))^2
+    = d/dtheta_j 1/(2m) sigma{i=1->m}(theta_0 + theta_1 x^(i) - y^(i))^2
 
-We need to determine this term for j=0, and j=1.
+we need to determine this term for j=0, and j=1.
 
-The derivation is not shown, but the result is:-
+the derivation is not shown, but the result is:-
 
-    j=0, d/d(theta_0) J(theta_0, theta_1) = (1/m) * Sigma{i=1->m} (h_theta(x^(i)) - y^(i))
-    j=1, d/d(theta_1) J(theta_0, theta_1) = (1/m) * Sigma{i=1->m} ( (h_theta(x^(i)) - y^(i)) * x^(i) )
+    j=0, d/d(theta_0) j(theta_0, theta_1) = (1/m) * sigma{i=1->m} (h_theta(x^(i)) - y^(i))
+    j=1, d/d(theta_1) j(theta_0, theta_1) = (1/m) * sigma{i=1->m} ( (h_theta(x^(i)) - y^(i)) * x^(i) )
 
-(This uses multivariate calculus.)
+(this uses multivariate calculus.)
 
-Plugging these values back in to the gradient descent algorithm:-
+plugging these values back in to the gradient descent algorithm:-
 
     repeat until convergence {
-        theta_0 = theta_0 - alpha * (1/m) * Sigma{i=1->m} (h_theta(x^(i)) - y^(i))
-        theta_1 = theta_1 - alpha * (1/m) * Sigma{i=1->m} ( (h_theta(x^(i)) - y^(i)) * x^(i))
+        theta_0 = theta_0 - alpha * (1/m) * sigma{i=1->m} (h_theta(x^(i)) - y^(i))
+        theta_1 = theta_1 - alpha * (1/m) * sigma{i=1->m} ( (h_theta(x^(i)) - y^(i)) * x^(i))
     }
 
-    These should be updated simultaneously.
+    these should be updated simultaneously.
 
-We don't need to be concerned about local minima here, as the linear regression cost function is
-always a 'bowl' shaped curve (see vid @ 05:00), technical term = "convex function". In this
+we don't need to be concerned about local minima here, as the linear regression cost function is
+always a 'bowl' shaped curve (see vid @ 05:00), technical term = "convex function". in this
 function, local optimum = global optimum.
 
-Let's try this is reality.
+let's try this is reality.
 
-Let's initialise the calculation at:-
+let's initialise the calculation at:-
 
     theta_0 = 900, theta_1 = -0.1
 
-As we continue we eventually find the optimum. Woo!
+as we continue we eventually find the optimum. woo!
 
-This approach is sometimes called "batch" gradient descent. Batch - each step of gradient descent
+this approach is sometimes called "batch" gradient descent. batch - each step of gradient descent
 uses *all* the training examples, i.e. in the summations.
 
-There exists a method for numerically solving for the minimum of the cost function J, without
+there exists a method for numerically solving for the minimum of the cost function j, without
 needing to use an iterative algorithm like gradient descent, however we'll talk about that
-later. (This method is called the normal equations method.)
+later. (this method is called the normal equations method.)
 
-It turns out that gradient descent scales better to larger datasets than the normal equations
+it turns out that gradient descent scales better to larger datasets than the normal equations
 method.
 
-## Video: What's Next ##
+## video: what's next ##
 
-Two extensions:-
+two extensions:-
 
-1 Extension 1:-
+1 extension 1:-
 
-    In min J(theta_0, theta_1) can solve for theta_0, theta_1 exactly without needing iterative
+    in min j(theta_0, theta_1) can solve for theta_0, theta_1 exactly without needing iterative
     algorithm (gradient descent).
-    
-2 Learn with larger number of features.
+
+2 learn with larger number of features.
 
     +--------------------+--------------------+--------------------+--------------------+--------------------+
-    |   Size (feet^2)    |  No. of bedrooms   |   No. of floors    | Age of home (yrs)  |   Price ($1000)    |
+    |   size (feet^2)    |  no. of bedrooms   |   no. of floors    | age of home (yrs)  |   price ($1000)    |
     |        x_1         |        x_2         |        x_3         |        x_4         |                    |
     +--------------------+--------------------+--------------------+--------------------+--------------------+
     |        2104        |         5          |         1          |         45         |        460         |
@@ -624,48 +624,48 @@ Two extensions:-
     +--------------------+--------------------+--------------------+--------------------+--------------------+
 
 
-Hard to visualise graphically, notation gets more complicated.
+hard to visualise graphically, notation gets more complicated.
 
-Turns out linear algebra is very useful for working with this amount of data.
+turns out linear algebra is very useful for working with this amount of data.
 
-Linear algebra very useful for implementing efficient solutions to problems.
+linear algebra very useful for implementing efficient solutions to problems.
 
-3. Linear Algebra Review
+3. linear algebra review
 ------------------------
 
-## Video: Matrices and Vectors ##
+## video: matrices and vectors ##
 
-What are matrices, what are vectors?
+what are matrices, what are vectors?
 
-Matrix: rectangular array of numbers, e.g.:-
+matrix: rectangular array of numbers, e.g.:-
 
     [ 1402 191  ]    [ 1 2 3 ]
     [ 1371 821  ] or [ 4 5 6 ]
     [ 949  1437 ]
     [ 147  1448 ]
 
-Dimension of matrix = rows x cols, e.g. the above are 4x2 and 2x3.
+dimension of matrix = rows x cols, e.g. the above are 4x2 and 2x3.
 
-Sometimes written as |R^(4x2) and |R^(2x3) to refer to all matrices of the specified dimensions.
+sometimes written as |r^(4x2) and |r^(2x3) to refer to all matrices of the specified dimensions.
 
-We refer to elements of a matrix, A, as A_ij, where i = element row, j = element column.
+we refer to elements of a matrix, a, as a_ij, where i = element row, j = element column.
 
-So in:-
+so in:-
 
     [ 1402 191  ]
     [ 1371 821  ]
     [ 949  1437 ]
     [ 147  1448 ]
 
-    A_11 = 1402
-    A_12 = 191
-    A_32 = 1437
-    A_41 = 147
-    A_43 = undefined (error)
+    a_11 = 1402
+    a_12 = 191
+    a_32 = 1437
+    a_41 = 147
+    a_43 = undefined (error)
 
-Vector is a special case of a matrix - an nx1 matrix.
+vector is a special case of a matrix - an nx1 matrix.
 
-E.g.:-
+e.g.:-
 
         [ 460 ]
         [ 232 ]
@@ -673,43 +673,43 @@ E.g.:-
         [ 178 ] <- 4-dimensional vector.
 
 
-    |R^4 = set of all 4-dimensional vectors.
+    |r^4 = set of all 4-dimensional vectors.
 
     y_i = ith element
 
-    So here y_1 = 460, y_2 = 232, y_3 = 315, y_4 = 178.
+    so here y_1 = 460, y_2 = 232, y_3 = 315, y_4 = 178.
 
-There are two different means of indexing into a vector, 1-indexed and 0-indexed. 1-indexed vectors
+there are two different means of indexing into a vector, 1-indexed and 0-indexed. 1-indexed vectors
 tend to be more common in mathematics, and this is how we will refer to vector elements most of the
 time on the course, however sometimes useful in machine learning to use 0-indexed.
 
-Usually use upper-case to refer to matrices, e.g. A, B, C, X, lower-case to refer to vectors,
+usually use upper-case to refer to matrices, e.g. a, b, c, x, lower-case to refer to vectors,
 e.g. a, b, x, y.
 
-## Video: Addition and Scalar Multiplication ##
+## video: addition and scalar multiplication ##
 
-How do we add matrices? Add up the elements, e.g.:-
+how do we add matrices? add up the elements, e.g.:-
 
     [ 1 0 ]   [ 4 0.5 ]   [ 5 0.5 ]
     [ 2 5 ] + [ 2 5   ] = [ 4 10  ]
     [ 3 1 ]   [ 0 1   ]   [ 3 2   ]
 
-Can only add matrices of the same dimensions (here 3x2).
+can only add matrices of the same dimensions (here 3x2).
 
-To multiply by a scalar, multiply each element by the scalar.
+to multiply by a scalar, multiply each element by the scalar.
 
     3*[ 1 0 ]   [ 3 0  ]
       [ 2 5 ] = [ 6 15 ]
       [ 3 1 ]   [ 9 3  ]
 
-Scalar multiplication is commutative.
+scalar multiplication is commutative.
 
-We can also divide:-
+we can also divide:-
 
     [ 4 0 ]              [ 4 0 ]    [ 1   0   ]
     [ 6 3 ] / 4 =  1/4 * [ 6 3 ] =  [ 3/2 3/4 ]
 
-Can combine the operations:-
+can combine the operations:-
 
       [1]   [0]   [3]
       [4]   [0]   [0]/3
@@ -723,17 +723,17 @@ Can combine the operations:-
       [ 12     ]
     = [ 10 1/3 ]
 
-## Video: Matrix Vector Multiplication ##
+## video: matrix vector multiplication ##
 
-E.g.:-
+e.g.:-
 
     [ 1 3 ]         [ 1*1 + 3*5 ] = [ 16 ]
     [ 4 0 ] [ 1 ]   [ 4*1 + 0*5 ] = [ 4  ]
     [ 2 1 ] [ 5 ] = [ 2*1 + 1*5 ] = [ 7  ]
 
-Dimensions: 3x2 x 2x1 = 3x1
+dimensions: 3x2 x 2x1 = 3x1
 
-       A   * x  =  y
+       a   * x  =  y
 
     [      ][ ]   [ ]
     [      ][ ] = [ ]
@@ -741,22 +741,22 @@ Dimensions: 3x2 x 2x1 = 3x1
 
      m x n  nx1 = m-dimensional vector
 
-To get y_i, multiply A's ith rows with elements of vector x, and add them up.
+to get y_i, multiply a's ith rows with elements of vector x, and add them up.
 
-So,
+so,
 
-    y_i = Sigma[j=1->m](A_ij * x_j)
+    y_i = sigma[j=1->m](a_ij * x_j)
 
-E.g.:-
+e.g.:-
 
                    [ 1 ]
     [ 1  2  1  5 ] [ 3 ]   [ 1*1  + 2*3  + 1*2 + 5*1 ]   [ 1  + 6  + 2 + 5 ]   [ 14 ]
     [ 0  3  0  4 ] [ 2 ] = [ 0*1  + 3*3  + 0*2 + 4*1 ] = [ 0  + 9  + 0 + 4 ] = [ 13 ]
     [ -1 -2 0  0 ] [ 1 ]   [ -1*1 + -2*3 + 0*2 + 0*1 ]   [ -1 + -6 + 0 + 0 ]   [ -7 ]
 
-E.g. :-
+e.g. :-
 
-    House sizes:
+    house sizes:
 
     2104
     1416
@@ -765,7 +765,7 @@ E.g. :-
 
     h_theta(x) = -40 + 0.25x
 
-Can construct as matrix/vector multiplication:-
+can construct as matrix/vector multiplication:-
 
       4x2          2x1    =  4x1
 
@@ -776,14 +776,14 @@ Can construct as matrix/vector multiplication:-
 
     e.g. prediction = data matrix * parameters
 
-## Video: Matrix Matrix Multiplication ##
+## video: matrix matrix multiplication ##
 
-E.g.:-
+e.g.:-
              [ 1 3 ]
     [ 1 3 2 ][ 0 1 ]
     [ 4 0 1 ][ 5 2 ]
 
-Treat like matrix/vector multiplication:-
+treat like matrix/vector multiplication:-
 
              [ 1 ]
     [ 1 3 2 ][ 0 ] = [ 11 ]
@@ -793,7 +793,7 @@ Treat like matrix/vector multiplication:-
     [ 1 3 2][ 1 ] = [ 10 ]
     [ 4 0 1][ 2 ]   [ 14 ]
 
-Then put these together:-
+then put these together:-
 
              [ 1 3 ]
     [ 1 3 2 ][ 0 1 ] = [ 11 10 ]
@@ -801,51 +801,51 @@ Then put these together:-
 
        2x3     3x2   =    2x2
 
-    A (m x n) x B (n x o) = C (m x o)
+    a (m x n) x b (n x o) = c (m x o)
 
-The ith column of the matrix C is obtained by multiplying A with the ith column of B (for i = 1, 2,
+the ith column of the matrix c is obtained by multiplying a with the ith column of b (for i = 1, 2,
 ..., o).
 
-E.g.:-
+e.g.:-
 
     [ 1 3 ] [ 0 1 ]   [ 9  7  ]
     [ 2 5 ] [ 3 2 ] = [ 15 12 ]
 
-Another 'neat trick', e.g.:-
+another 'neat trick', e.g.:-
 
-   House sizes:
+   house sizes:
 
     2104
     1416
     1534
     852
 
-Only this time we have 3 competing hypotheses:-
+only this time we have 3 competing hypotheses:-
 
     1. h_theta(x) = -40  + 0.25x
     2. h_theta(x) = 200  + 0.1x
     3. h_theta(x) = -150 + 0.4x
 
-Can express this as a matrix multiplication problem:-
+can express this as a matrix multiplication problem:-
 
-    Matrix            Matrix
+    matrix            matrix
 
     [ 1 2104 ]   [ -40  200 -150 ]   [ 486   200.1 691.6 ]
     [ 1 1416 ] x [ 0.25 0.1 0.4  ] = [ 314   341.6 416.4 ]
     [ 1 1534 ]                       [ 343.5 353.4 463.6 ]
     [ 1 852  ]                       [ 173   285.2 190.8 ]
 
-Each column in resultant matrix is predicted house prices for respective hypothesis.
+each column in resultant matrix is predicted house prices for respective hypothesis.
 
-Good linear algebra libraries out there to use
+good linear algebra libraries out there to use
 
-## Video: Matrix Multiplication Properties ##
+## video: matrix multiplication properties ##
 
-W.R.T scalars, matrix multiplication is commutative (i.e. order of operands can change).
+w.r.t scalars, matrix multiplication is commutative (i.e. order of operands can change).
 
-Let A and B be matrices. Then in general, A x B != B x A (not commutative.)
+let a and b be matrices. then in general, a x b != b x a (not commutative.)
 
-E.g.:-
+e.g.:-
 
     [ 1 1 ] [ 0 0 ] = [ 2 0 ]
     [ 0 0 ] [ 2 0 ]   [ 0 0 ]
@@ -853,39 +853,39 @@ E.g.:-
     [ 0 0 ] [ 1 1 ] = [ 0 0 ]
     [ 2 0 ] [ 0 0 ] = [ 2 2 ]
 
-Also, consider multiplying an mxn matrix, A, by and nxm matrix B:-
+also, consider multiplying an mxn matrix, a, by and nxm matrix b:-
 
     mxn x nxm -> mxm
     nxm x mxn -> nxn
 
-So in this case, i.e. one where it is possible to swap the order of matrices, the two matrices even
+so in this case, i.e. one where it is possible to swap the order of matrices, the two matrices even
 have different dimensions.
 
-E.g. in the case of scalars:-
+e.g. in the case of scalars:-
 
     3 x 5 x 2 can be represented as:-
 
     3  x 10 or
     15 x 2
 
-So:-
+so:-
 
     3x(5x2) = (3x5)x2
 
-Scalar multiplication is "associative", i.e. a(bc) = (ab)c.
+scalar multiplication is "associative", i.e. a(bc) = (ab)c.
 
-This is true of matrices. So we can solve A x B x C thusly:-
+this is true of matrices. so we can solve a x b x c thusly:-
 
-Let D = B x C. Compute A x D.
-Let E = A x B. Compute E x C.
+let d = b x c. compute a x d.
+let e = a x b. compute e x c.
 
-### Identity Matrix ###
+### identity matrix ###
 
-In scalar numbers, 1 is identity. So 1 x z = z x 1 = z, for any z.
+in scalar numbers, 1 is identity. so 1 x z = z x 1 = z, for any z.
 
-Denoted I, or I_(nxn).
+denoted i, or i_(nxn).
 
-Examples of identity matrices:-
+examples of identity matrices:-
 
     [ 1 0 ]
     [ 0 1 ]     2x2
@@ -901,7 +901,7 @@ Examples of identity matrices:-
 
 1's along the diagonal, 0's everywhere else.
 
-Informally:-
+informally:-
 
 (zeroes are big)
 
@@ -913,97 +913,604 @@ Informally:-
    0   .
         1 ]
 
-A   . I   = I   . A   = A
+a   . i   = i   . a   = a
 
 mxn x nxn = mxm x mxn = mxn
 
-So the dimensions of I have to vary here.
+so the dimensions of i have to vary here.
 
-Note, AB != BA in general, but if B = I, then AI = IA.
+note, ab != ba in general, but if b = i, then ai = ia.
 
-## Video: Inverse and Transpose ##
+## video: inverse and transpose ##
 
-As mentioned previously, in real numbers, 1 = "identity".
+as mentioned previously, in real numbers, 1 = "identity".
 
-Each real number has an inverse, such that AB = I. So e.g. 3, inverse = 3^-1 = 1/3.
+each real number has an inverse, such that ab = i. so e.g. 3, inverse = 3^-1 = 1/3.
 
-Not all numbers have an inverse, i.e. 0 - 0^-1 is undefined.
+not all numbers have an inverse, i.e. 0 - 0^-1 is undefined.
 
-### Matrix Inverse ###
+### matrix inverse ###
 
-If A is an m x m matrix, and if it has an inverse, then:-
+if a is an m x m matrix, and if it has an inverse, then:-
 
-    A(A^-1) = (A^-1)A = I.
+    a(a^-1) = (a^-1)a = i.
 
-Note mxm matrix - 'square matrix', as rows = cols. Only square matrices have inverses.
+note mxm matrix - 'square matrix', as rows = cols. only square matrices have inverses.
 
-E.g.
+e.g.
 
            [ 3 4  ]
-    A =    [ 2 16 ] 2x2 so inversable.
+    a =    [ 2 16 ] 2x2 so inversable.
 
-    A^1 = [ 0.4   -0.1  ]
+    a^1 = [ 0.4   -0.1  ]
           [ -0.05 0.075 ]
 
     [ 3 4  ] [ 0.4   -0.1  ]   [ 1 0 ]
-    [ 2 16 ] [ -0.05 0.075 ] = [ 0 1 ] = I_(2x2)
+    [ 2 16 ] [ -0.05 0.075 ] = [ 0 1 ] = i_(2x2)
 
-       A           A^-1
+       a           a^-1
 
-Can compute easily in octave:-
+can compute easily in octave:-
 
-    octave-3.2.3:1> A = [ 3 4; 2 16]
-    A =
+    octave-3.2.3:1> a = [ 3 4; 2 16]
+    a =
 
         3    4
         2   16
 
-    octave-3.2.3:2> pinv(A)
+    octave-3.2.3:2> pinv(a)
     ans =
 
        0.400000  -0.100000
       -0.050000   0.075000
 
-    octave-3.2.3:3> inverseOfA = pinv(A)
-    inverseOfA =
+    octave-3.2.3:3> inverseofa = pinv(a)
+    inverseofa =
 
        0.400000  -0.100000
       -0.050000   0.075000
 
-    octave-3.2.3:4> A*inverseOfA
+    octave-3.2.3:4> a*inverseofa
     ans =
 
        1.00000   0.00000
       -0.00000   1.00000
 
-    octave-3.2.3:5> inverseOfA*A
+    octave-3.2.3:5> inverseofa*a
     ans =
 
        1.0000e+00  -4.4409e-16
        2.7756e-17   1.0000e+00
 
-Some matrices don't have inverses, e.g.:-
+some matrices don't have inverses, e.g.:-
 
         [ 0 0 ]
-    A = [ 0 0 ]
+    a = [ 0 0 ]
 
-Intuition: don't have an inverse if 'too close to zero'
+intuition: don't have an inverse if 'too close to zero'
 
-Matrices that don't have an inverse are "singular" or "degenerate"
+matrices that don't have an inverse are "singular" or "degenerate"
 
-### Matrix Transpose ###
+### matrix transpose ###
 
-E.g.:-
+e.g.:-
 
           [ 1 2 0 ]
-    A =   [ 3 5 9 ] 2x3
+    a =   [ 3 5 9 ] 2x3
 
-    A^T = [ 1 3 ] = B
+    a^t = [ 1 3 ] = b
           [ 2 5 ]
           [ 0 9 ]  3x2
 
-Flipping along a 45 degree axis. Or swapping rows + columns!
+flipping along a 45 degree axis. or swapping rows + columns!
 
-Let A be an mxn matrix, and let B = A^T.
+let a be an mxn matrix, and let b = a^t.
 
-Then B is an nxm matrix, and Bij = Aji.
+then b is an nxm matrix, and bij = aji.
+
+4. linear regression with multiple variables
+--------------------------------------------
+
+## Multiple Features ##
+
+Let's say we had more features, rather than just size + price.
+
+We denote features:-
+
+    [; x_1, x_2, x_3, x_4 ;]
+
+Also:-
+
+    n = no. of features
+    [; x^{(i)} ;] = input (features) of [; i^{th} ;] training example.
+    [; x_j^{(i)} ;] = value of feature j in [; i^{th} ;] training example.
+
+    [; X^{(2)} ;] is an N-dimensional vector representing training set 2.
+
+    [; X_3^{(2)};] = 2
+
+Hypothesis:-
+
+Previously:-
+
+    [; h_\theta(x) = \theta_0 + \theta_1x ;]
+
+Now:-
+
+    [; h_theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3+x_3 + \theta_4x_4 ;]
+
+E.g.:-
+
+    [; h_theta(x) = 80 + 0.1x_1 + 0.01x_2 + 3x_3 -2x_4 ;]
+
+
+For n features:-
+
+    [; h_theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n ;]
+
+For convenience of notation, define [; x_0 = 1 ;].
+
+So:-
+
+    (x^{(i)}_0 = 1)
+
+And:-
+
+    x = [x0]   t = [t0]
+        [x1]       [t1]
+        [x2]       [t2]
+        [..]       [..]
+        [xn]       [tn]
+
+We can then write our hypothesis as follows:-
+
+    [; h_\theta(x) = \theta_0x_0 + \theta_1x_1 + ... + \theta_nx_n ;]
+    [; = \theta^Tx ;]
+
+Which is convenient.
+
+This is called multivariate linear regression, i.e. multivariate = multiple features/variables.
+
+## Gradient Descent for Multiple Variables ##
+
+    Hypothesis: [; h_\theta(x) = \theta^Tx = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n
+
+    Parameters: [; \theta_0, \theta_1, ..., \theta_n ;] or [; \theta ;] - n+1-dimensional vector
+
+Cost Function:-
+
+    [; J(\theta) = \frac{1}{2m}\Sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2 ;]
+
+Gradient Descent:-
+
+    Repeat {
+        [; \theta_j := \theta_j - \alpha partial deriv d/d\theta_j J(\theta_0, ..., \theta_n)
+    }
+
+Simultaneously update for every j= 0, ..., n.
+
+Our new gradient descent algorithm:-
+
+    Repeat {
+
+        [; \theta_j := \theta_j - \alpha \frac{1}{m}\Sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
+
+    }
+
+Simultaneously update [; \theta_j ;] for j = 0, ..., n.
+
+Different from our previous algorithm.
+
+Note we use [; x_0 ;] here again.
+
+## Gradient Descent in Practice I - Feature Scaling ##
+
+Practical tricks for making gradient descent work well.
+
+Idea: Make sure features on a similar scale.
+
+E.g. x1 = size (0-2000 feet^2)
+x2 = number of bedrooms (1-5)
+
+<img src="http://codegrunt.co.uk/images/ml/gradient-descent-in-practice-i-feature-scaling-1.png" />
+
+Can take a long time to find the global minimum, e.g. long, thin contours.
+
+Effectively normalisation, e.g.:-
+
+    [; x_1 = \frac{size(feet^2)}{2000} ;]
+
+    [; x_2 = \frac{no. of bedrooms}{5}
+
+<img src="http://codegrunt.co.uk/images/ml/gradient-descent-in-practice-i-feature-scaling-2.png" />
+
+Where:-
+
+    [; 0 \leq x_1 \leq 1 ;]
+    [; 0 \leq x_2 \leq 2 ;]
+
+More generally:-
+
+Get every feature into approximately a [; -1 \leq x_i \leq 1 ;] range.
+
+-1, 1 are relatively arbitrary. Only have to roughly hit it.
+
+The problem comes when there are differences in order of magnitude.
+
+Good:-
+
+    [; 0 \leq x_1 \leq 3 ;]
+    [; -2 \leq x_2 \leq 0.5 ;]
+
+Bad:-
+
+    [; -100 \leq x_3 \leq 100 ;]
+    [; -0.0001 \leq x_4 \leq 0.0001 ;]
+
+E.g. -3 to 3 is good enough.
+
+### Mean Normalisation ###
+
+Replace
+
+    [; x_i ;]
+
+with
+
+    [; x_i - \mu_i ;]
+
+To make features have approx. zero mean (don't apply to [; x_0 = 1 ;]).
+
+E.g.:-
+
+If av. size = 1000
+
+    [; x_1 = \frac{size-1000}{2000} ;]
+
+If av. size is 1-5 bedrooms, around 2:-
+
+    [; x_2 = \frac{#bedrooms-2}{5} ;]
+
+    [; -0.5 \leq \ x_1 \leq 0.5, -0.5 \leq x_2 \leq 0.5 ;]
+
+
+In general:-
+
+    [; x_1 <- \frac{x_1-\mu_1}{s_1} ;]
+
+Where [; \mu_1 ;] is the average value of x in the training set
+
+And [; S_1 ;] is the range (max-min) or standdev.
+
+This all helps convergence happen a lot quicker.
+
+## Gradient Descent in Practice II - Learning Rate ##
+
+Gradient descent
+
+    [; \theta_j := \theta_j - \alpha partial d/d\theta_jJ(\theta)
+
+* "Debugging": How to make sure gradient descent is working correctly.
+
+* How to choose learning rate [; \alpha ;].
+
+<img src="http://codegrunt.co.uk/images/ml/gradient-descent-in-practice-ii-learning-rate-1.png" />
+
+If the gradient descent is working correctly, then [; J(\theta) ;] should decrease after every iteration.
+
+No. of steps to converge can vary a *lot*.
+
+Very hard to tell in advance how many iterations it will take.
+
+It's actually possible to write an automatic convergence test - e.g. declare convergence if
+[; J(\theta) ;] decreases by less than [; 10^{-3} ;] in one iteration.
+
+Choosing the threshold is difficult. Often better to just look at a plot.
+
+If [; J(\theta) ;] is actually increasing, then usually indicative of too large [; \alpha ;] and
+overshooting the minimum on a parabolic cost function curve.
+
+* For sufficiently small [; \alpha ;], [; J(\theta) ;] should decrease on every iteration.
+* But if [; \alpha ;] is too small, gradient descent can be slow to converge.
+
+* If [; \alpha ;] is too small: slow convergence.
+* If [; \alpha ;] is too large: [; J(\theta) ;] may not decrease on every iteration; may not converge.
+
+To choose [; \alpha ;], try:-
+
+    0.001, 0.01, 0.1, 1, ...
+
+Plot [; J(\theta) ;] vs. # iterations for each.
+
+Andrew actually tends to jump like this:-
+
+    0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, ...
+
+i.e. x3 each time.
+
+## Features and Polynomial Regression ##
+
+Choice of features - how to get powerful learning algorithms going.
+
+How to use polynomials, using the machinery of linear regression, to fit more complicated hypotheses.
+
+E.g. housing prices prediction:-
+
+    [; h_\theta(x) = \theta_0 + \theta_1 \times frontage + \theta_2 \times depth ;]
+
+I might use area instead, e.g.:-
+
+    [; x = frontage \times depth ;]
+
+    [; h_\theta(x) = \theta_0 + \theta_1 x ;]
+
+So can use insight to choose a better model.
+
+E.g. we might find a quadratic model is a better fit for some data, e.g.:-
+
+    [; \theta_0 + \theta_1x + \theta_2x^2 ;]
+
+Or perhaps using a cubic function:-
+
+    [; \theta_0 + \theta_1x + \theta_2x^2 + \theta_3x^3 ;]
+
+In order to use an approach like this, then we can simply replace
+
+    [; x_1, x_2, x_3 ;]
+
+With:-
+
+    [; x_1 = (size) ;]
+    [; x_2 = (size)^2 ;]
+    [; x_3 = (size)^3 ;]
+
+So:-
+
+    [; h_\theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3 ;]
+    [; = \theta_0 + \theta_1(size) + \theta_2(size)^2 + \theta_3(size)^3 ;]
+
+If you choose your features like this, then feature scaling becomes considerably more important, e.g.:-
+
+size:           1 - 1,000
+size^2:         1 - 1,000,000
+size^3:         1 - 10^9
+
+Can choose arbitrary functions, e.g.:-
+
+    h_\theta(x) = \theta_0 + \theta_1(size) + \theta_2\sqrt(size)
+
+Again, feature scaling matters.
+
+Later we will look at algorithms which will make function fitting choices automatically.
+
+## Normal Equation ##
+
+The algorithm we've been using so far is gradient descent - making multiple iterations of gradient descent to converge to the minimum
+
+Normal equation: Method to solve for [; \theta ;] analytically.
+
+Intuition: If 1D ([; \theta ;] is a real number)
+
+    [; J(\theta) = a\theta^2 + b\theta + c ;]
+
+We can solve for the minimum of this curve using:-
+
+    [; d/d\thetaJ(\theta) = ... set 0. ;]
+
+Solve for [; \theta ;].
+
+    [; J(\theta_0, \theta_1, ..., \theta_m) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2 ;]
+
+We can use partial derivatives, for all values of j:-
+
+    [; partial d/d\theta_j = ... = 0 ;]
+
+Solve for:-
+
+    [; \theta_0, \theta_1, ... , \theta_n ;]
+
+E.g. m = 4 training examples.
+
+Then we can construct a matrix, X, which contains all the training data, including [; x_0 ;].
+
+X is m x n+1 matrix, y is an m-dimensional vector.
+
+We can now minimise the cost function using the following function:-
+
+    [; \theta = (X^T X)^{-1}X^Ty ;]
+
+Let's consider that we have m examples ([; x^{(1)}, y^{(1)}), ..., (x^{(m)},y^{(m)}); n features.
+
+E.g., if [; x^{(i)} ;] =
+
+    [1]
+    [x_1^{(i)}]
+
+Then:-
+        [ 1 X_1^{(1)} ]
+    X = [ 1 X_2^{(1)} ]
+        [     .       ]
+        [     .       ]
+        [ 1 X_m^{(1)} ]
+
+Which is an mx2 matrix.
+
+    y = [ y^{(1)} ]
+        [ y^{(2)} ]
+        [    .    ]
+        [    .    ]
+        [ y^{(m)} ]
+
+Looking at the equation again:-
+
+    [; \theta = (X^TX)^{-1}X^Ty ;]
+
+    [; (X^TX)^{-1} ;]
+
+Is inverse of matrix
+
+    [; X^TX ;]
+
+In Octave:-
+
+    pinv(X'*X)*X'*y
+
+You represent transposes in Octave via:-
+
+    X'
+
+If you use the normal equation, then feature scaling isn't such a big deal.
+
+When should you use gradient descent vs. normal equation?
+
+### Gradient Descent ###
+
+* Need to choose [; \alpha ;].
+* Needs many iterations.
+* Works well, even when n is large.
+
+### Normal Equation ###
+
+* No need to choose [; \alpha ;].
+* Don't need to iterate.
+* Needs to compute [; (X^TX)^{-1} ;], which is nxn. Inverse is [; O(n^3) ;]
+* Slow if n is very large.
+* If n = 100, no problem.
+* If n = 1000, still ok.
+* If n = 10,000 then we're getting cold feet.
+* If n = 10^6, then we're bailing.
+
+Normal equation method is great alternative to gradient descent when n is small, e.g. 1000.
+
+Normal equation not so great for more sophisticated learning algorithms.
+
+## Normal Equation Noninvertibility ##
+
+(optional, skip for now)
+
+5. Octave Tutorial
+------------------
+
+Basic Operations
+----------------
+
+Octave is the best choice for investigating machine learning since it's so high-level. Can prototype
+in octave, then re-implement in other language.
+
+Octave vs. matlab vs. R vs. numpy - octave tends to be the easiest choice.
+
+Basic Commands:-
+
+Simple maths:-
+
+    5+6
+    3-2
+    etc.
+
+Comments:-
+    % for comments
+
+Logical
+
+    1 == 2 % false
+    1 ~= 2 % not equals
+    1 && 0 % AND
+    1 || 0 % OR
+    XOR(1,0)
+
+Can change prompt:-
+
+    PS1('>> ');
+
+Can assign variables:-
+
+    a = 3
+
+If you don't want to print out a result, use the semicolon:-
+
+    a = 3;    % semicolon suppressing output
+
+You can output things either by simply stating the var name, or using disp():-
+
+    disp(a);
+
+    disp(sprintf('2 decimals: %0.2f', a))
+
+    disp(sprintf('6 decimals: %0.6f', a))
+
+Can default to expanding things to long format via:-
+
+    format long
+
+Can assign matrices via:-
+
+    A = [1 2; 3 4; 5 6]
+
+Can also do:-
+
+    A = [1 2;
+    3 4;
+    5 6]
+
+Similarly for vectors:-
+
+    v = [1 2 3]
+
+Which is a 1x3 vector
+
+Can input a 3x1 vector thusly:-
+
+    v = [1; 2; 3]
+
+Can input ranges:-
+
+    v = 1:0.1:2
+
+Or:-
+
+    v = 1:6
+
+Can set up a matrix with all values = 1, e.g.:-
+
+    ones(2,3)
+
+Can multiply to get other vals:-
+
+    C = 2*ones(2, 3)
+
+also can do for zeros:-
+
+    w = zeros(2, 3)
+
+Can get random variables, e.g.:-
+
+    w = rand(3, 3)
+
+Gives 3x3 matrix with random variables 0-1.
+
+Each time you run it you get a different set of values.
+
+Can get guassian random numbers using randn, e.g.:-
+
+    w = randn(1, 3)
+
+Can look at huge sets:-
+
+    w = -6 + sqrt(10)*(randn(1, 10000))
+
+And draw a histogram:-
+
+    hist(w)
+
+Can plot with more bins/buckets:-
+
+    hist(w, 50)
+
+Can get the identity matrix via the eye() command, e.g.:-
+
+    eye(4)
+
+Can use the help command to get details on commands, etc., e.g.:-
+
+    help eye
+

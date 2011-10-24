@@ -1258,9 +1258,78 @@ Learnt a lot:-
 * Compact Representation
 * Conditional Independence
 
-This was a largely theoretical unit. Will talk more about applications.
+This was a largely theoretical unit. Will talk more about applications later.
 
-It's very useful for many applications.
+Bayes networks are very useful for many applications.
 
 Unit 4 - Probabilistic Inference
 --------------------------------
+
+## Overview and Example ##
+
+In the previous unit we went over:-
+
+* Probability Theory
+* Bayes Net - A concise representation of a join probability distribution
+* Independence
+* Inference - How to answer probability questions using Bayes nets.
+
+Let's look at a simple example:-
+
+<img src="http://codegrunt.co.uk/images/ai/4-overview-and-example-1.png" />
+
+Where B is a burglary and E an earthquake, J is Jill responding and M is Mike responding.
+
+This is the computation we want to come up with:-
+
+    p(Q_1, Q_2, ... | E_1 = e_1, E2 = e_2)
+    
+    argmax_q p(Q_1, Q_2, ... | E_1 = e_1, E2 = e_2)
+
+We don't need to go in one direction, we can make the query variables be the evidence variables, or
+vice-versa, or really any combination.
+
+Imagine - Mary has called to report the alarm, and want to know whether there has been a burglary.
+
+M is evidence, B is query, the rest are hidden.
+
+## Enumeration ##
+
+This goes through the possibilities, adds them up, then finds the answer.
+
+We want:-
+
+    [; P(+b|+j, +m) = P(+b,+j,+m)/P(+j,+m) ;]
+    [; P(+b, +j, +m) = \Sum_e\Sum_a P(+b, +j, +m) = ;]
+    [; \Sum_e\Sum_a P(+b)P(e)P(a|+b, e)P(+j|a)P(+m, a) ;]
+
+If we say that:-
+
+    [; f(e, a) = P(+b)P(e)P(a|+b, e)P(+j|a)P(+m, a) ;]
+
+Then:-
+
+    [; P(+b, +j, +m) = f(+e, +a) + f(+e, \lnot a) + f(\lnot e, +a) + f(\lnot e, \lnot a) ;]
+
+
+## Speeding Up Enumeration + 2-4 ##
+
+## Causal Direction ##
+
+## Variable Elimination + 2-4 ##
+
+## Approximate Inference ##
+
+## Sampling Example ##
+
+## Approximate Inference 2 ##
+ 
+## Rejection Sampling ##
+
+## Likelihood Weighting + 1-2 ##
+
+## Gibbs Sampling ##
+
+## Monty Hall Problem ##
+
+## Monty Hall Letter ##
