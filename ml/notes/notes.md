@@ -240,7 +240,7 @@ early days of machine learning.
 
 ### how do we represent h? ###
 
-    h_theta(x) = theta_0 + theta_1 * x
+    [; h_{\theta}(x) = \theta_0 + \theta_1 * x ;]
 
     shorthand: h(x)
 
@@ -1037,22 +1037,22 @@ Previously:-
 
 Now:-
 
-    [; h_theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3+x_3 + \theta_4x_4 ;]
+    [; h_\theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3+x_3 + \theta_4x_4 ;]
 
 E.g.:-
 
-    [; h_theta(x) = 80 + 0.1x_1 + 0.01x_2 + 3x_3 -2x_4 ;]
+    [; h_\theta(x) = 80 + 0.1x_1 + 0.01x_2 + 3x_3 -2x_4 ;]
 
 
 For n features:-
 
-    [; h_theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n ;]
+    [; h_\theta(x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n ;]
 
 For convenience of notation, define [; x_0 = 1 ;].
 
 So:-
 
-    (x^{(i)}_0 = 1)
+    [; (x^{(i)}_0 = 1) ;]
 
 And:-
 
@@ -1073,7 +1073,7 @@ This is called multivariate linear regression, i.e. multivariate = multiple feat
 
 ## Gradient Descent for Multiple Variables ##
 
-    Hypothesis: [; h_\theta(x) = \theta^Tx = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n
+    Hypothesis: [; h_\theta(x) = \theta^Tx = \theta_0x_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n ;]
 
     Parameters: [; \theta_0, \theta_1, ..., \theta_n ;] or [; \theta ;] - n+1-dimensional vector
 
@@ -1084,7 +1084,7 @@ Cost Function:-
 Gradient Descent:-
 
     Repeat {
-        [; \theta_j := \theta_j - \alpha partial deriv d/d\theta_j J(\theta_0, ..., \theta_n)
+        [; \theta_j := \theta_j - \alpha partial deriv d/d\theta_j J(\theta_0, ..., \theta_n) ;]
     }
 
 Simultaneously update for every j= 0, ..., n.
@@ -1093,7 +1093,7 @@ Our new gradient descent algorithm:-
 
     Repeat {
 
-        [; \theta_j := \theta_j - \alpha \frac{1}{m}\Sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
+        [; \theta_j := \theta_j - \alpha \frac{1}{m}\Sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} ;]
 
     }
 
@@ -1319,7 +1319,7 @@ We can now minimise the cost function using the following function:-
 
     [; \theta = (X^T X)^{-1}X^Ty ;]
 
-Let's consider that we have m examples ([; x^{(1)}, y^{(1)}), ..., (x^{(m)},y^{(m)}); n features.
+Let's consider that we have m examples ([; x^{(1)}, y^{(1)}), ..., (x^{(m)},y^{(m)}) ;], n features.
 
 E.g., if [; x^{(i)} ;] =
 
