@@ -1,8 +1,10 @@
+
 AI Notes
 ========
 
 N.B. - I had to give up on attempting ascii art for everything. Turned out not to be all that
-practical! I have started scanning notes for stuff I have to write. Other than that, am using [tex the world](http://thewe.net/tex/) for equations (not all, yet, am working on it).
+practical! I have started scanning notes for stuff I have to write. Other than that, am using
+[tex the world](http://thewe.net/tex/) for equations (not all, yet, am working on it).
 
 Unit 1 - Introduction
 ---------------------
@@ -247,24 +249,24 @@ Can't drive to a location not shown on the map. But once the location is shown, 
 * Initial state
 * Actions (s is state)
 
-    (s) -> { a_1, a_2, a_3, ... }
+    [; (s) \to { a_1, a_2, a_3, ... } ;]
 
 * Result
 
-    (s, a) -> s'
+    [; (s, a) \to s' ;]
 
 * GoalTest
 
-    (s) -> T|F
+    [; (s) \to T|F ;]
 
 * PathCost (s-a->s... <- state-action transitions to number, n = cost of path) - most of the time
   the cost will be additive, i.e. the overall cost will be the individual steps' costs summed.
 
-    (s-a->s-a->s)->n
+    [; (s-a \to s-a \to s) \to n ;]
 
 * StepCost - components of the path cost.
 
-    (s, a, s')->n
+    [; (s, a, s') \to n ;]
 
 ## Example: Route Finding ##
 
@@ -382,10 +384,10 @@ briefly moving further from the goal, then greedy best-first does poorly.
 
 Always expands the path with the minimum value of function f, which is defined as:-
 
-    f = g + h
+    [; f = g + h ;]
 
-    g(path) = path cost
-    h(path) = h(s) = estimated distance to goal
+    [; g(path) = ;] path cost
+    [; h(path) = h(s) = ;] estimated distance to goal
 
 Let's consider Romanian towns again. We use the heuristic h = straight line distance.
 
@@ -393,13 +395,13 @@ Whether A* works depends on the h function.
 
 A* finds lowest cost path when
 
-    h(s) <= true cost
+    [; h(s) \leq ;] true cost
 
 We want h to:-
 
-* never overestimate
-* be optimistic
-* be 'admissible' - i.e. admissable for the problem of finding the lowest cost path.
+* Never overestimate.
+* Be optimistic.
+* Be 'admissible' - i.e. admissable for the problem of finding the lowest cost path.
 
 All essentially saying the same thing.
 
@@ -407,9 +409,9 @@ All essentially saying the same thing.
 
 Optimistic h finds lowest-cost path
 
-    f = g + h
+    [; f = g + h ;]
 
-    h(s) <= true cost s->g
+    [; h(s) \leq ;] true cost [; s \to g ;]
 
 At the goal, f = g + h = g + 0 = the actual cost.
 
@@ -432,7 +434,7 @@ There are two positions in the 'vacuum world'. How many states are there?
 2 - possible positions
 2 - dirty/not? in each.
 
-    2 * 2 * 2 = 8
+    [; 2 \times 2 \times 2 = 8 ;]
 
 Consider results of moving left/right and turning on/off sucking as transitions between different
 states.
@@ -446,9 +448,13 @@ Now consider the following additional factors:-
 
 How many states?
 
-    possible positions * dirty or not in each * power switch states * dust camera states * brush height states
+    possible positions   [; \times ;]
+    dirty or not in each [; \times ;]
+    power switch states  [; \times ;]
+    dust camera states   [; \times ;]
+    brush height states
 
-    = 10 * (2^10) * 3 * 2 * 5 = 307,200
+    = [; 10 \times (2^{10}) \times 3 \times 2 \times 5 = 307,200 ;]
 
 Things can get big fast. This is why we need to use efficient algorithms.
 
@@ -463,8 +469,8 @@ E.g.:-
 
 Let's consider different parameters:-
 
-    h_1 = # misplaced blocks = 4
-    h_2 = sum(distances of blocks) = 4
+    [; h_1 = ;] # misplaced blocks [; = 4 ;]
+    [; h_2 = \sum ( ;]distances of blocks [; ) = 4 ;]
 
     10 would have to move 1 space
     11 would have to move 1 space
@@ -485,31 +491,31 @@ Can we automatically come up with good heuristic functions?
 
 Let's feed it the block puzzle:-
 
-    a block can move from A -> B
+    a block can move from A [; \to ;] B
     if  (A adjacent to B)
     and (B is blank)
 
 If we loosen the requirements + remove the B is blank criteria. This leaves us with our heuristic
 from above, i.e.:-
 
-    h_2 = sum(distances of blocks)
+    [; h_2 = \sum( ;] distances of blocks [; ) ;]
 
-    a block can move from A -> B
+    a block can move from A [; \to ;] B
     if  (A adjacent to B)
 
 We could loosen further, and remove the criteria altogether:-
 
-    a block can move from A -> B
+    a block can move from A [; \to ;] B
 
 Which leaves us with another heuristic:-
 
-    h_1 = # misplaced blocks
+    [; h_1 = ;] # misplaced blocks
 
 So we can mechanically derive heuristics from the problem statement.
 
 Another good heuristic is to take the maximum of the criteria heuristics, e.g.:-
 
-    h = max(h_1, h_2)
+    [; h = max(h_1, h_2) ;]
 
 Since both heuristics which are acting as parameters here are admissible, then the new heuristic
 will be admissible too.
@@ -540,7 +546,7 @@ Later we will find how to deal with these conditions not being true.
 
 We've talked about paths in the state space, e.g.:-
 
-    A -> S -> F
+    [; A \to S \to F ;]
 
 How do we implement this in a computer program?
 
@@ -629,23 +635,23 @@ Cornerstone of AI. Used to express uncertainty, and the management of uncertaint
 
 E.g. flipping a coin:-
 
-    P(H) = 0.5, P(T) = 1 - 0.5 = 0.5
+    [; P(H) = 0.5, P(T) = 1 - 0.5 = 0.5 ;]
 
-    P(H) = 0.25, P(T) = 1 - 0.25 = 0.75
+    [; P(H) = 0.25, P(T) = 1 - 0.25 = 0.75 ;]
 
-    P(H, H, H) = 1/8 given P(H) = 0.5
+    [; P(H, H, H) = 1/8 given P(H) = 0.5 ;]
 
 Given:-
 
-    x_i = result of i-th coin flip, where x_i = { H, T }
+    [; x_i = ;] result of i-th coin flip, where [; x_i = { H, T } ;]
 
 Then:-
 
-    P(X_1 = X_2 = X_3 = X_4) = 1/(2^4) + 1/(2^4) = 1/8
+    [; P(X_1 = X_2 = X_3 = X_4) = 1/(2^4) + 1/(2^4) = 1/8 ;]
 
 Probability of 3 or more heads in 4 flips:-
 
-    P({X_1, X_2, X_3, X_4} contains >=3 H) = 5/16 = 0.3125
+    [; P({X_1, X_2, X_3, X_4} contains /geq 3 H) = 5/16 = 0.3125 ;]
 
 Examined all the possibile outcomes shows that there are 5 possibilities:-
 
@@ -668,12 +674,12 @@ Examined all the possibile outcomes shows that there are 5 possibilities:-
 
 ## Probability Summary ##
 
-    P(A) = p => P(notA) = 1 - p
+    [; P(A) = p => P(notA) = 1 - p ;]
 
 Independence:-
 
-    X|_Y: P(X)P(Y)   = P(X, Y)
-          marginals    joint probability
+    [; X \perp Y: P(X)P(Y)   = P(X, Y) ;]
+                 marginals    joint probability
 
 ## Dependence ##
 
@@ -683,57 +689,64 @@ Independence:-
 
 ### Lessons ###
 
-    P(Y) = Sigma{i}( P(Y|X=i) * P(X=i) )
+    [; P(Y) = \sum_i(P(Y|X=i)P(X=i)) ;]
 
-    P(notX | Y) = 1 - P(X | Y)
+    [; P(\lnot X | Y) = 1 - P(X | Y) ;]
 
-    P(X | notY) = 1 - P(X | Y) <- NOT TRUE!
+    [; P(X | \lnot Y) = 1 - P(X | Y) ;] <- NOT TRUE!
 
 ## Weather + 2-3 ##
 
-    P(D_1 = sunny) = 0.9
-    P(D_2 = sunny | D_1 = sunny) = 0.8
-    P(D_2 = sunny | D_1 = rainy) = 0.6
+    [; P(D_1 = sunny) = 0.9 ;]
+    [; P(D_2 = sunny | D_1 = sunny) = 0.8 ;]
+    [; P(D_2 = sunny | D_1 = rainy) = 0.6 ;]
 
-    Since P(notX | Y) = 1 - P(X | Y):-
-    P(D_2 = rainy | D_1 = sunny) = 1 - P(D_2 = sunny | D_1 = sunny) = 0.2
+Since
 
-    Similarly:-
-    P(D_2 = rainy | D_1 = rainy) = 1 - 0.6 = 0.4
+    [; P(notX | Y) = 1 - P(X | Y) ;] :-
+    [; P(D_2 = rainy | D_1 = sunny) = 1 - P(D_2 = sunny | D_1 = sunny) = 0.2 ;]
+
+Similarly:-
+
+    [; P(D_2 = rainy | D_1 = rainy) = 1 - 0.6 = 0.4 ;]
 
 By the Theory of Total Probability:-
 
-    P(D_2 = sunny) = P(D_2 = sunny | D_1 = sunny) * P(D_1 = sunny) + P(D_2 = sunny | D_1 = rainy) * P(D_1 = rainy)
+    [; P(D_2 = sunny) = P(D_2 = sunny | D_1 = sunny)P(D_1 = sunny) + P(D_2 = sunny | D_1 = rainy)P(D_1 = rainy) ;]
 
 And:-
 
-    P(D_3 = sunny) = P(D_3 = sunny | D_2 = sunny) * P(D_2 = sunny) + P(D_3 = sunny | D_2 = rainy) * P(D_2 = rainy)
+    [; P(D_3 = sunny) = P(D_3 = sunny | D_2 = sunny)P(D_2 = sunny) + P(D_3 = sunny | D_2 = rainy)P(D_2 = rainy) ;]
 
 Note that we assume the conditional probabilities are the same for D2->D3 as they are for D1->D2.
 
 So:-
 
-    P(D_2 = sunny) = 0.8 * 0.9 + 0.6 * (1 - 0.9) = 0.8 * 0.9 + 0.6 * 0.1 = 0.78
-    P(D_3 = sunny) = 0.8 * 0.78 + 0.6 * (1 - 0.78) = 0.8 * 0.78 + 0.6 * 0.22 = 0.756
+    [; P(D_2 = sunny) = 0.8 \times 0.9 + 0.6 \times (1 - 0.9) = 0.8 \times 0.9 + 0.6 \times 0.1 = 0.78 ;]
+    [; P(D_3 = sunny) = 0.8 \times 0.78 + 0.6 \times (1 - 0.78) = 0.8 \times 0.78 + 0.6 \times 0.22 = 0.756 ;]
 
 ## Cancer + 2-4 ##
 
 We can express the probability of cancer/not cancer thus;-
 
-    P(C)    = 0.01
-    P(notC) = 1 - 0.01 = 0.99
+    [; P(C) = 0.01 ;]
+    [; P(\lnot C) = 1 - 0.01 = 0.99 ;]
 
 Let's say there's a test which comes out positive (+) or negative (-):-
 
-    P(+|C) = 0.9
-    P(-|C) = 1 - 0.9 = 0.1 since P(notA|B) = 1 - P(A|B).
+    [; P(+|C) = 0.9 ;]
+    [; P(-|C) = 1 - 0.9 = 0.1 ;]
 
-    P(+|notC) = 0.2
-    P(-|notC) = 0.8
+Since
+
+    [; P(\lnot A|B) = 1 - P(A|B) ;]
+
+    [; P(+|\lnot C) = 0.2 ;]
+    [; P(-|\lnot C) = 0.8 ;]
 
 We're after:-
 
-    P(C|+)
+    [; P(C|+) ;]
 
 But, first let's get some joint probabilities:-
 
@@ -741,33 +754,33 @@ But, first let's get some joint probabilities:-
 
 Due to the rule of total probability:-
 
-    P(+) = P(+|C)P(C) + P(+|notC)P(notC) = 0.9*0.01 + 0.2*0.99 = 0.207
+    [; P(+) = P(+|C)P(C) + P(+|\lnot C)P(\lnot C) = 0.9 \times 0.01 + 0.2 \times 0.99 = 0.207 ;]
 
 We applied a sort of ad-hoc method to obtain the joint probabilities which, more formally, results
 in:-
 
-    P(A, B) = P(A) * P(B|A) = P(B) * P(A|B)
+    [; P(A, B) = P(A)P(B|A) = P(B)P(A|B) ;]
 
 So:-
 
-    P(B|A) = P(A, B)/P(A)
-    P(A|B) = P(A, B)/P(B)
+    [; P(B|A) = \frac{P(A, B)}{P(A)} ;]
+    [; P(A|B) = \frac{P(A, B)}{P(B)} ;]
 
 So
-    P(C|+) = P(C, +)/P(+) = 0.009/0.207 =~ 0.0435
+    [; P(C|+) = \frac{P(C, +)}{P(+)} = \frac{0.009}{0.207} \simeq 0.0435 ;]
 
 ## Bayes Rule ##
 
 Invented by Rev. Thomas Bayes, mathematician.
 
-    P(A|B) = P(B|A)*P(A)/P(B)
+    [; P(A|B) = \frac{P(B|A)P(A)}{P(B)} ;]
 
 Where:-
 
-    P(A|B) = Posterior
-    P(B|A) = Likelihood
-    P(A)   = Prior
-    P(B)   = Marginal Likelihood
+    [; P(A|B) = ;] Posterior
+    [; P(B|A) = ;] Likelihood
+    [; P(A) = ;] Prior
+    [; P(B) = ;] Marginal Likelihood
 
 Let's say that B is the evidence, and A is what we're interested in, e.g. test result vs cancer.
 
@@ -786,9 +799,9 @@ first place, and divide it by the probability of the evidence, which is often ex
 
 Using total probability.
 
-    P(C|+) = P(+|C) * P(C) / P(+) = P(+|C) * P(C) / (P(+|C)*P(C) + P(+|C)*P(notC))
-           = 0.9 * 0.01 / (0.9 * 0.01 + 0.2 * 0.99)
-           =~ 0.0435
+    [; P(C|+) = \frac{P(+|C)P(C)}{P(+)} = \frac{P(+|C)P(C)}{P(+|C)*P(C)} + P(+|C)P(\lnot C) ;]
+    [;       = 0.9 * 0.01 / (0.9 * 0.01 + 0.2 * 0.99) ;]
+    [;       \simeq 0.0435 ;]
 
 Which is the same as above :)
 
@@ -1249,7 +1262,7 @@ and F, hence A and F are *not* independent.
     [; F \perp A | H ;]
 
 H might tell us something about G, but it won't tell us anything about D, so A and F are not independent.
-    
+
 ## Congratulations! ##
 
 Learnt a lot:-
@@ -1283,7 +1296,7 @@ Where B is a burglary and E an earthquake, J is Jill responding and M is Mike re
 This is the computation we want to come up with:-
 
     p(Q_1, Q_2, ... | E_1 = e_1, E2 = e_2)
-    
+
     argmax_q p(Q_1, Q_2, ... | E_1 = e_1, E2 = e_2)
 
 We don't need to go in one direction, we can make the query variables be the evidence variables, or
@@ -1323,7 +1336,7 @@ Then:-
 ## Sampling Example ##
 
 ## Approximate Inference 2 ##
- 
+
 ## Rejection Sampling ##
 
 ## Likelihood Weighting + 1-2 ##
