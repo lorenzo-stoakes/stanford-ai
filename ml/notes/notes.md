@@ -164,7 +164,7 @@ recordings and effectively 'ask it to find structure'. The algorithm is then cap
 the conversations.
 
 You might expect this to involve a crazy amount of code. In fact, you can represent it using a
-single line of code (octave/matlab?):-
+single line of code (octave):-
 
     [W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');
 
@@ -240,11 +240,11 @@ early days of machine learning.
 
 ### how do we represent h? ###
 
-    [; h_{\theta}(x) = \theta_0 + \theta_1 * x ;]
+    [; h_{\theta}(x) = \theta_0 + \theta_1x ;]
 
     shorthand: h(x)
 
-    ^      /x h(x) = theta_0 + theta_1 x
+    ^      /x  [; h(x) = \theta_0 + \theta_1 x ];
     |    x/ x
     |   x/ x
     |  x/x
@@ -257,23 +257,28 @@ this is linear regression with one variable / univariate linear regression.
 
 enables us to fit the best possible line to our data.
 
-    hypothesis: h_theta(x) = theta_0 + theta_1 * x
+    Hypothesis: [; h_\theta(x) = \theta_0 + \theta_1x ;]
 
-    theta_i's: parameters
+    [; \theta_i ;]'s: parameters
 
 how to choose the 2 thetas?
 
 different values give us different plots, clearly.
 
-    idea: choose theta_0, theta_1 so that h_theta(x) is close to y for our training examples (x, y).
+    Idea: choose [; \theta_0 ;], [; \theta_1 ;] so that [; h_\theta(x) ;] is close to y for our
+     training examples [; (x, y) ;].
 
 more formally:-
 
-    minimise theta_0 theta_1 <- i.e. minimise theta_0 and theta_1 (?)
+    minimise [; \theta_0 \theta_1 ;]
 
-    minimise (1/2m) * sigma[i=1->m](h_theta(x^(i)) - y^(i))^2
+    i.e. minimise [; \theta_0 ;] and [; \theta_1 ;].
 
-    where h_theta(x^(i)) = theta_0 + theta_1 x^(i)
+    minimise [; \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)} - y^{(i)})^2) ;]
+
+    where
+
+    [; h_\theta(x^{(i)}) = \theta_0 + \theta_1 x^{(i)} ;]
 
 note that m is the # of training examples.
 
@@ -281,11 +286,11 @@ we choose 1/2m for mathematical convenience.
 
 we define a cost function:-
 
-    j(theta_0, theta_1) = (1/2m) * sigma[i=1->m](h_theta(x^(i)) - y^(i))^2
+    [; J(\theta_0, \theta_1) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2 ;]
 
 thus our task is to:-
 
-    minimise j(theta_0, theta_1)
+    Minimise [; j(\theta_0, \theta_1) ;]
 
 this cost function is referred to as the 'squared error function'.
 
@@ -293,37 +298,37 @@ squared error function is often the best choice for linear regression problems.
 
 ## video: cost function - intuition 1 ##
 
-hypothesis:-
+Hypothesis:-
 
-    h_theta(x) = theta_0 + theta_1 * x
+    [; h_\theta(x) = \theta_0 + \theta_1x ;]
 
-parameters:-
+Parameters:-
 
-    theta_0, theta_1
+    [; \theta_0, \theta_1 ;]
 
-cost function:-
+Cost function:-
 
-    j(theta_0, theta_1) = 1/(2m) sigma{i=1->m}(h_theta(x^(i))-y^(i))^2
+    [; j(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})^2 ;]
 
-goal:-
+Goal:-
 
-    minimise j(theta_0, theta_1)
+    Minimise [; j(\theta_0, \theta_1) ;]
 
-let's look at a simplified hypothesis:-
+Let's look at a simplified hypothesis:-
 
-    h_theta(x) = theta_1 * x (e.g. theta_0 = 0)
+    [; h_\theta(x) = \theta_1x ;] (e.g. [; \theta_0 = 0 ;])
 
-here:-
+Here:-
 
-    j(theta_1) = 1/(2m) * sigma{i=1->m}(h_theta(x^(i)) - y^(i))^2 = 1/(2m) * sigma{i=1->m}(theta_1 * x^(i) - y^(i))^2
+    [; J(\theta_1) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2 = \frac{1}{2m} \sum_{i=1}^m(\theta_1x^{(i)} - y^{(i)})^2 ;]
 
-    minimise j(theta_1)
+    minimise [; j(\theta_1) ;]
 
 i.e. passes through the origin.
 
 compare the two functions, i.e. the hypothesis function, h, and the cost function, j:-
 
-     h_theta(x)                                  | j(theta_1)
+     [; h_\theta(x) ;]                           | [; j(\theta_1) ;]
      (for fixed theta_1 this is a function of x) | (function of the parameter theta_1)
                                                  |
        ^                                         |            ^
@@ -1093,7 +1098,7 @@ Our new gradient descent algorithm:-
 
     Repeat {
 
-        [; \theta_j := \theta_j - \alpha \frac{1}{m}\Sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} ;]
+        [; \theta_j := \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)} ;]
 
     }
 
