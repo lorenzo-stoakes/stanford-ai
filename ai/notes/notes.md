@@ -1390,7 +1390,7 @@ The structure of a Bayes net determines how efficient it is to perform inference
 
 E.g. a linear string of variables:-
 
-<img src="http://codegrunt.co.uk/images/ai/speeding-up-enumeration-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/4-speeding-up-enumeration-1.png" />
 
 If all n variables are boolean variables.
 
@@ -1398,7 +1398,7 @@ In the alarm network shown earlier, we were careful to ensure that we put all th
 relations in the structure of the network, but if we put the nodes in a different order we'd have a
 different structure, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/speeding-up-enumeration-2.png" />
+<img src="http://codegrunt.co.uk/images/ai/4-speeding-up-enumeration-2.png" />
 
 Explanation:-
 
