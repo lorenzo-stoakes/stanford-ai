@@ -1536,3 +1536,109 @@ still proceed with sampling, unlike in exact inference where we simply couldn't.
 ## Monty Hall Problem ##
 
 ## Monty Hall Letter ##
+
+Unit 5 - Machine Learning
+-------------------------
+
+## Introduction ##
+
+* Lots of data in the world e.g. dna, finance, web, etc.
+
+Machine learning is the discipline of extracting information from this data.
+
+## What is Machine Learning ##
+
+We've already talked about Bayes networks.
+Machine learning is about finding these networks based on data.
+Machine learning = learn models from data.
+
+E.g. google/amazon/etc.
+
+We'll start with supervised learning then moving on to unsupervised learning.
+
+## Stanley DARPA Grand Challenge ##
+
+Stanley is a self-driving car - no human assistance whatsoever.
+
+Uses a laser system to build models of the terrain. Problem is, they only see 25m. If you drive fast
+you have to see further.
+
+Uses machine learning principles on the laser-scanned portion of the road in conjunction with the
+camera view in order to see right up to the horizon.
+
+Means you can drive fast.
+
+Key factor in winning the race.
+
+## Taxonomy ##
+
+Very large field
+
+Very basic terminology:-
+
+### What? ###
+
+* Parameters - e.g. probabilities of a Bayes network.
+* Structure - e.g. Arc structure of a Bayes network.
+* Hidden concepts - e.g. Certain training example might form a group. Can help you make better sense
+  of the data.
+
+### What From? ###
+
+Machine learning driven by some sort of information that you care about:-
+
+* Supervised learning - We use specific target labels.
+* Unsupervised learning - target labels are missing and we use replacement principles to find, for
+  example, hidden concepts.
+* Reinforcement learning - An agent learns from feedback from a physical environment, where it
+  receives some sort of response to actions, e.g. 'well done' or 'that works'.
+
+### What For? ###
+
+* Prediction - e.g. stock market
+* Diagnostics - e.g. medicine
+* Summarisation - e.g. summarising a long article
+
+### How ###
+
+* Passive - If the agent has no impact on the data itself.
+* Active - The agent has some impact.
+* Online - Data obtained while being generated.
+* Offline - Data obtained after been generated.
+
+### Outputs? ###
+
+* Classification - Output is binary/fixed number of classes e.g. chair or not
+* Regression - Output is continuous, e.g. 66.5 degrees Celcius
+
+### Details? ###
+
+* Generative - Seek to model the data as generally as possible.
+* Discriminative - Seek to distinguish data.
+
+Might seem like a trivial distinction, however it makes a huge difference in the implementation of
+the algorithm.
+
+### Supervised Learning ###
+
+Most of the work in the field is supervised learning.
+
+For each training example given a feature vector and a target label called y:-
+
+    [; x_1 x_2 x_3 ... x_n -> y ;]
+
+e.g. for credit rating - feature vector = person's salary, whether they've defaulted before, etc.,
+target label = credit rating.
+
+Based on previous data and actual instances of default. The idea is to predict future customer
+outcomes, e.g. person comes in with a different feature vector - are they likely to default or not?
+
+Can apply the exact same idea to image recognition, e.g. x's are pixels, and y is whether or not recognised:-
+
+    [; \begin{bmatrix}
+        x_{11} & x_{12} & x_{13} & ... & x_{1n} & \to & y_1 \\
+        x_{21} & x_{22} & x_{23} & ... & x_{2n} & \to & y_2 \\
+        ...    & ...    & ...    & ... & ...    & ... & ... \\
+        x_{m1} & x_{m2} & x_{m3} & ... & x_{mn} & \to & y_m \\
+       \end{bmatrix} ;]
+        
