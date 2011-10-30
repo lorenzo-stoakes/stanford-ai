@@ -1,6 +1,10 @@
 Machine Learning Notes
 ======================
 
+**NOTE:-** I am no longer studying the machine learning course in order to focus on AI, so these
+  notes are incomplete. I might come back and attempt to go over the course again later (if that is
+  permitted) at which time I will fix 'em :-)
+
 1. Introduction
 ---------------
 
