@@ -2097,7 +2097,7 @@ times to find the optimal k or smoothing parameter.
 So far, we've been talking about supervised learning via *classification*, where the target
 labels/class is discrete (in our case binary).
 
-Often we want to predict a continuous quantity, e.g. [; y_i in [0, 1] ;]
+Often we want to predict a continuous quantity, e.g. [; y_i ;] in [; [0, 1] ;]
 
 Doing this is called 'regression'.
 
@@ -2323,7 +2323,7 @@ Perceptron is iterative + similar to gradient descent.
 
 Start with random guess for:-
 
-    [; w1, w0 ;]
+    [; w_0, w_1 ;]
 
 Then update via the following:-
 
