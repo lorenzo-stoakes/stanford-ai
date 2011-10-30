@@ -2211,7 +2211,7 @@ There is a little more complexity here, represented by the following function:-
 
 Given f(x), our linear function, then the output of logistic regression is obtained from:-
 
-    [; z = \frac{1}{1 + e^{-f(x)} ;]
+    [; z = \frac{1}{1 + e^{-f(x)}} ;]
 
 This function returns a range of values from 0 - 1.
 
@@ -2234,7 +2234,7 @@ L1 regularisation has the advantage that it tends to make parameters 'sparse', e
 one of the parameters to zero. In the L2 case, parameters tend not to be as sparse, so often L1 is
 preferred. E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-linear-regression-and-complexity-control.-1png" />
+<img src="http://codegrunt.co.uk/images/ai/5-linear-regression-and-complexity-control-1.png" />
 
 ## Minimising Complicated Loss Functions ##
 
