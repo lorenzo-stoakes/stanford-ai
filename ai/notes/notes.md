@@ -1852,7 +1852,7 @@ Given our sample set:-
 We can see from this:-
 
     [; P(m|spam) = \frac{1}{9} ;]
-    [; P(m) = \frac{6}{24} = frac{1}{4} ;]
+    [; P(m) = \frac{6}{24} = \frac{1}{4} ;]
     [; P(spam) = \frac{3}{8} ;]
 
 So by Bayes' rule:-
@@ -1881,7 +1881,7 @@ We can simply count the items in each collection to determine that:-
 If we assume that probability of words is conditionally independent on spam/not spam and given that
 we are representing emails by bag of words, i.e. we don't care about the order, then:-
 
-    [; P(m|spam) = P(secret is secret|spam) = P(secret|spam) \times P(secret|spam) \times P(is|spam) ;]
+    [; P(m|spam) = P($secret is secret$|spam) = P(secret|spam) \times P(secret|spam) \times P(is|spam) ;]
 
 And similar for the ham case.
 
@@ -2059,13 +2059,17 @@ There's many different solutions, one of which is to use smoothing, though in a 
 discussed before. Instead of counting 1 pixel's value count, we can mix it with counts of the
 neighbouring pixel values too, so we get similar statistics for a pixel whether shifted or not.
 
-This is called 'input smoothing', technically we 'convolve' the pixels with the Guassian variable. This might give us better results.
+This is called 'input smoothing', technically we 'convolve' the pixels with the Guassian
+variable. This might give us better results.
 
-Naive Bayes is not a good choice here, however, since the conditional independence of each pixel is too strong an assumption to make. However, it's still fun to talk about it :-)
+Naive Bayes is not a good choice here, however, since the conditional independence of each pixel is
+too strong an assumption to make. However, it's still fun to talk about it :-)
 
 ## Overfitting Prevention ##
 
-We've talked about Occam's razor previously - suggests a trade-off between how well we can fit the data and how 'smooth' our learning algorithm is. We've already seen LaPlacian smoothing as well as input smoothing.
+We've talked about Occam's razor previously - suggests a trade-off between how well we can fit the
+data and how 'smooth' our learning algorithm is. We've already seen LaPlacian smoothing as well as
+input smoothing.
 
 The question is - how do we choose the smoothing parameter?! There is a method called 'cross
 validation'. The method assumes that you have a lot of training data. However this is usually not a
