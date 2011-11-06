@@ -2671,15 +2671,15 @@ Sentences are predicates which correspond to relations.
 
 Note: Here 2=2 denotes the equality relation, which is always included in models.
 
-+------------------+---------------------------+
-|    Sentences     |           Terms           |
-+------------------+---------------------------+
-|     VOWEL(A)     |    A, B, 2 - constants    |
-+------------------+---------------------------+
-|   ABOVE(A, B)    |    x, y, z - variables    |
-+------------------+---------------------------+
-|      2 = 2       |  NUMBEROF(A) - functions  |
-+------------------+---------------------------+
+    +------------------+---------------------------+
+    |    Sentences     |           Terms           |
+    +------------------+---------------------------+
+    |     VOWEL(A)     |    A, B, 2 - constants    |
+    +------------------+---------------------------+
+    |   ABOVE(A, B)    |    x, y, z - variables    |
+    +------------------+---------------------------+
+    |      2 = 2       |  NUMBEROF(A) - functions  |
+    +------------------+---------------------------+
 
 Sentences can be combined with all the operators from propositional logic:-
 
@@ -2692,11 +2692,11 @@ We also have 'quantifiers' (which makes first-order logic unique):-
 
 E.g. valid sentences in first-order logic:-
 
-    [; \forall x VOWEL(x) \Rightarrow NUMBEROF(X) = 1 ;]
+    [; \forall x $VOWEL(x)$ \Rightarrow $NUMBEROF(X)$ = 1 ;]
 
 Reads as 'for all x, if x is a vowel then the number of X is equal to 1'.
 
-    [; \exists x NUMBEROF(x) = 2 ;]
+    [; \exists x $NUMBEROF(x)$ = 2 ;]
 
 Reads as 'there exists an x such that the number of X equals 2'.
 
@@ -2736,19 +2736,19 @@ E.g. if we want to say the vacuum is in A we can say At(V, A).
 
 If we want to say that there is no dirt in any location, then it's a little more involved:-
 
-    [; \forall d \forall l Dirt(d) \wedge Loc(l) \Rightarrow \lnot At(d, l) ;]
+    [; \forall d \forall l $Dirt(d)$ \wedge $Loc(l)$ \Rightarrow \lnot $At(d, l)$ ;]
 
 What's really useful in first-order logic is that even if there we thousands of locations, this
 sentence would still hold.
 
 If we want to say the vacuum is in a location with dirt:-
 
-    [; \exists l \exists d Dirt(d) \wedge Loc(l) \wedge At(V, l) \wedge At(d, l) ;]
+    [; \exists l \exists d $Dirt(d)$ \wedge $Loc(l)$ \wedge $At(V, l)$ \wedge $At(d, l)$ ;]
 
 What does first-order mean? This means that the relations are on objects rather than relations. If
 there were relations on relations, then this is referred to as 'higher-order logic', e.g.:-
 
-    [; \forall R Transitive(R) \Leftrightarrow (\forall a, b, c R(A, b) \wedge R(b, c) \Rightarrow R(a, c)) ;]
+    [; \forall R $Transitive(R)$ \Leftrightarrow (\forall a, b, c R(A, b) \wedge R(b, c) \Rightarrow R(a, c)) ;]
 
 This is valid in higher-order logic, but invalid in first-order logic.
 
@@ -2812,3 +2812,4 @@ The moral is - you're better off using the iff operator, e.g.:-
 
 Unit 8 - Planning
 -----------------
+
