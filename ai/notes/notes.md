@@ -3062,7 +3062,7 @@ done to make it easier to cover all potential flying actions.
 
 Here is a more complete representation of a problem-solving domain in classic planning:-
 
-<img src="http://codegrunt.co.uk/8-classical-planning-2-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-classical-planning-2-1.png" />
 
 Init is initial state, goal is the target goal.
 
@@ -3072,7 +3072,7 @@ How do we do planning using this?
 
 The simplest way to do planning is to do it the exact same way we do it in problem solving, e.g.:-
 
-<img src="http://codegrunt.co.uk/8-progression-search-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-progression-search-1.png" />
 
 This is known as 'forward' or 'progression' state space search. We're searching through the space of
 exact states deterministically.
@@ -3086,7 +3086,7 @@ This is known as 'backwards' or regression search.
 
 We start with the goal state and work backwards, e.g.:-
 
-<img src="http://codegrunt.co.uk/8-regression-search-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-regression-search-1.png" />
 
 Note that the goal state is the complete goal state. Note that the goal state here isn't incomplete,
 it contains literally all we know about the state, as other variables can be whatever they want to
@@ -3128,14 +3128,14 @@ then there are 10 million branches coming out of the initial node. We'd have to 
 in forward search, which is clearly not especially efficient. So it is better to start at the goal,
 e.g.:-
 
-<img src="http://codegrunt.co.uk/8-regression-vs-progression-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-regression-vs-progression-1.png" />
 
 ## Plan Space Search ##
 
 There is one more search we can do with classic planning which we couldn't do previously, which is
 to search through the space of plans rather than states, e.g.:-
 
-<img src="http://codegrunt.co.uk/8-plan-space-search-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-plan-space-search-1.png" />
 
 In forward search we were searching through concrete world states, in backwards search we were
 searching through abstract states, but in plan space search we search through the space of plans.
@@ -3154,7 +3154,7 @@ good heuristics easier.
 To understand choose of heuristics, let's have a look at the sliding puzzle again. Here is part of
 the state space for the 8-puzzle:-
 
-<img src="http://codegrunt.co.uk/8-sliding-puzzle-example-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-sliding-puzzle-example-1.png" />
 
 Let's try and determine what the action schema looks like:-
 
