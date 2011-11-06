@@ -2993,7 +2993,7 @@ This is known as the predict update cycle.
 
 Here's an example of tracking the predict-update cycle:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-predict-update-cycle-1.png" />
+<img src="http://codegrunt.co.uk/images/ai/8-tracking-the-predict-update-cycle-1.png" />
 
 This is in a situation where the actions are guaranteed to work as advertised, i.e. if you suck then
 it will suck up the dirt, if you move then you actually move. However we will call this the
