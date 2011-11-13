@@ -157,7 +157,7 @@ We have a number of choices:-
     +--------------------+-----------+-------------+-----------+
     |  Q-Learning Agent  | (nothing) |   Q(s, a)   |     Q     |
     +--------------------+-----------+-------------+-----------+
-    |    Reflex Agent    | (nothing) |[; \pi(s) ;] | [; \pi ;] |
+    |    Reflex Agent    | (nothing) |    pi(s)    |    pi     |
     +--------------------+-----------+-------------+-----------+
 
 Here Q is not a utility of states, rather of state-action pairs. It tells us for any given state and
