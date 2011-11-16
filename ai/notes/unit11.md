@@ -46,7 +46,7 @@ particle filters, etc. These sound cryptic/meaningless, however you may come acr
 
 If we examine the states, e.g.:-
 
-    [; S_1 ]; to [; S_N ;]
+    [; S_1 $ to $ S_N ;]
 
 This is known as a Markov chain - each state only depends on its immediate predecessor.
 
