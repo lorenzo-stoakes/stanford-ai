@@ -155,7 +155,7 @@ Let's say there's a test which comes out positive (+) or negative (-):-
 
 Since
 
-    [; P(\lnot A|B) = 1 - P(A|B) ;]
+    [; p(\lnot A|B) = 1 - P(A|B) ;]
 
     [; P(+|\lnot C) = 0.2 ;]
     [; P(-|\lnot C) = 0.8 ;]
@@ -166,7 +166,7 @@ We're after:-
 
 But, first let's get some joint probabilities:-
 
-<img src="http://codegrunt.co.uk/images/ai/cancer.png" />
+<img src="http://codegrunt.co.uk/images/ai/3-cancer-1.png" />
 
 Due to the rule of total probability:-
 
