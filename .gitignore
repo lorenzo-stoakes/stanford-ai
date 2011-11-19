@@ -1,3 +1,4 @@
 .DS_Store
 .#*
 octave-core
+ai/exams/*
