@@ -111,7 +111,7 @@ The diagram gives us:-
 By the theorem of total probability we have:-
 
     [; P(R_{i+1}) = P(R_{i+1}|R_i)P(R_i) + P(R_{i+1}|S_i)P(S_i) ;]
-    [; P(S_{i+1}) = P(S_{i+1}|R_i)P(R_i) + P(S_{i+1}|S_i)P(S_i) ;]    
+    [; P(S_{i+1}) = P(S_{i+1}|R_i)P(R_i) + P(S_{i+1}|S_i)P(S_i) ;]
 
 So:-
 
@@ -130,11 +130,121 @@ Therefore:-
     [; P(R_3) = 0.6 \times 0.44 + 0.2 \times 0.56 = 0.376 ;]
     [; P(S_3) = 0.4 \times 0.44 + 0.8 \times 0.56 = 0.624 ;]
 
+Consider another situation:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-markov-chain-questions-1-2-2.png" />
+
+Hence:-
+
+    [; P(A_{i+1}|A_i) = 0.5 ;]
+    [; P(B_{i+1}|A_i) = 0.5 ;]
+    [; P(A_{i+1}|B_i) = 1 ;]
+    [; P(B_{i+1}|B_i) = 0 ;]
+
+We assume:-
+
+    [; P(A_0) = 1 ;]
+
+Hence:-
+
+    [; P(B_0) = 0 ;]
+
+Again, from total probability we have:-
+
+    [; P(A_{i+1}) = P(A_{i+1}|A_i)P(A_i) + P(A_{i+1}|B_i)P(B_i) ;]
+    [; P(B_{i+1}) = P(B_{i+1}|A_i)P(A_i) + P(B_{i+1}|B_i)P(B_i) ;]
+
+Thus:-
+
+    [; P(A_{i+1}) = 0.5P(A_i) + P(B_i) ;]
+    [; P(B_{i+1}) = 0.5P(A_i) ;]
+
+So:-
+
+    [; P(A_1) = 0.5 \times 1 + 0 = 0.5 ;]
+    [; P(B_1) = 0.5 \times 1 = 0.5 ;]
+
+    [; P(A_2) = 0.5 \times 0.5 + 0.5 = 0.75 ;]
+    [; P(B_2) = 0.5 \times 0.5 = 0.25 ;]
+
+    [; P(A_3) = 0.5 \times 0.75 + 0.25 = 0.625 ;]
+    [; P(B_3) = 0.5 \times 0.75 = 0.375 ;]
+
 ## Stationary Distribution + Question ##
 
+Looking at the situation given in the last problem again:-
 
+<img src="http://codegrunt.co.uk/images/ai/11-stationary-distribution-question-1.png" />
+
+What if we go to very long time, e.g.:-
+
+    [; P(A_{1000}) ;]
+
+Or in the limit, e.g.:-
+
+    [; P(A_\infty) = \lim_{t \uparrow \infty} P(A_t) ;]
+
+Essentially going to the limit means we wait for a long time.
+
+This latter probability is known as the *stationary distribution*. And every Markov chain settles to
+a stationary distribution (or sometimes a limit cycle if the transitions are deterministic - which
+we don't care about).
+
+The secret to determining this distribution is to realise that, in the limit:-
+
+    [; P(A_t) = P(A_{t-1}) = P(A_\infty) ;]
+
+We know that:-
+
+    [; P(A_t) = P(A_t|A_{t-1})P(A_{t-1}) + P(A_t|B_{t-1})P(B_{t-1}) ;]
+
+From total probability.
+
+If we call the stationary distribution value (which we want) 'X', e.g.:-
+
+    [; X = P(A_\infty) ;]
+
+Then we can express the formula we derived from total probability as:-
+
+    [; X = P(A_t|A_{t-1})X + P(A_t|B_{t-1})(1 - X) ;]
+
+Plugging in values:-
+
+    [; X = 0.5X + 1 - X ;]
+
+Thus:-
+
+    [; 1.5X = 1 ;]
+    [; X = \frac{2}{3} ;]
+
+And thus:-
+
+    [; P(B_\infty) = \frac{1}{3} ;]
+
+It's still a Markov chain, so we're still flipping between A and B, however now have an idea of
+frequencies of each - i.e. two thirds of the time we're in A and the other third of the time we're
+in B.
+
+Let's examine the rain problem again:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-stationary-distribution-question-2.png" />
+
+We have:-
+
+    [; X = P(R_t|R_{t-1})X + P(R_t|S_{t-1})(1 - X) ;]
+
+Thus:-
+
+    [; X = 0.6X + 0.2(1 - X) ;]
+    [; 0.6X = 0.2 ;]
+
+Hence
+
+    [; X = P(R_\infty) = \frac{1}{3} ;]
 
 ## Finding Transition Probabilities + Question ##
+
+
 
 ## Laplacian Smoothing Question ##
 
