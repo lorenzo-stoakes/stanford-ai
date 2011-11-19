@@ -62,3 +62,12 @@ Begin with:-
         If frontier is empty FAIL
         Path = choose(frontier)
         s = If GOAL RETURN [S]
+
+16/11/2011
+----------
+
+We have Bayes:-
+
+    [; P(a|b) = \frac{P(b|a)P(a)}{P(b)} ;]
+    [; P(a|b) = \frac{P(a \wedge b)}{P(b)} ;]
+    
