@@ -244,7 +244,73 @@ Hence
 
 ## Finding Transition Probabilities + Question ##
 
+You can determine the transition probabilities of a Markov chain like the following:-
 
+<img src="http://codegrunt.co.uk/images/ai/11-finding-transition-probabilities-question-1.png" />
+
+By observation. You want to determine the missing probabilities here, based on observation of the
+following values:-
+
+    RSSSRSR
+
+Using maximum likelihood, we have:-
+
+    [; P(R_0) = 1 ;]
+
+Since we started on a rain day.
+
+If we consider transitions, then we can simply count instances of transitioning from sunny to sunny, sunny to rainy, rainy to sunny, rainy to rainy e.g.:-
+
+    [; P(S|S) = \frac{2}{4} = 0.5 ;]
+    [; P(R|S) = \frac{2}{4} = 0.5 ;]
+    [; P(S|R) = \frac{1}{1} = 1 ;]
+    [; P(R|R) = \frac{0}{1} = 0 ;]
+
+E.g.:-
+
+    SSSSSRSSSRR
+
+    [; P(R_0) = 0 ;]
+    [; P(S|S) = \frac{6}{8} = \frac{3}{4} ;]
+    [; P(R|S) = \frac{2}{8} = \frac{1}{4} ;]
+    [; P(S|R) = \frac{1}{2} ;]
+    [; P(R|R) = \frac{1}{2} ;]
 
 ## Laplacian Smoothing Question ##
+
+One of the problems with HMMs is overfitting - e.g. our prior probability is always 1 for the state
+of the first day, e.g. [; P(R_0) = 1 ;].
+
+Consider:-
+
+    RSSSS
+
+There are 2 possible states in each case (R and S), and k = 1, so given our LaPlacian smoothing
+algorithm, we have:-
+
+    [; P(x) = \frac{count(x) + k}{N + k|x|} ;]
+    [; P(x) = \frac{count(x) + 1}{N + 2} ;]
+
+In terms of ...
+
+    [; P(R_0) = \frac{2}{3} ;]
+
+There are 3 transitions from S, and 1 from R, so the denominator is going to be 5 and 3
+respectively.
+
+There are 3 transitions from S to S so:-
+
+    [; P(S|S) = \frac{4}{5} ;]
+
+There are 0 transitions from S to R so:-
+
+    [; P(R|S) = \frac{1}{5} ;]
+
+There is 1 transition from R to S so:-
+
+    [; P(S|R) = \frac{2}{3} ;]
+
+There are 0 transitions from R to R so:-
+
+    [; P(R|R) = \frac{1}{3} ;]
 
