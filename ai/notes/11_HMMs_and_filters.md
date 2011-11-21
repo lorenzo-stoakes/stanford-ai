@@ -263,8 +263,8 @@ If we consider transitions, then we can simply count instances of transitioning 
 
     [; P(S|S) = \frac{2}{4} = 0.5 ;]
     [; P(R|S) = \frac{2}{4} = 0.5 ;]
-    [; P(S|R) = \frac{1}{1} = 1 ;]
-    [; P(R|R) = \frac{0}{1} = 0 ;]
+    [; P(S|R) = \frac{2}{2} = 1 ;]
+    [; P(R|R) = \frac{0}{2} = 0 ;]
 
 E.g.:-
 
