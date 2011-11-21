@@ -678,21 +678,21 @@ Considering independence:-
 
     [; F \perp A ;]
 
-Yes.
+Independent.
 
-    [; F \perp A | D ;]
+    [; F \not \perp A | D ;]
 
-No, as D helps 'explain away' B and E, which then percolates up to A and F, hence they are *not*
+Not independent, as D helps 'explain away' B and E, which then percolates up to A and F, hence they are *not*
 independent.
 
-    [; F \perp A | G ;]
+    [; F \not \perp A | G ;]
 
 Again, knowledge of G percolates up to do, which then 'explains away' B and E, which go back to A
 and F, hence A and F are *not* independent.
 
     [; F \perp A | H ;]
 
-H might tell us something about G, but it won't tell us anything about D, so A and F are not independent.
+H might tell us something about G, but it won't tell us anything about D, so A and F *are* independent.
 
 ## Congratulations! ##
 
