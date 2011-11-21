@@ -193,10 +193,10 @@ Invented by Rev. Thomas Bayes, mathematician.
 
 Where:-
 
-    [; P(A|B) = ;] Posterior
-    [; P(B|A) = ;] Likelihood
-    [; P(A) = ;] Prior
-    [; P(B) = ;] Marginal Likelihood
+    [; P(A|B) $ is the posterior$ ;]
+    [; P(B|A) $ is the likelihood$ ;]
+    [; P(A) $ is the prior$ ;]
+    [; P(B) $ is the marginal likelihood$ ;]
 
 Let's say that B is the evidence, and A is what we're interested in, e.g. test result vs cancer.
 
@@ -215,9 +215,9 @@ first place, and divide it by the probability of the evidence, which is often ex
 
 Using total probability.
 
-    [; P(C|+) = \frac{P(+|C)P(C)}{P(+)} = \frac{P(+|C)P(C)}{P(+|C)*P(C)} + P(+|C)P(\lnot C) ;]
-    [;       = 0.9 * 0.01 / (0.9 * 0.01 + 0.2 * 0.99) ;]
-    [;       \simeq 0.0435 ;]
+    [; P(C|+) = \frac{P(+|C)P(C)}{P(+)} = \frac{P(+|C)P(C)}{P(+|C)P(C) + P(+|C)P(\lnot C)} ;]
+    [; = 0.9 * 0.01 / (0.9 * 0.01 + 0.2 * 0.99) ;]
+    [; \simeq 0.0435 ;]
 
 Which is the same as above :)
 
