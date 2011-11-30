@@ -314,3 +314,103 @@ There are 0 transitions from R to R so:-
 
     [; P(R|R) = \frac{1}{3} ;]
 
+## HMM Happy Grumpy Problem + Question ##
+
+Looking at rainy/sunny problem again:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-happy-grumpy-problem-question-1.png" />
+
+We assume the following:-
+
+    [; P(R_0) = \frac{1}{2} ;]
+    [; P(S_0) = \frac{1}{2} ;]
+
+What makes this a *hidden* Markov model is that we don't get to observe the rainy/sunny variable,
+rather we get to observe something else - in this case whether the subject is happy/grumpy based on
+the weather, e.g.:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-happy-grumpy-problem-question-2.png" />
+
+Let's assume happy on day 1, e.g.:-
+
+    [; H_1 ;]
+
+What's the posterior probabilty of rain on day 1? E.g.:-
+
+    [; P(R_1|H_1) = \frac{P(H_1|R_1)P(R_1)}{P(H_1)} ;]
+    [; P(R_1) = P(R_1|R_0)P(R_0) + P(R_1|S_0)P(S_0) ;]
+
+    [; = 0.6 \times 0.5 + 0.2 \times 0.5 = 0.4 ;]
+
+Plugging in the values we get:-
+
+    [; P(R_1|H_1) = 0.229 ;]
+
+We've determined that the marginal probability of it being rainy on day 1 is 0.4, so by determining
+that the subject is happy, we significantly reduce the probability - this is because when the
+subject is happy it is far more likely to be sunny.
+
+Great example of the power of Baye's rule in a relatively complicated HMMs.
+
+## Wow You Understand ##
+
+Professor Thrun goes mental at what we understand. We are now good at:-
+
+* Prediction - Predict the next state/measurement.
+* State Estimation - fancy way of saying able to compute a probability for the internal or hidden
+  state given measurements.
+
+## HMMs and Robot Localisation ##
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-1.png" />
+
+Video of HMMs used for robot navigation. This is a toy robot in a grid world (consists of discrete
+cells). Knows where north is at all times, can sense left, right, up and down. Can determine whether
+a wall is in a particular direction in the adjacent cell.
+
+Initially has no clue where it is - known as a 'global localisation problem'. Uses its sensors and
+actuators to localise itself.
+
+In the first instance, it senses walls north and south but not west and east, which changes the
+probabilities:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-2.png" />
+
+The posterior probability have now increased for places where there is a wall north and south, and
+decreased where this is not the case.
+
+The lighter grey shaded areas have a lower probability because this takes into account there being
+exactly one sensing error in the south sensor. Errors are less likely than not having an error thus
+this is a lighter shade than other north/south walled cells.
+
+If we move right, the probabilities change again:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-3.png" />
+
+Probabilities have decayed, the leftmost cell has reduced probability because though it was
+consistent before, it is less consistent with moving right and measuring a wall to the
+north/south. The only ones which are consistent are the three immediately next to the robot.
+
+As we keep on moving the probabilities change again:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-4.png" />
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-5.png" />
+
+In this final state it has localised itself.
+
+## HMM Equations ##
+
+Looking at the maths of HMMs.
+
+## HMM Localisation Example ##
+
+## Particle Filters ##
+
+## Localisation and Particle Filters ##
+
+## Particle Filter Algorithm ##
+
+## Particle Filter Pros and Cons ##
+
+## Conclusion ##
