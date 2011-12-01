@@ -401,16 +401,241 @@ In this final state it has localised itself.
 
 ## HMM Equations ##
 
-Looking at the maths of HMMs.
+So far we've been a bit hand wavy about things so let's get a bit more formal look at the
+mathematics of HMMs.
+
+We know that we are dealing with a Markov chain like this:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-equations-1.png" />
+
+Here the past, present, and future are all conditionally independent given [; X_2 ;].
+
+Let's you efficiently perform inference.
+
+If we consider a single measurement from a single hidden variable:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-equations-2.png" />
+
+Then we have from Baye's rule:-
+
+    [; P(X_1|Z_1) = \frac{P(Z_1|X_1)P(X_1)}{P(Z_1)} ;]
+
+We can look at the proportionality of this:-
+
+    [; P(X_1|Z_1) \alpha P(Z_1|X_1)P(X_1) ;]
+
+This is the measurement update of a HMM. Keep in mind that it needs to be normalised as previously
+discussed.
+
+We also have 'prediction' (not necessarily prediction per se, a historical term related to the fact that we might want to determine the probability for X2 given the probability for X1):-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-equations-3.png" />
+
+Which is represented by the following formula:-
+
+    [; P(X_2) = \sum_{X_1} P(X_1)P(X_2|X_1) ;]
+
+These two equations form the maths of a HMM, and the parameters of a HMM are defined as:-
+
+    [; P(X_2|X_1) ;]
+    [; P(Z_1|X_1) ;]
+    [; P(X_0) ;]
 
 ## HMM Localisation Example ##
 
+Let's consider the application of an HMM to a real robot localisation example.
+
+Consider 1d world where robot is lost:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-1.png" />
+
+The graph underneath is a histogram which shows all possible states. We bin the world into small
+bins + for each bin we assign a small numerical probability for the robot being in that position.
+
+When all the bins are of the same height, there is maximum uncertainty as to where the robot is.
+
+Now the robot senses that it is next to a door:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-2.png" />
+
+The red graph is the probability of seeing a door for different locations in the environment.
+
+We then apply Baye's rule and multiply the prior with the measurement probability to obtain the
+posterior - this gives us our measurement update.
+
+Things progress as the robot moves right:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-3.png" />
+
+This is the next state prediction part of the process, also known as the 'convolution' or 'state
+transition' part of the process where the little bumps get shifted along with the robot, and they
+are flattened out a little due to the fact that robot motion has used uncertainty.
+
+Really a simple operation - you shift the values right, and smooth them out a little to take into
+account the control noise in the robot's actuators.
+
+Now the robot senses again:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-4.png" />
+
+Here we see that there is a multiplication effect going on - there is a non-uniform prior,
+multiplied by a measurement - if you look at the graph, the only place where you have a high prior
+probability and a high measurement probability is where the peak occurs at the second door.
+
+Really a simple algorithm, essentially - measurements are multiplications, motion is convolution
+(shifts with added noise).
+
 ## Particle Filters ##
+
+Previous section a great segue into particle filters - one of the most successful algorithms in
+AI/robots.
+
+We're still dealing with robot localisation. The below image is data from a real robot with sensor
+data. The robot is lost in the building and has range sensors (measuring distances to nearby
+obstacles), and its task is to determine where it is:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-particle-filters-1.png" />
+
+The robot needs to move along the black line, but it needs to determine where it is.
+
+The key thing with particle filters is the representation of belief. Previously we had discrete
+worlds (like the sun/rain example or the small bins example). Particle filters have a very different
+representation - they represent the space with a series of points/particles.
+
+Each of the dots is a hypothesis of where the world might be, it's a concrete (x, y) value and its
+heading direction - it's a 3 value vector.
+
+The sum of all the vectors forms the belief space. The particle filter approximate a posterior via
+many guesses, and the density of the guesses represent the posterior probability of being in a given
+location.
+
+Video shown, demonstrating that the particles soon cluster, with symmetry causing a duplicate in a
+symmetrical location (e.g. a corridor) before the robot enters a far less symmetric room where the
+symmetrical false clustering dies out.
+
+Intuitively, each particle is a representation of a possible state, and the more consistent the
+particle with a measurement, the more the sonar measurement fits into the place where the particle
+says the robot is, the more likely it is to survive. This is the essence of particle filters - uses
+many particles to represent a belief, and lets the particles survive in proportion to the
+measurement probability, which here is the consistency of sonar range measurements with the map of
+the environment given the location of the particle.
+
+Can be implemented in less than 10 lines of (C) code.
 
 ## Localisation and Particle Filters ##
 
+Here's our 1d localisation optimisation problem once again, this time with particle filters:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-1.png" />
+
+The particles start out spread out relatively uniformly. Going to use this example to explain every
+step.
+
+<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-2.png" />
+
+The robot senses the door, then copies the particles over verbatim, then gives them a 'weight'. This
+is called the 'importance weight'. This is equal to the measurement probability. The height of the
+particle indicates the weights of the particles.
+
+The robot now moves:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-3.png" />
+
+Here we've performed 'resampling', an algorithm which works by picking a particle from the previous
+set, picking more frequently in proportion to the importance weight. The particles are then skewed
+by the movement. This is the 'forward prediction' step.
+
+We then perform a measurement step:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-4.png" />
+
+As before we've multiplied the measurement probability by the particles. Particles are starting to
+clump towards the correct location.
+
+The nice aspect of this is that particle filters work in continuous spaces, and (often
+underappreciated) they use your computational resources in proportion to how likely something is, so
+they use your resources in a very intelligent way.
+
+We resample again:-
+
+<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-5.png" />
+
 ## Particle Filter Algorithm ##
+
+The particle filter algorithm is defined as:-
+
+    Algorithm Particle Filter(S, U, Z)
+
+Where:-
+
+* S - set of particles with associated importance weights
+* U - control vector
+* Z - measurement vector
+
+This constructs a new particle set S':-
+
+    [; S' = \theta ;]
+    [; \eta = 0 ;]
+
+Where [; \eta ;] is our normalisation factor as 
+
+The steps are:-
+
+    For i=1...n
+        Sample j ~ {w} with replacement
+
+Here we sample an index j according to the index weights associated with the input particle set. The
+probability of picking the particle is exactly the importance weight, w.
+
+        [; x' ~ p(x'|u, s_j) ;]
+        [; w' = p(z|x') ;]
+
+Here we determine the new particle, x, and the specific particle in question [; s_j ;], and its
+associated importance weight.
+
+        [; s' = s' \cup \{ <x', w'> \} ;]
+
+Here we add the new particle into our new particle set.
+
+        [; \eta = \eta + w' ;]
+
+Here we increment our normalisation factor by our new importance weight.
+        
+    end
+    For i = 1 ... n
+        [; w_i = \frac{1}{\eta}w_i ;]
+    end
+
+Here we normalise.
+
+Really a very simple algorithm + easy to implement, certainly when compared to implementing a Bayes
+network for example.
 
 ## Particle Filter Pros and Cons ##
 
+Particle filters are:-
+
+Pros
+
+* Easy to implement.
+* Work well in many applications - the self-driving cars use particle filters for localisation,
+  mapping and a number of other functions. They work well due to being easy to implement,
+  computationally efficient and can deal with highly non-monotonic + v. complex posterior
+  distribution with many peaks - this is important, many other filters cannot. Often the method of
+  choice for determining an estimation method quickly for problems where the posterior is complex.
+
+Cons
+
+* Don't work in high-dimensional spaces - number of particles required to fill a high-dimensional
+  space tends to grow exponentially with the dimensions of the space. However, there are extensions
+  which can help with this with fancy names like 'Rao-Blackwellised particle filters'
+* Problems with degenerate conditions, e.g. if you only have 1 or 2 particles, or no noise in your
+  measurement model or control (relied upon to mix things up a little). If you have no noise you
+  have to deviate from the basic paradigm.
+
 ## Conclusion ##
+
+Learnt a lot about HMMs and particle filters. Particle filters are the most used algorithm for
+interpreting sensor data. Applicable in a wide array of applications including finance, medicine,
+behavioural studies, times series analysis, language technologies - basically anything involving
+time and sensors/uncertainty.
