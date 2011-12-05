@@ -32,6 +32,26 @@ to the 'aperture effect'.
 
 So in summary - there are certain degenerate cases where stereo won't work.
 
+## Stereo ##
+
+(The missing video found on youtube at http://www.youtube.com/watch?v=beb_cF5fcmk :-)
+
+An easy means of recovering depth in 3D vision is via 'stereo'. Humans use this all the time using
+eyes, with a displacement (eyes are slightly displaced from one another):-
+
+<img src="http://codegrunt.co.uk/images/ai/17-stereo-1.png" />
+
+We look at a scene from slightly different angles in each eye.
+
+We have two cameras, usually with the same focal length. The projection of the point depends on the
+displacement or the baseline of the so-called 'stereo rig':-
+
+<img src="http://codegrunt.co.uk/images/ai/17-stereo-2.png" />
+
+The two images see the point at a different angle and reflects itself as different coordinates. The
+idea of stereo is to screen objects and to use the displacement (often 'parallax') of these two
+different projections to estimate the depth/range of the object.
+
 ## Solve Depth + Question ##
 
 Consider the following stereo rig:-
