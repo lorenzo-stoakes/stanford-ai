@@ -114,7 +114,7 @@ Where v is velocity and [; \omega ;] is turning velocity.
 I.e. time step. This gives us:-
 
     [; x' = x + v \Delta t \cos \theta ;]
-    [; y' = y + v \Delta t \sing \theta ;]
+    [; y' = y + v \Delta t \sin \theta ;]
     [; \theta' = \theta + \omega \Delta t ;]
 
 Nice equations to model relatively complex mobile robots. Simple geometry.
