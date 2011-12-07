@@ -109,9 +109,9 @@ Given:-
     [; v ;]
     [; \omega ;]
 
-Where v is velocity and [; \omega ;] is turning velocity.
+Where [; \Delta t ;] is time step, v is velocity and [; \omega ;] is turning velocity.
 
-I.e. time step. This gives us:-
+This gives us:-
 
     [; x' = x + v \Delta t \cos \theta ;]
     [; y' = y + v \Delta t \sin \theta ;]
