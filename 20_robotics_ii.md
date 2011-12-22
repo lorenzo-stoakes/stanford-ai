@@ -153,5 +153,3 @@ Finished the short overview, but we have still covered many examples, e.g.:-
 
 * Perception via particle filters
 * Planning via MDP, A*
-
-
