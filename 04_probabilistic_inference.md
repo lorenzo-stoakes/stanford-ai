@@ -250,14 +250,141 @@ still proceed with sampling, unlike in exact inference where we simply couldn't.
 
 ## Sampling Example ##
 
+[YouTube Link 1](http://www.youtube.com/watch?feature=player_embedded&v=mXgfRvRmDFI)
+[YouTube Link 2](Explanation)](http://www.youtube.com/watch?feature=player_embedded&v=K1ZyqpTJPK0)
+[AI Class Link](https://www.ai-class.com/course/video/quizquestion/80)
+
+Here's a network we can use to investigate how sampling can be used to do inference:-
+
+<img src="http://codegrunt.co.uk/images/ai/4-sampling-example-1.png" />
+
+We have 4 booleans variables - each indicating whether the condition in question is the case or not.
+
+We start the analysis with the variable which has all of its parents defined. Initially this is the
+cloudy variable.
+
+We use a random variable to determine P(C), before using the outcome of this to decide P(S|C) and
+P(R|C) before, in turn, determining the value of P(W|S,R).
+
 ## Approximate Inference 2 ##
+
+[YouTube Link](http://www.youtube.com/watch?feature=player_embedded&v=fChe7bVEdHQ)
+[AI Class Link](https://www.ai-class.com/course/video/videolecture/41)
+
+The probability of sampling a particular variable depends on the values of the parents, but they are
+chosen according to the conditional probability tables, so in the limit the count of each sampled
+probability will approach the true probabilities, e.g. with an infinite number of samples, this
+model will provide the true joint probabilities.
+
+We say that the sampling method is *consistent*.
+
+We can use this kind of sampling to determine the complete joint distribution, or we can use it to
+compute an individual variable.
+
+What if we wanted to compute a conditional variable, e.g. [; P(W|\lnot C) ;]?
+
+If you consider the sample (resulting from random variables) of +c, -s, +r, +w, then it's obvious
+this is not consistent with the required conditional probability. So we *reject* this sample.
+
+The technique of ignoring any samples which do not match the conditional probabilities which we are
+interested in (but keeping the ones we are interesting in) is known as 'rejection sampling'. This procedure is also consistent.
 
 ## Rejection Sampling ##
 
+[YouTube Link](http://www.youtube.com/watch?feature=player_embedded&v=9IdjpH4xkGM)
+[AI Class Link](https://www.ai-class.com/course/video/videolecture/42)
+
+There's a problem with rejection sampling - you end up rejecting *a lot* of the samples.
+
+If we consider the burglary/alarm network again:-
+
+<img src="http://codegrunt.co.uk/images/ai/4-rejection-sampling-1.png" />
+
+Say we're interested in [; P(B|+A) ;]. The problem is that burglaries are very infrequent, so you
+have to put up with a large number of -b, -a cases before you get to any +b cases.
+
+We introduce a technique to deal with this - *likelihood weighting*. This generates samples such
+that we can keep everything. We fix the evidence variables (here A), so A is always positive, and
+then sample the rest of the variables.
+
+The problem with this is that the resultant set of samples is *inconsistent*. We can fix this however, by assigning a probability to each sample and weighting them appropriately.
+
 ## Likelihood Weighting + 1-2 ##
+
+In likelihood weighting we collect samples as we did before, and add a probabilistic weight to each
+sample.
+
+Consider our cloudy/sprinkler/rain/wet grass network again:-
+
+[Youtube Link 1](http://www.youtube.com/watch?feature=player_embedded&v=GYcIruSqT_k)
+[YouTube Link 2 (explanation)](http://www.youtube.com/watch?feature=player_embedded&v=hvIL_fFvUGM)
+[Youtube Link 3](http://www.youtube.com/watch?feature=player_embedded&v=jKcp0uQ_rUo)
+[Youtube Link 4](http://www.youtube.com/watch?feature=player_embedded&v=ngGCGaIEvBU)
+
+[AI Class Link 1](https://www.ai-class.com/course/video/quizquestion/81)
+[AI Class Link 2](https://www.ai-class.com/course/video/videolecture/43)
+[AI Class Link 3](https://www.ai-class.com/course/video/videolecture/44)
+
+<img src="http://codegrunt.co.uk/images/ai/4-likelihood-weighting-1-2-1.png" />
+
+Assuming we are after [; P(R|+S, +W) ;], and our random variables grant cloudy positive and rain
+positive, then we have a weight of 0.1 from the assumed positive sprinkler, and 0.99 weight from the
+wet grass, so our overall weight is [; 0.1 \times 0.99 = 0.099 ;].
+
+Now we are applying this weighting, the sampling is now consistent.
+
+A problem here is that unconstrained variables might end up such that weightings end up being low,
+e.g. consider cloudiness and sprinkler/rain being positive.
 
 ## Gibbs Sampling ##
 
+[YouTube Link](http://www.youtube.com/watch?feature=player_embedded&v=QaojSzk7Hpw)
+[AI Class Link](https://www.ai-class.com/course/video/videolecture/45)
+
+Gibbs sampling takes all the evidence into account, not just the upstream evidence. It uses a method
+called Markov Chain Monte Carlo (MCMC), e.g.:-
+
+<img src="http://codegrunt.co.uk/images/ai/4-gibbs-sampling-1.png" />
+
+Using this method, we resample one non-evidence variable at a time using the values of all the other
+variables.
+
+We end up walking the space of assignment of variables, randomly.
+
+In rejection and likelihood sampling, each sample was independent of one another. Here there is not
+true. Adjacent samples vary only in one place. Regardless, the technique is still consistent.
+
 ## Monty Hall Problem ##
 
+[YouTube Link 1](http://www.youtube.com/watch?feature=player_embedded&v=6uF6Fh0qpV0)
+[YouTube Link 2 (explanation)](http://www.youtube.com/watch?feature=player_embedded&v=x7x6nHvQEQ4)
+[AI Class Link](https://www.ai-class.com/course/video/quizquestion/70)
+
+This problem concerns a game show where you have 3 doors, behind 1 of which resides an expensive
+sports car, and behind the other 2 reside goats.
+
+Once you make a choice, e.g. door 1, the host will open one of the doors, knowing the door he opens
+contains a goat. He then gives you the choice between switching.
+
+The probability of winning when sticking with door 1 is 1/3, whereas when you switch to door 2, the
+probability is 2/3.
+
+This is counter-intuitive.
+
+There are two possibilities of course, however we have learnt from probability that just because
+there are two possibilities it does not mean they are equally likely.
+
+It's easier to say why the first door possesses 1/3 probability - when the game started each door
+has 1/3 probability of hiding the car. One possible explanation is that the probabilities have to
+sum to 1, so you have no choice but to assign 2/3 probability to the remaining other door. Why does
+this apply to door 2 and not 1? That's because the host revealing the goat has *updated* the
+probability of the door as he chose not to open it. We haven't learnt anything about door no. 1 as
+opening that door was never an option for the host.
+
 ## Monty Hall Letter ##
+
+[YouTube Link](http://www.youtube.com/watch?feature=player_embedded&v=CIrfGiP65UI)
+[AI Class Link](https://www.ai-class.com/course/video/videolecture/46)
+
+Letter from Monty Hall himself about use of his name to discuss the Monty Hall problem in which he
+demonstrates that even Monty Hall does not understand the Monty Hall problem :-)
