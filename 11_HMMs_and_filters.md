@@ -39,7 +39,7 @@ Whenever there is a time series with noise or uncertainty, then using HMMs is th
 
 The nature of HMMs are well characterised by the following Bayes network:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-bayes-network-of-hmms.png" />
+<img src="https://ljs.io/img/ai/11-bayes-network-of-hmms.png" />
 
 These kinds of networks are the core of HMMs as well as various filters such as Kalran filters,
 particle filters, etc. These sound cryptic/meaningless, however you may come across them in future.
@@ -75,7 +75,7 @@ than others, and by doing this over + over again it is able to build a coherent 
 
 One final example on speech recognition:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-localisation-problem-examples-1.png" />
+<img src="https://ljs.io/img/ai/11-localisation-problem-examples-1.png" />
 
 If you have a microphone which records speech and have your computer recognise speech you will
 likely come across Markov models.
@@ -91,7 +91,7 @@ Let's consider an un-hidden Markov chain.
 
 Let's consider two types of weather - rainy (R) and sunny (S):-
 
-<img src="http://codegrunt.co.uk/images/ai/11-markov-chain-questions-1-2-1.png" />
+<img src="https://ljs.io/img/ai/11-markov-chain-questions-1-2-1.png" />
 
 Where there is a 0.6 probability that it remains rainy and 0.4 chance it becomes sunny if rainy, and
 a 0.8 chance of it remaining sunny and a 0.2 chance it becomes rainy if sunny.
@@ -132,7 +132,7 @@ Therefore:-
 
 Consider another situation:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-markov-chain-questions-1-2-2.png" />
+<img src="https://ljs.io/img/ai/11-markov-chain-questions-1-2-2.png" />
 
 Hence:-
 
@@ -174,7 +174,7 @@ So:-
 
 Looking at the situation given in the last problem again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-stationary-distribution-question-1.png" />
+<img src="https://ljs.io/img/ai/11-stationary-distribution-question-1.png" />
 
 What if we go to very long time, e.g.:-
 
@@ -227,7 +227,7 @@ in B.
 
 Let's examine the rain problem again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-stationary-distribution-question-2.png" />
+<img src="https://ljs.io/img/ai/11-stationary-distribution-question-2.png" />
 
 We have:-
 
@@ -246,7 +246,7 @@ Hence
 
 You can determine the transition probabilities of a Markov chain like the following:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-finding-transition-probabilities-question-1.png" />
+<img src="https://ljs.io/img/ai/11-finding-transition-probabilities-question-1.png" />
 
 By observation. You want to determine the missing probabilities here, based on observation of the
 following values:-
@@ -318,7 +318,7 @@ There are 0 transitions from R to R so:-
 
 Looking at rainy/sunny problem again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-happy-grumpy-problem-question-1.png" />
+<img src="https://ljs.io/img/ai/11-hmm-happy-grumpy-problem-question-1.png" />
 
 We assume the following:-
 
@@ -329,7 +329,7 @@ What makes this a *hidden* Markov model is that we don't get to observe the rain
 rather we get to observe something else - in this case whether the subject is happy/grumpy based on
 the weather, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-happy-grumpy-problem-question-2.png" />
+<img src="https://ljs.io/img/ai/11-hmm-happy-grumpy-problem-question-2.png" />
 
 Let's assume happy on day 1, e.g.:-
 
@@ -362,7 +362,7 @@ Professor Thrun goes mental at what we understand. We are now good at:-
 
 ## HMMs and Robot Localisation ##
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-1.png" />
+<img src="https://ljs.io/img/ai/11-hmms-and-robot-localisation-1.png" />
 
 Video of HMMs used for robot navigation. This is a toy robot in a grid world (consists of discrete
 cells). Knows where north is at all times, can sense left, right, up and down. Can determine whether
@@ -374,7 +374,7 @@ actuators to localise itself.
 In the first instance, it senses walls north and south but not west and east, which changes the
 probabilities:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-2.png" />
+<img src="https://ljs.io/img/ai/11-hmms-and-robot-localisation-2.png" />
 
 The posterior probability have now increased for places where there is a wall north and south, and
 decreased where this is not the case.
@@ -385,7 +385,7 @@ this is a lighter shade than other north/south walled cells.
 
 If we move right, the probabilities change again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-3.png" />
+<img src="https://ljs.io/img/ai/11-hmms-and-robot-localisation-3.png" />
 
 Probabilities have decayed, the leftmost cell has reduced probability because though it was
 consistent before, it is less consistent with moving right and measuring a wall to the
@@ -393,9 +393,9 @@ north/south. The only ones which are consistent are the three immediately next t
 
 As we keep on moving the probabilities change again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-4.png" />
+<img src="https://ljs.io/img/ai/11-hmms-and-robot-localisation-4.png" />
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmms-and-robot-localisation-5.png" />
+<img src="https://ljs.io/img/ai/11-hmms-and-robot-localisation-5.png" />
 
 In this final state it has localised itself.
 
@@ -406,7 +406,7 @@ mathematics of HMMs.
 
 We know that we are dealing with a Markov chain like this:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-equations-1.png" />
+<img src="https://ljs.io/img/ai/11-hmm-equations-1.png" />
 
 Here the past, present, and future are all conditionally independent given [; X_2 ;].
 
@@ -414,7 +414,7 @@ Let's you efficiently perform inference.
 
 If we consider a single measurement from a single hidden variable:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-equations-2.png" />
+<img src="https://ljs.io/img/ai/11-hmm-equations-2.png" />
 
 Then we have from Baye's rule:-
 
@@ -429,7 +429,7 @@ discussed.
 
 We also have 'prediction' (not necessarily prediction per se, a historical term related to the fact that we might want to determine the probability for X2 given the probability for X1):-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-equations-3.png" />
+<img src="https://ljs.io/img/ai/11-hmm-equations-3.png" />
 
 Which is represented by the following formula:-
 
@@ -447,7 +447,7 @@ Let's consider the application of an HMM to a real robot localisation example.
 
 Consider 1d world where robot is lost:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-1.png" />
+<img src="https://ljs.io/img/ai/11-hmm-localisation-example-1.png" />
 
 The graph underneath is a histogram which shows all possible states. We bin the world into small
 bins + for each bin we assign a small numerical probability for the robot being in that position.
@@ -456,7 +456,7 @@ When all the bins are of the same height, there is maximum uncertainty as to whe
 
 Now the robot senses that it is next to a door:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-2.png" />
+<img src="https://ljs.io/img/ai/11-hmm-localisation-example-2.png" />
 
 The red graph is the probability of seeing a door for different locations in the environment.
 
@@ -465,7 +465,7 @@ posterior - this gives us our measurement update.
 
 Things progress as the robot moves right:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-3.png" />
+<img src="https://ljs.io/img/ai/11-hmm-localisation-example-3.png" />
 
 This is the next state prediction part of the process, also known as the 'convolution' or 'state
 transition' part of the process where the little bumps get shifted along with the robot, and they
@@ -476,7 +476,7 @@ account the control noise in the robot's actuators.
 
 Now the robot senses again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-hmm-localisation-example-4.png" />
+<img src="https://ljs.io/img/ai/11-hmm-localisation-example-4.png" />
 
 Here we see that there is a multiplication effect going on - there is a non-uniform prior,
 multiplied by a measurement - if you look at the graph, the only place where you have a high prior
@@ -494,7 +494,7 @@ We're still dealing with robot localisation. The below image is data from a real
 data. The robot is lost in the building and has range sensors (measuring distances to nearby
 obstacles), and its task is to determine where it is:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-particle-filters-1.png" />
+<img src="https://ljs.io/img/ai/11-particle-filters-1.png" />
 
 The robot needs to move along the black line, but it needs to determine where it is.
 
@@ -526,12 +526,12 @@ Can be implemented in less than 10 lines of (C) code.
 
 Here's our 1d localisation optimisation problem once again, this time with particle filters:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-1.png" />
+<img src="https://ljs.io/img/ai/11-localisation-and-particle-filters-1.png" />
 
 The particles start out spread out relatively uniformly. Going to use this example to explain every
 step.
 
-<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-2.png" />
+<img src="https://ljs.io/img/ai/11-localisation-and-particle-filters-2.png" />
 
 The robot senses the door, then copies the particles over verbatim, then gives them a 'weight'. This
 is called the 'importance weight'. This is equal to the measurement probability. The height of the
@@ -539,7 +539,7 @@ particle indicates the weights of the particles.
 
 The robot now moves:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-3.png" />
+<img src="https://ljs.io/img/ai/11-localisation-and-particle-filters-3.png" />
 
 Here we've performed 'resampling', an algorithm which works by picking a particle from the previous
 set, picking more frequently in proportion to the importance weight. The particles are then skewed
@@ -547,7 +547,7 @@ by the movement. This is the 'forward prediction' step.
 
 We then perform a measurement step:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-4.png" />
+<img src="https://ljs.io/img/ai/11-localisation-and-particle-filters-4.png" />
 
 As before we've multiplied the measurement probability by the particles. Particles are starting to
 clump towards the correct location.
@@ -558,7 +558,7 @@ they use your resources in a very intelligent way.
 
 We resample again:-
 
-<img src="http://codegrunt.co.uk/images/ai/11-localisation-and-particle-filters-5.png" />
+<img src="https://ljs.io/img/ai/11-localisation-and-particle-filters-5.png" />
 
 ## Particle Filter Algorithm ##
 

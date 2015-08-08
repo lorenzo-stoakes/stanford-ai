@@ -17,14 +17,14 @@ Reinforcement learning can tell you this.
 
 Looking at the grid again:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-successes-1.png" />
+<img src="https://ljs.io/img/ai/10-successes-1.png" />
 
 Imagine that we didn't know where the rewards were here. We can have the agent explore the
 territory, find the rewards and determine an optimal policy.
 
 Analogous to a game, like backgammon, which is stochastic (i.e. the dice rolls):-
 
-<img src="http://codegrunt.co.uk/images/ai/10-successes-2.png" />
+<img src="https://ljs.io/img/ai/10-successes-2.png" />
 
 In the 1990s, Gary Tesauro at IBM wrote a program which played Backgammon. He started by having
 expert Backgammon players label example positions, such that he could determine the utility of a
@@ -196,7 +196,7 @@ difference learning', or TD, which means as we move from one state to the next w
 difference between the two states and learn that, then back-up the values from one state to the
 next. Looking at the grid example again:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-passive-temporal-difference-learning-1.png" />
+<img src="https://ljs.io/img/ai/10-passive-temporal-difference-learning-1.png" />
 
 We're going to follow a fixed policy, [; \pi ;], and when we hit the +1 state it propagates to
 surrounding states so we know it's good to be in nearby states.
@@ -220,7 +220,7 @@ So, moving to the first square from the start, assuming the reward is zero, we a
 U table, and so on as we work are way through a path to the +1 terminal, assuming the policy is
 good, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-passive-temporal-difference-learning-2.png" />
+<img src="https://ljs.io/img/ai/10-passive-temporal-difference-learning-2.png" />
 
 As we go we have to back-up values, so we apply the above bottom formula.
 
@@ -250,13 +250,13 @@ And for the square immediately to the left of the +1:-
 
 E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-passive-temporal-difference-learning-3.png" />
+<img src="https://ljs.io/img/ai/10-passive-temporal-difference-learning-3.png" />
 
 ## Passive Agent Results ##
 
 Here are some results from running the passive TD algorithm on the 4x3 maze:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-passive-agent-results-1.png" />
+<img src="https://ljs.io/img/ai/10-passive-agent-results-1.png" />
 
 On the right we have the average error across all states in the maze. Starts off very high, but
 gradually reduces considerably, converging to around 0.05 root mean square error after 60 trials.
@@ -295,7 +295,7 @@ So if a policy is flawed, the algorithm tends to move away from it towards a bet
 
 Here's the result of running the greedy agent over 500 trials:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-greedy-agent-results-1.png" />
+<img src="https://ljs.io/img/ai/10-greedy-agent-results-1.png" />
 
 We're graphing two things here - the error, and 'policy loss' which both jump down suddenly after a
 certain number of trials (around 40-50).
@@ -371,7 +371,7 @@ So when the no. of visits to a state is below our exploration threshold e, we we
 
 Here are the results of the exploratory agent:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-exploration-agent-results-1.png" />
+<img src="https://ljs.io/img/ai/10-exploration-agent-results-1.png" />
 
 It does considerably better than the passive or greedy agents. We only needed to go through 100
 trials rather than 500 to get good results, so it's converging much faster and to better results. It
@@ -383,7 +383,7 @@ The error isn't quite reduced to zero, but we are still able to find the exact r
 
 Let's assume we have performed the learning and have a utility model, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-q-learning-1-2-1.png" />
+<img src="https://ljs.io/img/ai/10-q-learning-1-2-1.png" />
 
 We now have our utilities, but how do we determine a policy? We have to multiply by our transition
 possibilities, e.g.:-
@@ -398,7 +398,7 @@ transition model, instead we learn a direct mapping, e.g.:-
 
 We perform Q-learning by starting off with a table of q-values, e.g. for the 4x3 grid:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-q-learning-1-2-2.png" />
+<img src="https://ljs.io/img/ai/10-q-learning-1-2-2.png" />
 
 There are more entries in the table than in the utility table - for each state, the elements have
 been divided up by action. They all start out at q-utility 0, but as we go we update using the
@@ -419,13 +419,13 @@ correct utility values or q-values.
 
 Let's consider a simpler example - pacman:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-pacman-1-2-1.png" />
+<img src="https://ljs.io/img/ai/10-pacman-1-2-1.png" />
 
 As you can see, not a great situation for pacman as he is about to get eaten by the ghosts, a
 situation which could be learnt about through reinforcement learning. However it is not the case
 that the following state will be considered to be the same:-
 
-<img src="http://codegrunt.co.uk/images/ai/10-pacman-1-2-2.png" />
+<img src="https://ljs.io/img/ai/10-pacman-1-2-2.png" />
 
 We need to find a generalisation which permits the learning of one set of states to be applied to
 another.

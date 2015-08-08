@@ -11,7 +11,7 @@ Unit 6 - Unsupervised Learning
 We've talked about supervised learning, in which we have data and target labels. In unsupervised
 learning we just have data, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-unsupervised-learning-question-1.png" />
+<img src="https://ljs.io/img/ai/6-unsupervised-learning-question-1.png" />
 
 Here we have m items of n features each.
 
@@ -19,13 +19,13 @@ The task of unsupervised learning is to find structure in data of this type.
 
 Let's consider the following graph:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-unsupervised-learning-question-2.png" />
+<img src="https://ljs.io/img/ai/6-unsupervised-learning-question-2.png" />
 
 This is not entirely random - there is structure, consisting of 2 clusters values.
 
 Looking at the following example:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-unsupervised-learning-question-3.png" />
+<img src="https://ljs.io/img/ai/6-unsupervised-learning-question-3.png" />
 
 This is in a 2-dimensional space, however intuitively you can see that it could be represented in
 1-dimension, as the points on the graph (to an approximation) fit on a line.
@@ -34,7 +34,7 @@ This is in a 2-dimensional space, however intuitively you can see that it could 
 
 If we consider the following data:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-terminology-1.png" />
+<img src="https://ljs.io/img/ai/6-terminology-1.png" />
 
 To investigate this using unsupervised learning, it must be 'IID', i.e. identically distributed and
 independently drawn from the same distribution.
@@ -77,7 +77,7 @@ detecting clustering are:-
 
 Consider the follow points in a 2d space:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-1.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-1.png" />
 
 k-Means estimates for a fixed number of k (here k=2) the best centres of clusters representing the data points.
 
@@ -85,11 +85,11 @@ We find these centres by following the k-Means algorithm:-
 
 1. Guess centres at random:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-2.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-2.png" />
 
 2. Assign to each cluster centre the most likely corresponding data points by minimising 'Euclidian distance':-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-3.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-3.png" />
 
 Each cluster centre represents half of the space, and the line that separates the two centres
 represents the equidistant line. This is often referred to as a 'Voronoi graph'. The points on the
@@ -98,19 +98,19 @@ left belong to the red cluster, and the points on the right to the green cluster
 3. Now we have a correspondence between the data points and cluster centres, we move the points such
 as to minimise joint quadratic distance from all of each centre's points:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-4.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-4.png" />
 
 4. Iterate. Reassign cluster centres, which gives us a different Voronoi diagram:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-5.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-5.png" />
 
 Now we can re-evaluate cluster centre positions, moving from:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-6.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-6.png" />
 
 To:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-clustering-example-7.png" />
+<img src="https://ljs.io/img/ai/6-k-means-clustering-example-7.png" />
 
 Since the points no longer change 'hands' between red and green, we have converged.
 
@@ -137,7 +137,7 @@ Problems with k-means:-
 * Need to know k
 * Local minima, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/6-k-means-algorithm-questions-1-2-1.png" />
+<img src="https://ljs.io/img/ai/6-k-means-algorithm-questions-1-2-1.png" />
 
 * High dimensionality
 * Lack of mathematical basis.

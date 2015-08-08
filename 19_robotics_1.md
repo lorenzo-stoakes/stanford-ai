@@ -19,14 +19,14 @@ terrain from Nevada to California - no team made it past 5% of the way that year
 Entered (+ ultimately won) the following year with 20 students (CS294: Experiments in AI) - modified
 VW Touareg using sensors on roof and actuators to activate pedals and steering pedal.
 
-<img src="http://codegrunt.co.uk/images/ai/19-autonomous-vehicle-intro-1-2-1.png" />
+<img src="https://ljs.io/img/ai/19-autonomous-vehicle-intro-1-2-1.png" />
 
 Shortly before challenge was able to handle desert terrain well including steep inclines/declines,
 avoiding obstacles, etc.
 
 Using lasers to map terrain:-
 
-<img src="http://codegrunt.co.uk/images/ai/19-autonomous-vehicle-intro-1-2-2.png" />
+<img src="https://ljs.io/img/ai/19-autonomous-vehicle-intro-1-2-2.png" />
 
 Went on to win DARPA grand challenge. Then created 'junior' the follow up which competed in the
 DARPA urban challenge.
@@ -44,7 +44,7 @@ In this class we'll talk about how to develop a self-driving car :-)
 
 Essentially - applying AI techniques to the problem of robotics, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/19-robotics-introduction-question-1.png" />
+<img src="https://ljs.io/img/ai/19-robotics-introduction-question-1.png" />
 
 Robotics is:-
 
@@ -58,7 +58,7 @@ Robotics is:-
 Discussing perception - we get sensor data and trying to estimate internal state such that it is
 sufficient to determine what to do next, usually a recursive method called a filter:-
 
-<img src="http://codegrunt.co.uk/images/ai/19-kinematic-question-1-2-1.png" />
+<img src="https://ljs.io/img/ai/19-kinematic-question-1-2-1.png" />
 
 Consider a mobile robot which is round and lives on a plane.
 
@@ -91,7 +91,7 @@ error.
 Particle filters for localisation = Monte Carlo localisation. Consider a series of points (x, y,
 theta), e.g:-
 
-<img src="http://codegrunt.co.uk/images/ai/19-monte-carlo-localisation-1.png" />
+<img src="https://ljs.io/img/ai/19-monte-carlo-localisation-1.png" />
 
 Consider a 'differential wheel robot' which has independent control of two wheels - can drive both
 forward, however if one moves faster than another it turns. How do we apply a particle filter to a
@@ -123,7 +123,7 @@ Robot moves on a fixed straight trajectory for [; \Delta t ;], then applies rota
 again for a fixed time [; \Delta t ;]. This is an approximation to the curve along which the robot
 is actually moving, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/19-monte-carlo-localisation-2.png" />
+<img src="https://ljs.io/img/ai/19-monte-carlo-localisation-2.png" />
 
 ## Localisation Question 1 + 2 ##
 

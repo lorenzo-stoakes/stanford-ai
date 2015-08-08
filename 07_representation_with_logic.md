@@ -249,7 +249,7 @@ because we're then only talking about a single object.
 
 Looking at the long-ago mentioned two-dimensional vacuum world:-
 
-<img src="http://codegrunt.co.uk/images/ai/7-vacuum-world-1.png" />
+<img src="https://ljs.io/img/ai/7-vacuum-world-1.png" />
 
 Let's represent it in first-order logic.
 

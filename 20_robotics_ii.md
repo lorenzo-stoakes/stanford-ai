@@ -13,7 +13,7 @@ Coming back to Monte Carlo localisation - consider moving from position (x, y) w
 location as determined by these values. However, if we introduce noise, then we end up with several
 different potential positions after a prediction step:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-prediction-1.png" />
+<img src="https://ljs.io/img/ai/20-prediction-1.png" />
 
 ## Measurement Question ##
 
@@ -48,15 +48,15 @@ We need the probabilities of each item to add up to 1.
 The next step in the particle filter algorithm is to resample, with on-lane marking particles at
 probability 0.2963, and off-line marking particles at 0.037 as determined in the previous question:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-resampling-question-1.png" />
+<img src="https://ljs.io/img/ai/20-resampling-question-1.png" />
 
 We then pick new particles, weighted by these probabilities:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-resampling-question-2.png" />
+<img src="https://ljs.io/img/ai/20-resampling-question-2.png" />
 
 Which are then skewed by movement (with noise):-
 
-<img src="http://codegrunt.co.uk/images/ai/20-resampling-question-3.png" />
+<img src="https://ljs.io/img/ai/20-resampling-question-3.png" />
 
 The process is:-
 
@@ -72,7 +72,7 @@ of abstraction, starting with a silly one.
 
 Consider the following world:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-planning-question-1.png" />
+<img src="https://ljs.io/img/ai/20-planning-question-1.png" />
 
 We can determine the value at source using value iteration.
 
@@ -80,7 +80,7 @@ We can determine the value at source using value iteration.
 
 We apply the exact same thing to a real-world problem:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-road-graph-1.png" />
+<img src="https://ljs.io/img/ai/20-road-graph-1.png" />
 
 Here we are taking heading into account as well as distance from the goal.
 
@@ -91,7 +91,7 @@ to be pointing north when it reaches the goal. The map is taking into account on
 
 Consider the following problem:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-cost-question-1.png" />
+<img src="https://ljs.io/img/ai/20-cost-question-1.png" />
 
 Need to determine the maximum cost of left turn such that we never turn left - got to make it not
 worth it.
@@ -107,7 +107,7 @@ This is a rich field, can't give a complete survey, too much to cover.
 
 Consider how you'd use A*:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-robotic-path-planning-1.png" />
+<img src="https://ljs.io/img/ai/20-robotic-path-planning-1.png" />
 
 Here we've discrete-ised the state space and determined a path. This is not really appropriate for a
 car, however, as a car cannot make such sharp turns.
@@ -127,7 +127,7 @@ we obtained before:-
 
 Consider the following:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-robotic-path-planning-2.png" />
+<img src="https://ljs.io/img/ai/20-robotic-path-planning-2.png" />
 
 Here the 'hybrid A*' algorithm stores x', y' and [; \theta' ;] for the cell. Note that once the cell
 has been expanded these values do not change and thus if you come back into the cell from another
@@ -141,7 +141,7 @@ valid results (to the degree of accuracy that they provide).
 
 Here's an example of applying the hybrid A* algorithm to a real situation:-
 
-<img src="http://codegrunt.co.uk/images/ai/20-path-planning-examples-1.png" />
+<img src="https://ljs.io/img/ai/20-path-planning-examples-1.png" />
 
 There are obviously different variations of A*, but can't go into vast detail here again due to
 limited scope. In general though, despite there being some sophistications going on which haven't

@@ -62,7 +62,7 @@ Looking again at the sliding block puzzle game we can see that it is:-
 
 We can solve this using search through a state space:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-single-player-game-1.png" />
+<img src="https://ljs.io/img/ai/13-single-player-game-1.png" />
 
 How do we describe the game?
 
@@ -87,7 +87,7 @@ Let's consider games like chess and checkers which are:-
 We consider two players who we name max and min because max wants to maximise their utility, and min
 wants to minimise max's utility (minimax). Consider a search tree:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-two-player-game-1.png" />
+<img src="https://ljs.io/img/ai/13-two-player-game-1.png" />
 
 Here upwards-facing triangles are max, downwards-facing are min and terminal states are squares.
 
@@ -106,7 +106,7 @@ all other states.
 
 Let's define a function which tells us how to compute the value for a given state:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-two-player-function-1.png" />
+<img src="https://ljs.io/img/ai/13-two-player-function-1.png" />
 
 In theory should answer any two-player deterministic finite game.
 
@@ -156,7 +156,7 @@ How can we reduce the branching factor?
 By examining the tree from the previous question, we can determine whether it's worth evaluating
 branches where it's simply a path which is not going to get evaluated:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-reduce-b-question-1.png" />
+<img src="https://ljs.io/img/ai/13-reduce-b-question-1.png" />
 
 Here we can see that, once we've seen the terminal node of 2 under the second child node of the
 root, we can determine that since the node above is a minimising one, it will pick the smallest
@@ -170,7 +170,7 @@ child nodes beneath a pruned node.
 
 Repeating for the right-most child of the root:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-reduce-b-question-2.png" />
+<img src="https://ljs.io/img/ai/13-reduce-b-question-2.png" />
 
 ## Reduce M ##
 
@@ -179,7 +179,7 @@ Considering a huge tree, how do we reduce its depth?
 The first approach is to simply cut the tree at a given depth by fiat, essentially pretending that
 at a certain depth all the nodes are terminal nodes:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-reduce-m-1.png" />
+<img src="https://ljs.io/img/ai/13-reduce-m-1.png" />
 
 Since the game hasn't actually finished at the arbitrary cut-off point, we need to determine some
 way to determine values of nodes at this point. This can be achieved with an *evaluation function*
@@ -204,7 +204,7 @@ etc. - we could use machine learning to determine weightings.
 
 We adjust our value function to reduce b and m:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-computing-state-values-1.png" />
+<img src="https://ljs.io/img/ai/13-computing-state-values-1.png" />
 
 We've added bookkeeping values here:-
 
@@ -220,7 +220,7 @@ Initially we start with:-
 
 Our maxValue function is updated as follows:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-computing-state-values-2.png" />
+<img src="https://ljs.io/img/ai/13-computing-state-values-2.png" />
 
 ## Complexity Reduction Benefits ##
 
@@ -244,7 +244,7 @@ impact of each:-
 
 Consider the following search tree:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-pacman-question-1.png" />
+<img src="https://ljs.io/img/ai/13-pacman-question-1.png" />
 
 We cut off the search at the bottom of the tree shown.
 
@@ -254,11 +254,11 @@ We want to deal with randomness (stochasticity) in games?
 
 Let's update the value function to handle a 'chance node':-
 
-<img src="http://codegrunt.co.uk/images/ai/13-chance-question-1.png" />
+<img src="https://ljs.io/img/ai/13-chance-question-1.png" />
 
 Here we determine the expected value rather than min or max at chance nodes, e.g. rolling a dice:-
 
-<img src="http://codegrunt.co.uk/images/ai/13-chance-question-2.png" />
+<img src="https://ljs.io/img/ai/13-chance-question-2.png" />
 
 ## Terminal State Question ##
 

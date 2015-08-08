@@ -113,12 +113,12 @@ strategy is where you have a probability distribution over the possible moves.
 We can examine the 2 finger morra game as a game tree with even as the max player and odd as the min
 player:-
 
-<img src="http://codegrunt.co.uk/images/ai/14-tree-question-1.png" />
+<img src="https://ljs.io/img/ai/14-tree-question-1.png" />
 
 This is on the assumption of the even player going first, the question here is concerned with the
 odd player going forward:-
 
-<img src="http://codegrunt.co.uk/images/ai/14-tree-question-2.png" />
+<img src="https://ljs.io/img/ai/14-tree-question-2.png" />
 
 ## Mixed Strategy ##
 
@@ -128,7 +128,7 @@ severely by having to give away their entire strategy before the other player ta
 Let's consider a scenario where the players aren't quite as open, i.e. defining a given move for a p
 probability from which we can calculate expectation, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/14-mixed-strategy-1.png" />
+<img src="https://ljs.io/img/ai/14-mixed-strategy-1.png" />
 
 ## Solving the Game ##
 
@@ -238,7 +238,7 @@ And the utility is [; -2 * \frac{1}{4} + 5 = 4.5 ;]
 
 Looking back to the 2 finger morra game:-
 
-<img src="http://codegrunt.co.uk/images/ai/14-geometric-interpretation-1.png" />
+<img src="https://ljs.io/img/ai/14-geometric-interpretation-1.png" />
 
 Each side is trying to maximise/minimise E's utility, and both end up at the same value.
 
@@ -252,7 +252,7 @@ Game theory can also deal with more complex games where there can be multiple ro
 We consider a simplified version of poker where we have a deck of only KKAA, and two rounds - in the
 first the player can raise/check, and in the second they can call/fold:-
 
-<img src="http://codegrunt.co.uk/images/ai/14-poker-1.png" />
+<img src="https://ljs.io/img/ai/14-poker-1.png" />
 
 Similar to the game tree covered in the previous unit.
 
@@ -263,7 +263,7 @@ in the tree they are.
 
 We can represent it in the 'normal form' i.e. the matrix form we've seen previously, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/14-poker-2.png" />
+<img src="https://ljs.io/img/ai/14-poker-2.png" />
 
 Here we have two equilibria - 1:rk, kk; 2:cf
 

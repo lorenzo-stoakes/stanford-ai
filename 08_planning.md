@@ -57,7 +57,7 @@ terms of world states, we can view them in terms of 'belief states'.
 
 Looking at the vacuum example again:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-vacuum-cleaner-example-1.png" />
+<img src="https://ljs.io/img/ai/8-vacuum-cleaner-example-1.png" />
 
 If we have a fully-observable, fully-deterministic world, then it's easy to plan. Imagine if the
 sensor failed, such that you no longer know where the vacuum is, or whether there is any dirt at the
@@ -71,7 +71,7 @@ get to another belief state.
 
 This is the belief state space for the sensorless vacuum cleaner problem:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-sensorless-vacuum-cleaner-problem-1.png" />
+<img src="https://ljs.io/img/ai/8-sensorless-vacuum-cleaner-problem-1.png" />
 
 Here we have accepted the case that we can't know where we are, however amazingly we can actually
 determine things about the environment simply by executing actions.
@@ -95,7 +95,7 @@ location (but it can't see if there is dirt in another location).
 
 Let's look at a diagram:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-partially-observable-vacuum-cleaner-example-1.png" />
+<img src="https://ljs.io/img/ai/8-partially-observable-vacuum-cleaner-example-1.png" />
 
 Once we move from one state to another, we can then observe the world and split our belief state
 depending on the observance. This is part of the act-observe cycle.
@@ -112,7 +112,7 @@ increase the size of the belief state.
 Let's consider a robot that has slippery wheels, i.e. sometimes it moves, and sometimes it does not,
 but the suck operation always works perfectly:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-stochastic-environment-problem-1.png" />
+<img src="https://ljs.io/img/ai/8-stochastic-environment-problem-1.png" />
 
 Note that actions can result in an *increase* in the belief state, since we don't know what the
 result of the action is going to be. Stochastic means that there are multiple outcomes for a given
@@ -126,7 +126,7 @@ infinite sequences? Examine next.
 In this new notation, instead of writing plans in a linear sequence such as [S, R, S], let's write
 them as a tree structure:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-infinite-sequences-1.png" />
+<img src="https://ljs.io/img/ai/8-infinite-sequences-1.png" />
 
 Can write as:-
 
@@ -142,7 +142,7 @@ How do you find a plan in a stochastic environment? It is similar to search in p
 a little more complicated. We have branches which are a part of the plan rather than of the search
 tree itself. We find a portion of the tree which successfully reaches the goal state, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-finding-a-successful-plan-1.png" />
+<img src="https://ljs.io/img/ai/8-finding-a-successful-plan-1.png" />
 
 ## Question ##
 
@@ -186,7 +186,7 @@ This is known as the predict update cycle.
 
 Here's an example of tracking the predict-update cycle:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-tracking-the-predict-update-cycle-1.png" />
+<img src="https://ljs.io/img/ai/8-tracking-the-predict-update-cycle-1.png" />
 
 This is in a situation where the actions are guaranteed to work as advertised, i.e. if you suck then
 it will suck up the dirt, if you move then you actually move. However we will call this the
@@ -255,7 +255,7 @@ done to make it easier to cover all potential flying actions.
 
 Here is a more complete representation of a problem-solving domain in classic planning:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-classical-planning-2-1.png" />
+<img src="https://ljs.io/img/ai/8-classical-planning-2-1.png" />
 
 Init is initial state, goal is the target goal.
 
@@ -265,7 +265,7 @@ How do we do planning using this?
 
 The simplest way to do planning is to do it the exact same way we do it in problem solving, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-progression-search-1.png" />
+<img src="https://ljs.io/img/ai/8-progression-search-1.png" />
 
 This is known as 'forward' or 'progression' state space search. We're searching through the space of
 exact states deterministically.
@@ -279,7 +279,7 @@ This is known as 'backwards' or regression search.
 
 We start with the goal state and work backwards, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-regression-search-1.png" />
+<img src="https://ljs.io/img/ai/8-regression-search-1.png" />
 
 Note that the goal state is the complete goal state. Note that the goal state here isn't incomplete,
 it contains literally all we know about the state, as other variables can be whatever they want to
@@ -321,14 +321,14 @@ then there are 10 million branches coming out of the initial node. We'd have to 
 in forward search, which is clearly not especially efficient. So it is better to start at the goal,
 e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-regression-vs-progression-1.png" />
+<img src="https://ljs.io/img/ai/8-regression-vs-progression-1.png" />
 
 ## Plan Space Search ##
 
 There is one more search we can do with classic planning which we couldn't do previously, which is
 to search through the space of plans rather than states, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-plan-space-search-1.png" />
+<img src="https://ljs.io/img/ai/8-plan-space-search-1.png" />
 
 In forward search we were searching through concrete world states, in backwards search we were
 searching through abstract states, but in plan space search we search through the space of plans.
@@ -347,7 +347,7 @@ good heuristics easier.
 To understand choose of heuristics, let's have a look at the sliding puzzle again. Here is part of
 the state space for the 8-puzzle:-
 
-<img src="http://codegrunt.co.uk/images/ai/8-sliding-puzzle-example-1.png" />
+<img src="https://ljs.io/img/ai/8-sliding-puzzle-example-1.png" />
 
 Let's try and determine what the action schema looks like:-
 

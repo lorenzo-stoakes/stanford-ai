@@ -17,7 +17,7 @@ In the previous unit we went over:-
 
 Let's look at a simple example:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-overview-and-example-1.png" />
+<img src="https://ljs.io/img/ai/4-overview-and-example-1.png" />
 
 Where B is a burglary and E an earthquake, A is an alarm J is Jill calling and M is Mike calling.
 
@@ -117,7 +117,7 @@ The structure of a Bayes net determines how efficient it is to perform inference
 
 E.g. a linear string of variables:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-speeding-up-enumeration-1.png" />
+<img src="https://ljs.io/img/ai/4-speeding-up-enumeration-1.png" />
 
 If all n variables are boolean variables.
 
@@ -125,7 +125,7 @@ In the alarm network shown earlier, we were careful to ensure that we put all th
 relations in the structure of the network, but if we put the nodes in a different order we'd have a
 different structure, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-speeding-up-enumeration-2.png" />
+<img src="https://ljs.io/img/ai/4-speeding-up-enumeration-2.png" />
 
 Explanation:-
 
@@ -163,7 +163,7 @@ probabilistic variables contained in the above equation.
 
 To explore this, let's look at a new network:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-variable-elimination-1.png" />
+<img src="https://ljs.io/img/ai/4-variable-elimination-1.png" />
 
 Where
 
@@ -175,7 +175,7 @@ Where
 
 The elimination:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-variable-elimination-2.png" />
+<img src="https://ljs.io/img/ai/4-variable-elimination-2.png" />
 
 The steps used to achieve elimination:-
 
@@ -235,7 +235,7 @@ Let's say we want to deal with a joint probability distribution of heads + tails
 
 E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-approximate-inference-1.png" />
+<img src="https://ljs.io/img/ai/4-approximate-inference-1.png" />
 
 Here we sample by simply running the experiment over and over and looking at the counts. If the
 counts are low, then random variation can cause the results to be unreliable. However, as we add
@@ -256,7 +256,7 @@ still proceed with sampling, unlike in exact inference where we simply couldn't.
 
 Here's a network we can use to investigate how sampling can be used to do inference:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-sampling-example-1.png" />
+<img src="https://ljs.io/img/ai/4-sampling-example-1.png" />
 
 We have 4 booleans variables - each indicating whether the condition in question is the case or not.
 
@@ -298,7 +298,7 @@ There's a problem with rejection sampling - you end up rejecting *a lot* of the 
 
 If we consider the burglary/alarm network again:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-rejection-sampling-1.png" />
+<img src="https://ljs.io/img/ai/4-rejection-sampling-1.png" />
 
 Say we're interested in [; P(B|+A) ;]. The problem is that burglaries are very infrequent, so you
 have to put up with a large number of -b, -a cases before you get to any +b cases.
@@ -325,7 +325,7 @@ Consider our cloudy/sprinkler/rain/wet grass network again:-
 [AI Class Link 2](https://www.ai-class.com/course/video/videolecture/43)
 [AI Class Link 3](https://www.ai-class.com/course/video/videolecture/44)
 
-<img src="http://codegrunt.co.uk/images/ai/4-likelihood-weighting-1-2-1.png" />
+<img src="https://ljs.io/img/ai/4-likelihood-weighting-1-2-1.png" />
 
 Assuming we are after [; P(R|+S, +W) ;], and our random variables grant cloudy positive and rain
 positive, then we have a weight of 0.1 from the assumed positive sprinkler, and 0.99 weight from the
@@ -344,7 +344,7 @@ e.g. consider cloudiness and sprinkler/rain being positive.
 Gibbs sampling takes all the evidence into account, not just the upstream evidence. It uses a method
 called Markov Chain Monte Carlo (MCMC), e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/4-gibbs-sampling-1.png" />
+<img src="https://ljs.io/img/ai/4-gibbs-sampling-1.png" />
 
 Using this method, we resample one non-evidence variable at a time using the values of all the other
 variables.

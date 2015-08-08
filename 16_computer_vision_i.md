@@ -30,7 +30,7 @@ simply means the way an image is being captured.
 
 Perhaps the easiest model of camera is a 'pinhole camera':-
 
-<img src="http://codegrunt.co.uk/images/ai/16-image-formation-1.png" />
+<img src="https://ljs.io/img/ai/16-image-formation-1.png" />
 
 Here we have a very small hole through which light travels, projecting for example, a person, with
 the slight projecting as such to invert the person on the projection plane of the camera chip.
@@ -74,7 +74,7 @@ We've learnt about perspective projection - the projected size of an object scal
 
 If you take an object and move it further away, it'll appear smaller.
 
-<img src="http://codegrunt.co.uk/images/ai/16-perspective-projection-1.png" />
+<img src="https://ljs.io/img/ai/16-perspective-projection-1.png" />
 
 This is an intuitive result, clearly.
 
@@ -88,7 +88,7 @@ and y:-
 
 E.g.
 
-<img src="http://codegrunt.co.uk/images/ai/16-vanishing-points-question-1.png" />
+<img src="https://ljs.io/img/ai/16-vanishing-points-question-1.png" />
 
 One of the interesting consequences of perspective projection is that parallel lines in the world
 seem to result in vanishing points.
@@ -98,7 +98,7 @@ seem to result in vanishing points.
 A limitation of a pinhole camera is that only very few rays of light hit the plane of the imager
 through the pinhole, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-lenses-1.png" />
+<img src="https://ljs.io/img/ai/16-lenses-1.png" />
 
 This means a pinhole approach is only applicable to very bright scenes. Also, as you make the gap
 smaller and smaller in order to increase the focus on the image plane, you eventually result into
@@ -106,11 +106,11 @@ light diffraction, which puts a limit on how small the hole can be.
 
 However, if you put a lens on the camera, then all rays will be projected to one point, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-lenses-2.png" />
+<img src="https://ljs.io/img/ai/16-lenses-2.png" />
 
 This all depends on the object being in focus, then the resulting projections don't match up, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-lenses-3.png" />
+<img src="https://ljs.io/img/ai/16-lenses-3.png" />
 
 There is an equation which governs all of this:-
 
@@ -118,7 +118,7 @@ There is an equation which governs all of this:-
 
 E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-lenses-4.png" />
+<img src="https://ljs.io/img/ai/16-lenses-4.png" />
 
 ## Computer Vision ##
 
@@ -169,7 +169,7 @@ that point.
 
 Each greyscale value is in the range of 0 to 255 i.e. a byte. 0 is black, 255 is white, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-greyscale-images-1.png" />
+<img src="https://ljs.io/img/ai/16-greyscale-images-1.png" />
 
 A colour image would be similar but consisting of 3 different values per pixel, corresponding to
 red, blue and green or some other encoding.
@@ -181,12 +181,12 @@ differentiate light and dark parts of an image. One approach to this is to essen
 mask of two cells over the whole image, then add the left-hand value, and subtract the right-hand
 value, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-extracting-features-question-1.png" />
+<img src="https://ljs.io/img/ai/16-extracting-features-question-1.png" />
 
 Doing this means that when there is little difference, the value returned is low, however when there
 is a large difference, the value is high. Applying over matrix:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-extracting-features-question-2.png" />
+<img src="https://ljs.io/img/ai/16-extracting-features-question-2.png" />
 
 The values in the mask indicate a high probability of there being a vertical edge feature between
 the columns the mask refers to.
@@ -198,7 +198,7 @@ Our 'kernel' will only find vertical edges, and not horizontal edges.
 We've here applied a 'linear filter' - taken an image, I, and applied a kernel, g, to it, to obtain
 a new image, I', e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-linear-filter-1.png" />
+<img src="https://ljs.io/img/ai/16-linear-filter-1.png" />
 
 The resultant image I' is smaller, however we could avoid that if necessary by assuming all the
 values 'surrounding' the image are 0.
@@ -224,21 +224,21 @@ Nothing to note.
 
 Original image:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-filter-results-1.png" />
+<img src="https://ljs.io/img/ai/16-filter-results-1.png" />
 
 Vertical filter:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-filter-results-2.png" />
+<img src="https://ljs.io/img/ai/16-filter-results-2.png" />
 
 Vertical filter:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-filter-results-3.png" />
+<img src="https://ljs.io/img/ai/16-filter-results-3.png" />
 
 ## Gradient Images ##
 
 Horizontal and vertical convolution can be represented as follows:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-gradient-images-1.png" />
+<img src="https://ljs.io/img/ai/16-gradient-images-1.png" />
 
 If we want to find all edges, then we can combine both of these:-
 
@@ -246,13 +246,13 @@ If we want to find all edges, then we can combine both of these:-
 
 Which gives us this result:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-gradient-images-2.png" />
+<img src="https://ljs.io/img/ai/16-gradient-images-2.png" />
 
 ## Canny Edge Detector ##
 
 A Canny edge detector gives better edge detection:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-canny-edge-detector-1.png" />
+<img src="https://ljs.io/img/ai/16-canny-edge-detector-1.png" />
 
 Which gives far sharper edge detection. Not only does it find gradient magnitude, it also traces
 areas and finds local optima and tries to connect them such that there is always a single edge. When
@@ -263,7 +263,7 @@ the Canny edge detector traces them very nicely. Named after John canny at UC Be
 
 There are different kernels one can use:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-other-masks-1.png" />
+<img src="https://ljs.io/img/ai/16-other-masks-1.png" />
 
 ## Prewitt Mask Question ##
 
@@ -305,18 +305,18 @@ useful in computer vision.
 
 Looking at a Harris corner detector we get results such as:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-harris-corner-detector-1.png" />
+<img src="https://ljs.io/img/ai/16-harris-corner-detector-1.png" />
 
 The algorithm is quite simple. In a corner there are lots of vertical and horizontal edges. If we
 sum the convoluted result of a horizontal edge detection kernel and a vertical edge detection kernel
 and both values are large, we likely have an edge, e.g.:
 
-<img src="http://codegrunt.co.uk/images/ai/16-harris-corner-detector-2.png" />
+<img src="https://ljs.io/img/ai/16-harris-corner-detector-2.png" />
 
 This is also generalised to handling rotation cases by de-rotating the image using Eigenvalue
 decomposition, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-harris-corner-detector-3.png" />
+<img src="https://ljs.io/img/ai/16-harris-corner-detector-3.png" />
 
 We end up with 2 eigenvalues. If both eigenvalues are large, then we have a corner. If we apply this
 to every pixel in the image and take the local maxima of the result where the results are both large
@@ -340,7 +340,7 @@ invariant to rotation and scale and certain perspective transformations.
 
 Applying SIFT to the bridge photo:-
 
-<img src="http://codegrunt.co.uk/images/ai/16-modern-feature-detectors-1.png" />
+<img src="https://ljs.io/img/ai/16-modern-feature-detectors-1.png" />
 
 ## Conclusion ##
 

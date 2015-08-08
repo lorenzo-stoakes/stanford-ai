@@ -12,7 +12,7 @@ The idea of 'structure from motion' is to take a handheld camera, and move it ar
 and be able to recover or estimate the 3d coordinates of all the features in the world based on many
 2d images, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/18-structure-from-motion-question-1.png" />
+<img src="https://ljs.io/img/ai/18-structure-from-motion-question-1.png" />
 
 ## Projection Question ##
 
@@ -28,11 +28,11 @@ The mathematics of structure from movement are involved. Don't want to go into t
 
 Here is our original projection model:-
 
-<img src="http://codegrunt.co.uk/images/ai/18-sfm-maths-1.png" />
+<img src="https://ljs.io/img/ai/18-sfm-maths-1.png" />
 
 Once we take into account that we are viewing the object from an arbitrary angle, we end up with:-
 
-<img src="http://codegrunt.co.uk/images/ai/18-sfm-maths-2.png" />
+<img src="https://ljs.io/img/ai/18-sfm-maths-2.png" />
 
 We have to sum over i and j and work to find the minimum. This is very much non-trivial.
 

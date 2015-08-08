@@ -13,7 +13,7 @@ networks. The material is hard.
 
 E.g. Bayes Network - car won't start, causes?
 
-<img src="http://codegrunt.co.uk/images/ai/3-introduction-1.png" />
+<img src="https://ljs.io/img/ai/3-introduction-1.png" />
 
 This is a Bayes network - composed of nodes which correspond to events that you might/might not know
 typically called 'random variables', linked by arcs where an arc indicates that the child is
@@ -99,7 +99,7 @@ Independence:-
 
 ## Dependence ##
 
-<img src="http://codegrunt.co.uk/images/ai/3-dependence-1.png" />
+<img src="https://ljs.io/img/ai/3-dependence-1.png" />
 
 ## What We Learned ##
 
@@ -166,7 +166,7 @@ We're after:-
 
 But, first let's get some joint probabilities:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-cancer-1.png" />
+<img src="https://ljs.io/img/ai/3-cancer-1.png" />
 
 Due to the rule of total probability:-
 
@@ -225,14 +225,14 @@ Which is the same as above :)
 
 We can represent the kind of reasoning we performed in the above example graphically:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-bayes-network-1.png" />
+<img src="https://ljs.io/img/ai/3-bayes-network-1.png" />
 
 The information on the right-hand column is what we have, and we want to perform diagnostic
 reasoning, i.e. determining P(A|B) and P(A|notB).
 
 Quiz - how many parameters:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-bayes-network-2.png" />
+<img src="https://ljs.io/img/ai/3-bayes-network-2.png" />
 
 ## Computing Bayes Rule ##
 
@@ -268,7 +268,7 @@ We normalise the pseudo probabilities such that total probability holds:-
 
 ## Two Test Cancer + 2 ##
 
-<img src="http://codegrunt.co.uk/images/ai/3-two-test-cancer-1.png" />
+<img src="https://ljs.io/img/ai/3-two-test-cancer-1.png" />
 
 We declare a short-form:-
 
@@ -335,7 +335,7 @@ Conditional independence is really important.
 
 Looking at the following more general diagram:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-conditional-independence-1.png" />
+<img src="https://ljs.io/img/ai/3-conditional-independence-1.png" />
 
 Then we write:-
 
@@ -368,7 +368,7 @@ Given conditional independence, this is equivalent to:-
 
 Let's look at the different forms of independence we've encountered:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-absolute-and-conditional-1.png" />
+<img src="https://ljs.io/img/ai/3-absolute-and-conditional-1.png" />
 
     [; A \perp B \not\Rightarrow A \perp B | C ;]
 
@@ -381,7 +381,7 @@ something which affects one conditionally independent event can also affect the 
 
 ## Confounding Cause ##
 
-<img src="http://codegrunt.co.uk/images/ai/3-confounding-cause-1.png" />
+<img src="https://ljs.io/img/ai/3-confounding-cause-1.png" />
 
     [; P(S)=0.7 ;]
     [; P(R)=0.01 ;]
@@ -501,7 +501,7 @@ It's interesting to compare all the outcomes regarding the raise:-
 
 H adds a dependence between S and R, despite them being independent.
 
-<img src="http://codegrunt.co.uk/images/ai/3-conditional-dependence-1.png" />
+<img src="https://ljs.io/img/ai/3-conditional-dependence-1.png" />
 
 Without information about H, the probability of R is completely unaffected by the knowledge of H.
 
@@ -530,7 +530,7 @@ INDEPENDENCE DOES __NOT__ IMPLY CONDITIONAL INDEPENDENCE!
 We can now define Bayes networks in a more general way. Bayes networks define probability
 distributions over a graph of random variables, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-general-bayes-net-1.png" />
+<img src="https://ljs.io/img/ai/3-general-bayes-net-1.png" />
 
 Instead of enumerating all possibilities of all combinations of these 5 random variables, the Bayes
 network is defined by probability distributions which is inherent to each individual node.
@@ -570,15 +570,15 @@ Scales a lot better to large networks than the combinatorial approach.
 
 Some quizzes:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-general-bayes-net-2.png" />
+<img src="https://ljs.io/img/ai/3-general-bayes-net-2.png" />
 
-<img src="http://codegrunt.co.uk/images/ai/3-general-bayes-net-3.png" />
+<img src="https://ljs.io/img/ai/3-general-bayes-net-3.png" />
 
 ## Value of a Network ##
 
 And our original network:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-introduction-1.png" />
+<img src="https://ljs.io/img/ai/3-introduction-1.png" />
 
 Which is:-
 
@@ -608,7 +608,7 @@ Which is quite an improvement on 65,535 using the combinatorial approach!
 
 ## D-Separation + 2-3 ##
 
-<img src="http://codegrunt.co.uk/images/ai/3-d-separation-1.png" />
+<img src="https://ljs.io/img/ai/3-d-separation-1.png" />
 
 So:-
 
@@ -637,7 +637,7 @@ Put simply:-
 Any two nodes are independent if they're not linked by just unknown variables. E.g., if we know B,
 then anything downstream of B is independent of everything upstream of B.
 
-<img src="http://codegrunt.co.uk/images/ai/3-d-separation-2.png" />
+<img src="https://ljs.io/img/ai/3-d-separation-2.png" />
 
     [; A \perp E ;]
 
@@ -668,11 +668,11 @@ D-separation is best studied by 'active tripets' and 'inactive triplets'.
 
 E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/3-d-separation-3.png" />
+<img src="https://ljs.io/img/ai/3-d-separation-3.png" />
 
 Final Quiz :-) :-
 
-<img src="http://codegrunt.co.uk/images/ai/3-d-separation-4.png" />
+<img src="https://ljs.io/img/ai/3-d-separation-4.png" />
 
 Considering independence:-
 

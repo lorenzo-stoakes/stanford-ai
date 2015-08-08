@@ -23,7 +23,7 @@ First we start with time - looking at a series of tasks with durations.
 
 Consider a task network:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-scheduling-1.png" />
+<img src="https://ljs.io/img/ai/15-scheduling-1.png" />
 
 Consists of start and finish node, with task nodes between and associated time requirements.
 
@@ -48,7 +48,7 @@ We want to consider resources.
 
 We could, theoretically, describe resources purely using classical planning, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-resources-question-1.png" />
+<img src="https://ljs.io/img/ai/15-resources-question-1.png" />
 
 The goal is not achieved as we have only 4 nuts.
 
@@ -62,7 +62,7 @@ identical rather than distinct so we can handle them more efficiently.
 
 We've extended the planning syntax to handle this:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-extending-planning-1.png" />
+<img src="https://ljs.io/img/ai/15-extending-planning-1.png" />
 
 Here we've added a new type of statement which declares resources + how many we have of each. We
 also explicitly model inspectors.
@@ -99,7 +99,7 @@ correspond to more than one other. This idea is known as 'refinement planning'.
 
 Consider the following:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-refinement-planning-1.png" />
+<img src="https://ljs.io/img/ai/15-refinement-planning-1.png" />
 
 In addition to standard actions, we have abstract actions, e.g. going home to the San Francisco
 Airport, etc.
@@ -116,7 +116,7 @@ Is an and/or choice.
 As well as doing an and/or search, we can solve an abstract a HTN planning problem without going all
 the way down to the concrete steps. E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-reachable-states-question-1.png" />
+<img src="https://ljs.io/img/ai/15-reachable-states-question-1.png" />
 
 Here the start state is highlighted, and the goal state is in grey.
 
@@ -138,7 +138,7 @@ refinements are complicated.
 
 Can consider an *approximate* set of reachable states:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-reachable-states-question-2.png" />
+<img src="https://ljs.io/img/ai/15-reachable-states-question-2.png" />
 
 Here there are upper and lower bounds on states which are reachable (solid line contains lower
 bound, dashed line upper bound) - consider a trip to the San Francisco airport - it will take at
@@ -152,7 +152,7 @@ observability.
 
 Consider the following problem description:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-conformant-plan-question-1.png" />
+<img src="https://ljs.io/img/ai/15-conformant-plan-question-1.png" />
 
 The active perception here is the LookAt action.
 
@@ -171,6 +171,6 @@ wasted our time in attempting to paint them unnecessarily.
 
 In this plan we can use the following logic:-
 
-<img src="http://codegrunt.co.uk/images/ai/15-sensory-plan-question-1.png" />
+<img src="https://ljs.io/img/ai/15-sensory-plan-question-1.png" />
 
 Which minimises the effort required.

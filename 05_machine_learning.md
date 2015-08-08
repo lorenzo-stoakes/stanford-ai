@@ -122,7 +122,7 @@ We can then use this function for future x's to obtain accurate y's.
 
 ## Occam's Razor ##
 
-<img src="http://codegrunt.co.uk/images/ai/5-occams-razor-1.png" />
+<img src="https://ljs.io/img/ai/5-occams-razor-1.png" />
 
 If you compare a. to b., you can see that both fit the data perfectly, however b is clearly less
 appropriate as it violently oscillates all over the place and it is unlikely (let's face it -
@@ -136,7 +136,7 @@ There is a trade-off:-
 
 E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-occams-razor-2.png" />
+<img src="https://ljs.io/img/ai/5-occams-razor-2.png" />
 
 Here complexity could be polynomial degree. As complexity increases, training data error reduces as
 you fit the data more accurately, however overall error (generalisation error) increases, which is
@@ -159,7 +159,7 @@ This is a good application of machine learning.
 
 This is a discrimination problem, can use supervised machine learning for this.
 
-<img src="http://codegrunt.co.uk/images/ai/5-spam-detection-1.png" />
+<img src="https://ljs.io/img/ai/5-spam-detection-1.png" />
 
 Here we are trying to determine the function which identifies email as either spam or 'ham' (legit
 email). Most systems use human input, flagging spam (unflagged emails are considered ham).
@@ -249,7 +249,7 @@ So counting spam emails and dividing by total was mathematically legitimate.
 We're building up a Bayes network here, with parameters estimated via supervised learning via
 maximum likelihood estimator.
 
-<img src="http://codegrunt.co.uk/images/ai/5-relationship-to-bayes-network-1.png" />
+<img src="https://ljs.io/img/ai/5-relationship-to-bayes-network-1.png" />
 
 At root it has an unobservable variable called 'spam' which is binary, and has as many children as
 there are words in a message, where each word has an identical conditional distribution of the word
@@ -468,7 +468,7 @@ So:-
 So we've learnt about 'naive Bayes', where we've used maximum likelihood and a Laplacian smoother to
 determine class probabilities via Bayes rule:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-summary-naive-bayes-1.png" />
+<img src="https://ljs.io/img/ai/5-summary-naive-bayes-1.png" />
 
 This is called a 'generative model' in the conditional probabilities all aim to maximise the
 predictability of individual features as if they describe the physical world.
@@ -504,7 +504,7 @@ Say, 16 x 16
 Not vary 'shift invariant', e.g. can't recognise that the right figure below is just the left figure
 shifted to the right:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-digit-recognition-1.png" />
+<img src="https://ljs.io/img/ai/5-digit-recognition-1.png" />
 
 There's many different solutions, one of which is to use smoothing, though in a different way than
 discussed before. Instead of counting 1 pixel's value count, we can mix it with counts of the
@@ -654,7 +654,7 @@ Examples of bad situations to use linear regression:-
 * Outliers - Since we're minimising quadratic error, outliers have a hefty impact on our modelled
   curve. A very bad match is one where you
 
-<img src="http://codegrunt.co.uk/images/ai/5-problems-with-linear-regression-1.png" />
+<img src="https://ljs.io/img/ai/5-problems-with-linear-regression-1.png" />
 
 ### Logistic Regression ##
 
@@ -689,7 +689,7 @@ L1 regularisation has the advantage that it tends to make parameters 'sparse', e
 one of the parameters to zero. In the L2 case, parameters tend not to be as sparse, so often L1 is
 preferred. E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-linear-regression-and-complexity-control-1.png" />
+<img src="https://ljs.io/img/ai/5-linear-regression-and-complexity-control-1.png" />
 
 ## Minimising Complicated Loss Functions ##
 
@@ -749,7 +749,7 @@ Very early model of a neuron, invented in the 1940's.
 Say we had positive and negative samples, then a 'linear separator' is a linear equation which
 separates the two. Clearly not all datasets have such a separator, however some do. E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-perceptron-1.png" />
+<img src="https://ljs.io/img/ai/5-perceptron-1.png" />
 
 Let's start with our linear equation:-
 
@@ -799,7 +799,7 @@ The case of linear separation has been receiving a lot of attention in machine l
 
 You can make different choices of linear separator, not always totally clear-cut, e.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-perceptron-2.png" />
+<img src="https://ljs.io/img/ai/5-perceptron-2.png" />
 
 Intuitively, b is a good choice, because a and c are too close to the examples such that new
 examples might end up crossing the line, whereas b does not stray too close.
@@ -823,7 +823,7 @@ You can solve for this by solving a quadratic problem.
 One of the nice aspects of SVMs is that they use linear techniques to solve non-linear
 problems. E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-perceptron-3.png" />
+<img src="https://ljs.io/img/ai/5-perceptron-3.png" />
 
 We use a 'kernel trick' to solve this, as clearly a linear solution won't separate positive and
 negative values as we would like.
@@ -867,7 +867,7 @@ K-Nearest-Neighbours - very simple algorithm:-
 
 E.g.:-
 
-<img src="http://codegrunt.co.uk/images/ai/5-knn-definition-1.png" />
+<img src="https://ljs.io/img/ai/5-knn-definition-1.png" />
 
 Here we label according to different k:-
 
